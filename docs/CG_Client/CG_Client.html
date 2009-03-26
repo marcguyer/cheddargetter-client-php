@@ -1,0 +1,771 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>Docs For Class CG_Client</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+		</head>
+		<body>
+			<div class="page-body">			
+<h2 class="class-name"><img src="../media/images/Class_logo.png"
+														alt=" Class"
+														title=" Class"
+														style="vertical-align: middle"> CG_Client</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+															<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+					</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Client object for interacting with the CheddarGetter service</p>
+	<ul class="tags">
+				<li><span class="field">author:</span> Marc Guyer &lt;<a href="mailto:marc@sproutbox.com">marc@sproutbox.com</a>&gt;</li>
+			</ul>
+		<p class="notes">
+			Located in <a class="field" href="_Client.php.html">/Client.php</a> (line <span class="field">15</span>)
+		</p>
+		
+				
+		<pre></pre>
+	
+			</div>
+</div>
+
+
+
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+												<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+																																																																																																																																																																								<div class="method-definition">
+					<img src="../media/images/Constructor.png" alt=" "/>
+											<span class="method-result">CG_Client</span>
+										<a href="#__construct" title="details" class="method-name">__construct</a>
+											(<span class="var-type">$url</span>&nbsp;<span class="var-name">$url</span>, <span class="var-type">$username</span>&nbsp;<span class="var-name">$username</span>, <span class="var-type">$password</span>&nbsp;<span class="var-name">$password</span>, [<span class="var-type">$productCode</span>&nbsp;<span class="var-name">$productCode</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result"><a href="../CG_Response/CG_Response.html">CG_Response</a></span>
+										<a href="#editCustomer" title="details" class="method-name">editCustomer</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$data</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result"><a href="../CG_Response/CG_Response.html">CG_Response</a></span>
+										<a href="#getAllCustomers" title="details" class="method-name">getAllCustomers</a>
+											([<span class="var-type"></span>&nbsp;<span class="var-name">$filters</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result"><a href="../CG_Response/CG_Response.html">CG_Response</a></span>
+										<a href="#getCustomer" title="details" class="method-name">getCustomer</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$code</span>, [<span class="var-type">string|null</span>&nbsp;<span class="var-name">$id</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result"><a href="../CG_Response/CG_Response.html">CG_Response</a></span>
+										<a href="#getCustomers" title="details" class="method-name">getCustomers</a>
+											([<span class="var-type"></span>&nbsp;<span class="var-name">$filters</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">Zend_Http_Client|resource</span>
+										<a href="#getHttpClient" title="details" class="method-name">getHttpClient</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result"><a href="../CG_Response/CG_Response.html">CG_Response</a></span>
+										<a href="#getPlan" title="details" class="method-name">getPlan</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$code</span>, [<span class="var-type">string|null</span>&nbsp;<span class="var-name">$id</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result"><a href="../CG_Response/CG_Response.html">CG_Response</a></span>
+										<a href="#getPlans" title="details" class="method-name">getPlans</a>
+											([<span class="var-type"></span>&nbsp;<span class="var-name">$filters</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#getProductCode" title="details" class="method-name">getProductCode</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#getUrl" title="details" class="method-name">getUrl</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#getUsername" title="details" class="method-name">getUsername</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result"><a href="../CG_Response/CG_Response.html">CG_Response</a></span>
+										<a href="#newCustomer" title="details" class="method-name">newCustomer</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$data</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#request" title="details" class="method-name">request</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$path</span>, [<span class="var-type"></span>&nbsp;<span class="var-name">$args</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result"><a href="../CG_Client/CG_Client.html">CG_Client</a></span>
+										<a href="#setHttpClient" title="details" class="method-name">setHttpClient</a>
+											(<span class="var-type">$client</span>&nbsp;<span class="var-name">$client</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result"><a href="../CG_Client/CG_Client.html">CG_Client</a></span>
+										<a href="#setPassword" title="details" class="method-name">setPassword</a>
+											(<span class="var-type">$password</span>&nbsp;<span class="var-name">$password</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result"><a href="../CG_Client/CG_Client.html">CG_Client</a></span>
+										<a href="#setProductCode" title="details" class="method-name">setProductCode</a>
+											(<span class="var-type">$productCode</span>&nbsp;<span class="var-name">$productCode</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result"><a href="../CG_Client/CG_Client.html">CG_Client</a></span>
+										<a href="#setUrl" title="details" class="method-name">setUrl</a>
+											(<span class="var-type">$url</span>&nbsp;<span class="var-name">$url</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result"><a href="../CG_Client/CG_Client.html">CG_Client</a></span>
+										<a href="#setUsername" title="details" class="method-name">setUsername</a>
+											(<span class="var-type">$username</span>&nbsp;<span class="var-name">$username</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#__call" title="details" class="method-name">__call</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$method</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$args</span>)
+									</div>
+											</div>
+		</div>
+	</div>		
+
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+													<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+<a name="method__construct" id="__construct"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Constructor.png" />
+		<span class="method-title">Constructor __construct</span> (line <span class="line-number">50</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Constructor</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">CG_Client</span>
+		<span class="method-name">
+			__construct
+		</span>
+					(<span class="var-type">$url</span>&nbsp;<span class="var-name">$url</span>, <span class="var-type">$username</span>&nbsp;<span class="var-name">$username</span>, <span class="var-type">$password</span>&nbsp;<span class="var-name">$password</span>, [<span class="var-type">$productCode</span>&nbsp;<span class="var-name">$productCode</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">$url</span>
+				<span class="var-name">$url</span><span class="var-description">: string</span>			</li>
+					<li>
+				<span class="var-type">$username</span>
+				<span class="var-name">$username</span><span class="var-description">: string</span>			</li>
+					<li>
+				<span class="var-type">$password</span>
+				<span class="var-name">$password</span><span class="var-description">: string</span>			</li>
+					<li>
+				<span class="var-type">$productCode</span>
+				<span class="var-name">$productCode</span><span class="var-description">: string</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodeditCustomer" id="editCustomer"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">editCustomer</span> (line <span class="line-number">253</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Change customer information</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../CG_Response/CG_Response.html">CG_Response</a></span>
+		<span class="method-name">
+			editCustomer
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$data</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array|null</span>
+				<span class="var-name">$data</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetAllCustomers" id="getAllCustomers"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getAllCustomers</span> (line <span class="line-number">230</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Get all customers</p>
+<p class="description"><p>Get all customers subscribed to any product</p></p>
+	<ul class="tags">
+				<li><span class="field">throws:</span> CG_Client_Exception</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../CG_Response/CG_Response.html">CG_Response</a></span>
+		<span class="method-name">
+			getAllCustomers
+		</span>
+					([<span class="var-type"></span>&nbsp;<span class="var-name">$filters</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array|null</span>
+				<span class="var-name">$filters</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetCustomer" id="getCustomer"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getCustomer</span> (line <span class="line-number">214</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Get a single customer</p>
+<p class="description"><p>Get all plans in the product</p></p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../CG_Response/CG_Response.html">CG_Response</a></span>
+		<span class="method-name">
+			getCustomer
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$code</span>, [<span class="var-type">string|null</span>&nbsp;<span class="var-name">$id</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$code</span><span class="var-description">: Your code for the customer</span>			</li>
+					<li>
+				<span class="var-type">string|null</span>
+				<span class="var-name">$id</span><span class="var-description">: CG id for the customer</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetCustomers" id="getCustomers"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getCustomers</span> (line <span class="line-number">201</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Get customers</p>
+<p class="description"><p>Get all customers in the product</p></p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../CG_Response/CG_Response.html">CG_Response</a></span>
+		<span class="method-name">
+			getCustomers
+		</span>
+					([<span class="var-type"></span>&nbsp;<span class="var-name">$filters</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array|null</span>
+				<span class="var-name">$filters</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetHttpClient" id="getHttpClient"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getHttpClient</span> (line <span class="line-number">358</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Get the current http client</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">Zend_Http_Client|resource</span>
+		<span class="method-name">
+			getHttpClient
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetPlan" id="getPlan"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getPlan</span> (line <span class="line-number">186</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Get a single pricing plan</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../CG_Response/CG_Response.html">CG_Response</a></span>
+		<span class="method-name">
+			getPlan
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$code</span>, [<span class="var-type">string|null</span>&nbsp;<span class="var-name">$id</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$code</span><span class="var-description">: Your code for the plan</span>			</li>
+					<li>
+				<span class="var-type">string|null</span>
+				<span class="var-name">$id</span><span class="var-description">: CG id for the plan</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetPlans" id="getPlans"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getPlans</span> (line <span class="line-number">175</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Get pricing plans</p>
+<p class="description"><p>Get all plans in the product</p></p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../CG_Response/CG_Response.html">CG_Response</a></span>
+		<span class="method-name">
+			getPlans
+		</span>
+					([<span class="var-type"></span>&nbsp;<span class="var-name">$filters</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array|null</span>
+				<span class="var-name">$filters</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetProductCode" id="getProductCode"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getProductCode</span> (line <span class="line-number">135</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Get product code</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getProductCode
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetUrl" id="getUrl"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getUrl</span> (line <span class="line-number">75</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Get URL</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getUrl
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetUsername" id="getUsername"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getUsername</span> (line <span class="line-number">95</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Get username</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getUsername
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodnewCustomer" id="newCustomer"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">newCustomer</span> (line <span class="line-number">243</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Create new customer</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../CG_Response/CG_Response.html">CG_Response</a></span>
+		<span class="method-name">
+			newCustomer
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$data</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array|null</span>
+				<span class="var-name">$data</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodrequest" id="request"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">request</span> (line <span class="line-number">265</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Execute CheddarGetter API request</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Body of the response from the CheddarGetter API</li>
+				<li><span class="field">throws:</span> CG_Client_Exception Throws an exception if neither Zend_Http_Client nor php-curl is available.  Also, when curl is used, this exception is thrown if the curl session results in an error.  When Zend_Http_Client is used, a Zend_Http_Client_Exception may be thrown under a number of conditions but most likely if the tcp socket fails to connect.</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			request
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$path</span>, [<span class="var-type"></span>&nbsp;<span class="var-name">$args</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$path</span><span class="var-description">: Path to the API action</span>			</li>
+					<li>
+				<span class="var-type">array|null</span>
+				<span class="var-name">$args</span><span class="var-description">: HTTP post key value pairs</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetHttpClient" id="setHttpClient"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">setHttpClient</span> (line <span class="line-number">344</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set http client</p>
+	<ul class="tags">
+				<li><span class="field">throws:</span> CG_Client_Exception</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../CG_Client/CG_Client.html">CG_Client</a></span>
+		<span class="method-name">
+			setHttpClient
+		</span>
+					(<span class="var-type">$client</span>&nbsp;<span class="var-name">$client</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">$client</span>
+				<span class="var-name">$client</span><span class="var-description">: Zend_Http_Client|resource Either a Zend_Http_Client or curl resource.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetPassword" id="setPassword"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">setPassword</span> (line <span class="line-number">105</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set password neccessary for accessing the CheddarGetter API</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../CG_Client/CG_Client.html">CG_Client</a></span>
+		<span class="method-name">
+			setPassword
+		</span>
+					(<span class="var-type">$password</span>&nbsp;<span class="var-name">$password</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">$password</span>
+				<span class="var-name">$password</span><span class="var-description">: string</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetProductCode" id="setProductCode"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">setProductCode</span> (line <span class="line-number">125</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set product code (required for all calls except getAllCustomers)</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../CG_Client/CG_Client.html">CG_Client</a></span>
+		<span class="method-name">
+			setProductCode
+		</span>
+					(<span class="var-type">$productCode</span>&nbsp;<span class="var-name">$productCode</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">$productCode</span>
+				<span class="var-name">$productCode</span><span class="var-description">: string</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetUrl" id="setUrl"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">setUrl</span> (line <span class="line-number">65</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set URL neccessary for for accessing the CheddarGetter API</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../CG_Client/CG_Client.html">CG_Client</a></span>
+		<span class="method-name">
+			setUrl
+		</span>
+					(<span class="var-type">$url</span>&nbsp;<span class="var-name">$url</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">$url</span>
+				<span class="var-name">$url</span><span class="var-description">: string</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetUsername" id="setUsername"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">setUsername</span> (line <span class="line-number">85</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set username neccessary for for accessing the CheddarGetter API</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../CG_Client/CG_Client.html">CG_Client</a></span>
+		<span class="method-name">
+			setUsername
+		</span>
+					(<span class="var-type">$username</span>&nbsp;<span class="var-name">$username</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">$username</span>
+				<span class="var-name">$username</span><span class="var-description">: string</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method__call" id="__call"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">__call</span> (line <span class="line-number">147</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Magic method wrapper</p>
+<p class="description"><p>Essentially just a sanity check making sure we have a productCode for those methods that require it</p></p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			__call
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$method</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$args</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$method</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$args</span>			</li>
+				</ul>
+		
+			
+	</div>
+						
+		</div>
+	</div>
+
+	
+	<p class="notes" id="credit">
+		Documentation generated on Thu, 26 Mar 2009 16:00:15 -0400 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.2</a>
+	</p>
+	</div></body>
+</html>
