@@ -184,7 +184,7 @@ class CG_Client {
 	 * @return CG_Response
 	 */
 	public function getPlan($code, $id = null) {
-		$this->_requireIdentifier();
+		$this->_requireIdentifier($code, $id);
 		return new CG_Response($this->request('/plans/get/' . (($id) ? '/id/'.$id : '/code/'.$code) ), 
 			($id) ? 'id' : 'code'
 		);
@@ -212,7 +212,7 @@ class CG_Client {
 	 * @return CG_Response
 	 */
 	public function getCustomer($code, $id = null) {
-		$this->_requireIdentifier();
+		$this->_requireIdentifier($code, $id);
 		return new CG_Response($this->request('/customers/get/' . (($id) ? '/id/'.$id : '/code/'.$code) ), 
 			($id) ? 'id' : 'code'
 		);
