@@ -158,7 +158,7 @@ class CG_Client {
 				break;
 			default:
 				if (!$this->getProductCode()) {
-					throw new CG_Client_Exception('A product code is required for ' . __CLASS__ . '::' . $method . '().  Use ' . __CLASS__ . '::setProductCode()');
+					throw new CG_Client_Exception('A product code is required for ' . __CLASS__ . '::' . $method . '().  Use ' . __CLASS__ . '::setProductCode()', CG_Client_Exception::USAGE_INVALID);
 				}
 		}
 		return call_user_func_array(array($this, $method), $args);
@@ -229,7 +229,7 @@ class CG_Client {
 	 */
 	public function getAllCustomers(array $filters = null) {
 		if ($this->getProductCode()) {
-			throw new CG_Client_Exception("Can't use a productCode when requesting getAllCustomers()");
+			throw new CG_Client_Exception("Can't use a productCode when requesting getAllCustomers()", CG_Client_Exception::USAGE_INVALID);
 		}
 		return new CG_Response($this->request('/customers/get-all', $filters));
 	}
@@ -253,6 +253,43 @@ class CG_Client {
 	public function editCustomer(array $data) {
 		return new CG_Response($this->request('/customers/edit', $data));
 	}
+	
+	/**
+	 * Increment a usage item quantity
+	 * 
+	 * @param string $code Your code for the customer
+	 * @param string|null $id CG id for the customer
+	 * @param array $data Your (itemCode or CG itemId) and [quantity]
+	 * @return CG_Response
+	 */
+	public function addItemQuantity($code, $id = null, array $data) {
+		$this->_requireIdentifier($code, $id);
+		return new CG_Response(
+			$this->request(
+				'/customers/add-item-quantity/' . (($id) ? '/id/'.$id : '/code/'.$code),
+				$data
+			)
+		);
+	}
+	
+	/**
+	 * Set a usage item quantity
+	 * 
+	 * @param string $code Your code for the customer
+	 * @param string|null $id CG id for the customer
+	 * @param array $data Your (itemCode or CG itemId) and quantity
+	 * @return CG_Response
+	 */
+	public function setItemQuantity($code, $id = null, array $data) {
+		$this->_requireIdentifier($code, $id);
+		return new CG_Response(
+			$this->request(
+				'/customers/set-item-quantity/' . (($id) ? '/id/'.$id : '/code/'.$code),
+				$data
+			)
+		);
+	}
+	
 	
 	/**
 	 * Execute CheddarGetter API request
@@ -324,13 +361,13 @@ class CG_Client {
 			$result = curl_exec($http);
 			
 			if ($result === false || curl_error($http) != '') {
-				throw new CG_Client_Exception('cUrl session resulted in an error: (' . curl_errno($http) . ')' . curl_error($http)); 
+				throw new CG_Client_Exception('cUrl session resulted in an error: (' . curl_errno($http) . ')' . curl_error($http), CG_Client_Exception::UNKNOWN); 
 			}
 			
 			return $result;
 		}
 		
-		throw new CG_Client_Exception("Either Zend_Http_Client and it's dependencies or the php curl extension is required.");
+		throw new CG_Client_Exception("Either Zend_Http_Client and it's dependencies or the php curl extension is required.", CG_Client_Exception::USAGE_INVALID);
 		
 	}
 	
@@ -346,7 +383,7 @@ class CG_Client {
 			$this->_httpClient = $client;
 			return $this;
 		} else {
-			throw new CG_Client_Exception("httpClient can only be an instance of Zend_Http_Client or a php curl resource.");
+			throw new CG_Client_Exception("httpClient can only be an instance of Zend_Http_Client or a php curl resource.", CG_Client_Exception::USAGE_INVALID);
 		}
 	}
 	
@@ -369,7 +406,7 @@ class CG_Client {
 	 */
 	private function _requireIdentifier($code, $id) {
 		if (!$code && !$id) {
-			throw new CG_Client_Exception('Either a code or id is required');
+			throw new CG_Client_Exception('Either a code or id is required', CG_Client_Exception::USAGE_INVALID);
 		}
 		return true;
 	}

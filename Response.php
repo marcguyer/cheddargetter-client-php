@@ -18,7 +18,9 @@ class CG_Response extends DOMDocument {
 	
 	public function __construct($response) {
 		parent::__construct('1.0', 'UTF-8');
-		$this->loadXML($response);
+		if (!$this->loadXML($response)) {
+			throw new CG_Response_Exception("Response failed to load into the DOM.", CG_Response_Exception::UNKNOWN);
+		}
 		
 		if ($this->documentElement->nodeName == 'error') {
 			$this->_responseType = 'errors';
