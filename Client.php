@@ -128,7 +128,7 @@ class CG_Client {
 	}
 	
 	/**
-	 * Get product code
+	 * Get current product code 
 	 *
 	 * @return string
 	 */
