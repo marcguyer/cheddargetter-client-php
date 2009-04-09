@@ -303,7 +303,7 @@ class CG_Client {
 		$url = $this->_url . '/xml/' . $path . ( ($this->getProductCode()) ? '/productCode/' . $this->getProductCode() : '' );
 		$url = preg_replace('~(\w)/+~', '\1/', $url);
 		
-		$http = $this->getHttpClient();
+		$http = null; //$this->getHttpClient();
 		
 		if (class_exists('Zend_Http_Client') && (!$http || $http instanceof Zend_Http_Client)) {
 			if (!$http) {
@@ -311,8 +311,8 @@ class CG_Client {
 					$url, 
 					array(
 						'timeout'		=> 60,
-						'useragent'		=> $_SERVER['SERVER_NAME'] . ' - ' . $_SERVER['SERVER_SIGNATURE'],
-						'keepalive'		=> true
+						'useragent'		=> $_SERVER['SERVER_NAME'] . ' - ' . $_SERVER['SERVER_SIGNATURE']/*,
+						'keepalive'		=> true*/
 					)
 				);
 				$this->setHttpClient($http);
