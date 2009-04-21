@@ -307,11 +307,13 @@ class CG_Client {
 		
 		if (class_exists('Zend_Http_Client') && (!$http || $http instanceof Zend_Http_Client)) {
 			if (!$http) {
+				$userAgent = (isset($_SERVER['SERVER_NAME']) && isset($_SERVER['SERVER_SIGNATURE'])) ? $_SERVER['SERVER_NAME'] . ' - ' . $_SERVER['SERVER_SIGNATURE'] : 'CG_Client PHP';
+				
 				$http = new Zend_Http_Client(
 					$url, 
 					array(
 						'timeout'		=> 60,
-						'useragent'		=> $_SERVER['SERVER_NAME'] . ' - ' . $_SERVER['SERVER_SIGNATURE']/*,
+						'useragent'		=> $userAgent/*,
 						'keepalive'		=> true*/
 					)
 				);
