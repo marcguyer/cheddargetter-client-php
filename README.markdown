@@ -30,3 +30,8 @@ DOCUMENTATION
 -------------
 
 Check 'em out in docs/index.html
+
+GIT SUBMODULE
+-------------
+
+If you're using git to manage your app, you can add this repo as a submodule of your app.  I found a nice tutorial here: http://woss.name/2008/04/09/using-git-submodules-to-track-vendorrails/
