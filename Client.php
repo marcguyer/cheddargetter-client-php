@@ -12,7 +12,7 @@
  * @author Marc Guyer <marc@sproutbox.com>
  */
  
-class CG_Client {
+class CheddarGetter_Client {
 	
 	/**
 	 * @var string Username credential for accessing the CheddarGetter API
@@ -60,7 +60,7 @@ class CG_Client {
 	 * Set URL neccessary for for accessing the CheddarGetter API
 	 *
 	 * @param $url string
-	 * @return CG_Client
+	 * @return CheddarGetter_Client
 	 */
 	public function setUrl($url) {
 		$this->_url = $url;
@@ -80,7 +80,7 @@ class CG_Client {
 	 * Set username neccessary for for accessing the CheddarGetter API
 	 *
 	 * @param $username string
-	 * @return CG_Client
+	 * @return CheddarGetter_Client
 	 */
 	public function setUsername($username) {
 		$this->_username = $username;
@@ -100,7 +100,7 @@ class CG_Client {
 	 * Set password neccessary for accessing the CheddarGetter API
 	 *
 	 * @param $password string
-	 * @return CG_Client
+	 * @return CheddarGetter_Client
 	 */
 	public function setPassword($password) {
 		$this->_password = $password;
@@ -120,7 +120,7 @@ class CG_Client {
 	 * Set product code (required for all calls except getAllCustomers)
 	 *
 	 * @param $productCode string
-	 * @return CG_Client
+	 * @return CheddarGetter_Client
 	 */
 	public function setProductCode($productCode) {
 		$this->_productCode = $productCode;
@@ -158,7 +158,7 @@ class CG_Client {
 				break;
 			default:
 				if (!$this->getProductCode()) {
-					throw new CG_Client_Exception('A product code is required for ' . __CLASS__ . '::' . $method . '().  Use ' . __CLASS__ . '::setProductCode()', CG_Client_Exception::USAGE_INVALID);
+					throw new CheddarGetter_Client_Exception('A product code is required for ' . __CLASS__ . '::' . $method . '().  Use ' . __CLASS__ . '::setProductCode()', CheddarGetter_Client_Exception::USAGE_INVALID);
 				}
 		}
 		return call_user_func_array(array($this, $method), $args);
@@ -170,10 +170,10 @@ class CG_Client {
 	 * Get all plans in the product
 	 *
 	 * @param array|null $filters 
-	 * @return CG_Response
+	 * @return CheddarGetter_Response
 	 */
 	public function getPlans(array $filters = null) {
-		return new CG_Response( $this->request('/plans/get', $filters) );
+		return new CheddarGetter_Response( $this->request('/plans/get', $filters) );
 	}
 	
 	/**
@@ -181,11 +181,11 @@ class CG_Client {
 	 *
 	 * @param string $code Your code for the plan
 	 * @param string|null $id CG id for the plan
-	 * @return CG_Response
+	 * @return CheddarGetter_Response
 	 */
 	public function getPlan($code, $id = null) {
 		$this->_requireIdentifier($code, $id);
-		return new CG_Response($this->request('/plans/get/' . (($id) ? '/id/'.$id : '/code/'.$code) ), 
+		return new CheddarGetter_Response($this->request('/plans/get/' . (($id) ? '/id/'.$id : '/code/'.$code) ), 
 			($id) ? 'id' : 'code'
 		);
 	}
@@ -196,10 +196,10 @@ class CG_Client {
 	 * Get all customers in the product
 	 *
 	 * @param array|null $filters
-	 * @return CG_Response
+	 * @return CheddarGetter_Response
 	 */
 	public function getCustomers(array $filters = null) {
-		return new CG_Response($this->request('/customers/get', $filters));
+		return new CheddarGetter_Response($this->request('/customers/get', $filters));
 	}
 	
 	/**
@@ -209,11 +209,11 @@ class CG_Client {
 	 *
 	 * @param string $code Your code for the customer
 	 * @param string|null $id CG id for the customer
-	 * @return CG_Response
+	 * @return CheddarGetter_Response
 	 */
 	public function getCustomer($code, $id = null) {
 		$this->_requireIdentifier($code, $id);
-		return new CG_Response($this->request('/customers/get/' . (($id) ? '/id/'.$id : '/code/'.$code) ), 
+		return new CheddarGetter_Response($this->request('/customers/get/' . (($id) ? '/id/'.$id : '/code/'.$code) ), 
 			($id) ? 'id' : 'code'
 		);
 	}
@@ -224,34 +224,34 @@ class CG_Client {
 	 * Get all customers subscribed to any product
 	 *
 	 * @param array|null $filters
-	 * @return CG_Response
-	 * @throws CG_Client_Exception
+	 * @return CheddarGetter_Response
+	 * @throws CheddarGetter_Client_Exception
 	 */
 	public function getAllCustomers(array $filters = null) {
 		if ($this->getProductCode()) {
-			throw new CG_Client_Exception("Can't use a productCode when requesting getAllCustomers()", CG_Client_Exception::USAGE_INVALID);
+			throw new CheddarGetter_Client_Exception("Can't use a productCode when requesting getAllCustomers()", CheddarGetter_Client_Exception::USAGE_INVALID);
 		}
-		return new CG_Response($this->request('/customers/get-all', $filters));
+		return new CheddarGetter_Response($this->request('/customers/get-all', $filters));
 	}
 	
 	/**
 	 * Create new customer
 	 *
 	 * @param array|null $data
-	 * @return CG_Response
+	 * @return CheddarGetter_Response
 	 */
 	public function newCustomer(array $data) {
-		return new CG_Response($this->request('/customers/new', $data));
+		return new CheddarGetter_Response($this->request('/customers/new', $data));
 	}
 	
 	/**
 	 * Change customer information
 	 *
 	 * @param array|null $data
-	 * @return CG_Response
+	 * @return CheddarGetter_Response
 	 */
 	public function editCustomer(array $data) {
-		return new CG_Response($this->request('/customers/edit', $data));
+		return new CheddarGetter_Response($this->request('/customers/edit', $data));
 	}
 	
 	/**
@@ -260,11 +260,11 @@ class CG_Client {
 	 * @param string $code Your code for the customer
 	 * @param string|null $id CG id for the customer
 	 * @param array $data Your (itemCode or CG itemId) and [quantity]
-	 * @return CG_Response
+	 * @return CheddarGetter_Response
 	 */
 	public function addItemQuantity($code, $id = null, array $data) {
 		$this->_requireIdentifier($code, $id);
-		return new CG_Response(
+		return new CheddarGetter_Response(
 			$this->request(
 				'/customers/add-item-quantity/' . (($id) ? '/id/'.$id : '/code/'.$code),
 				$data
@@ -278,11 +278,11 @@ class CG_Client {
 	 * @param string $code Your code for the customer
 	 * @param string|null $id CG id for the customer
 	 * @param array $data Your (itemCode or CG itemId) and quantity
-	 * @return CG_Response
+	 * @return CheddarGetter_Response
 	 */
 	public function setItemQuantity($code, $id = null, array $data) {
 		$this->_requireIdentifier($code, $id);
-		return new CG_Response(
+		return new CheddarGetter_Response(
 			$this->request(
 				'/customers/set-item-quantity/' . (($id) ? '/id/'.$id : '/code/'.$code),
 				$data
@@ -297,7 +297,7 @@ class CG_Client {
 	 * @param string $path Path to the API action
 	 * @param array|null $args HTTP post key value pairs
 	 * @return string Body of the response from the CheddarGetter API
-	 * @throws CG_Client_Exception Throws an exception if neither Zend_Http_Client nor php-curl is available.  Also, when curl is used, this exception is thrown if the curl session results in an error.  When Zend_Http_Client is used, a Zend_Http_Client_Exception may be thrown under a number of conditions but most likely if the tcp socket fails to connect.
+	 * @throws CheddarGetter_Client_Exception Throws an exception if neither Zend_Http_Client nor php-curl is available.  Also, when curl is used, this exception is thrown if the curl session results in an error.  When Zend_Http_Client is used, a Zend_Http_Client_Exception may be thrown under a number of conditions but most likely if the tcp socket fails to connect.
 	 */
 	protected function request($path, array $args = null) {
 		$url = $this->_url . '/xml/' . $path . ( ($this->getProductCode()) ? '/productCode/' . $this->getProductCode() : '' );
@@ -307,7 +307,7 @@ class CG_Client {
 		
 		if (class_exists('Zend_Http_Client') && (!$http || $http instanceof Zend_Http_Client)) {
 			if (!$http) {
-				$userAgent = (isset($_SERVER['SERVER_NAME']) && isset($_SERVER['SERVER_SIGNATURE'])) ? $_SERVER['SERVER_NAME'] . ' - ' . $_SERVER['SERVER_SIGNATURE'] : 'CG_Client PHP';
+				$userAgent = (isset($_SERVER['SERVER_NAME']) && isset($_SERVER['SERVER_SIGNATURE'])) ? $_SERVER['SERVER_NAME'] . ' - ' . $_SERVER['SERVER_SIGNATURE'] : 'CheddarGetter_Client PHP';
 				
 				$http = new Zend_Http_Client(
 					$url, 
@@ -363,13 +363,13 @@ class CG_Client {
 			$result = curl_exec($http);
 			
 			if ($result === false || curl_error($http) != '') {
-				throw new CG_Client_Exception('cUrl session resulted in an error: (' . curl_errno($http) . ')' . curl_error($http), CG_Client_Exception::UNKNOWN); 
+				throw new CheddarGetter_Client_Exception('cUrl session resulted in an error: (' . curl_errno($http) . ')' . curl_error($http), CheddarGetter_Client_Exception::UNKNOWN); 
 			}
 			
 			return $result;
 		}
 		
-		throw new CG_Client_Exception("Either Zend_Http_Client and it's dependencies or the php curl extension is required.", CG_Client_Exception::USAGE_INVALID);
+		throw new CheddarGetter_Client_Exception("Either Zend_Http_Client and it's dependencies or the php curl extension is required.", CheddarGetter_Client_Exception::USAGE_INVALID);
 		
 	}
 	
@@ -377,15 +377,15 @@ class CG_Client {
 	 * Set http client
 	 *
 	 * @param $client Zend_Http_Client|resource Either a Zend_Http_Client or curl resource.
-	 * @return CG_Client
-	 * @throws CG_Client_Exception 
+	 * @return CheddarGetter_Client
+	 * @throws CheddarGetter_Client_Exception 
 	 */
 	public function setHttpClient($client) {
 		if ($client instanceof Zend_Http_Client || (is_resource($client) && get_resource_type($client) == 'curl')) { 
 			$this->_httpClient = $client;
 			return $this;
 		} else {
-			throw new CG_Client_Exception("httpClient can only be an instance of Zend_Http_Client or a php curl resource.", CG_Client_Exception::USAGE_INVALID);
+			throw new CheddarGetter_Client_Exception("httpClient can only be an instance of Zend_Http_Client or a php curl resource.", CheddarGetter_Client_Exception::USAGE_INVALID);
 		}
 	}
 	
@@ -404,11 +404,11 @@ class CG_Client {
 	 * @param string $code
 	 * @param string $id
 	 * @return bool true if $code or $id exists
-	 * @throws CG_Client_Exception if neither identifier exists
+	 * @throws CheddarGetter_Client_Exception if neither identifier exists
 	 */
 	private function _requireIdentifier($code, $id) {
 		if (!$code && !$id) {
-			throw new CG_Client_Exception('Either a code or id is required', CG_Client_Exception::USAGE_INVALID);
+			throw new CheddarGetter_Client_Exception('Either a code or id is required', CheddarGetter_Client_Exception::USAGE_INVALID);
 		}
 		return true;
 	}

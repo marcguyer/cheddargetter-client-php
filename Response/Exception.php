@@ -11,7 +11,7 @@
  * @author Marc Guyer <marc@sproutbox.com>
  */
  
-class CG_Response_Exception extends Exception {
+class CheddarGetter_Response_Exception extends Exception {
 	
 	const REQUEST_INVALID = 400;
 	const PRECONDITION_FAILED = 412;

@@ -22,7 +22,7 @@ If you use an autoloader, you're good.  If not, just require all the files like 
 Then, just fire it up:
 
 	<?php
-		$client = new CG_Client('https://theurlforcheddargetter.com', 'yourusername', 'yourpassword', 'yourproductcode');
+		$client = new CheddarGetter_Client('https://theurlforcheddargetter.com', 'yourusername', 'yourpassword', 'yourproductcode');
 		print_r($client->getCustomers()->toArray());
 	?>
 

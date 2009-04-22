@@ -12,14 +12,14 @@
  * @author Marc Guyer <marc@sproutbox.com>
  */
  
-class CG_Response extends DOMDocument {
+class CheddarGetter_Response extends DOMDocument {
 	
 	private $_responseType;
 	
 	public function __construct($response) {
 		parent::__construct('1.0', 'UTF-8');
 		if (!$this->loadXML($response)) {
-			throw new CG_Response_Exception("Response failed to load into the DOM.", CG_Response_Exception::UNKNOWN);
+			throw new CheddarGetter_Response_Exception("Response failed to load into the DOM.", CheddarGetter_Response_Exception::UNKNOWN);
 		}
 		
 		if ($this->documentElement->nodeName == 'error') {
@@ -86,7 +86,7 @@ class CG_Response extends DOMDocument {
 	}
 	
 	protected function handleError() {
-		throw new CG_Response_Exception($this->documentElement->firstChild->nodeValue, $this->documentElement->getAttribute('code'));
+		throw new CheddarGetter_Response_Exception($this->documentElement->firstChild->nodeValue, $this->documentElement->getAttribute('code'));
 	}
 	
 	public function __toString() {
