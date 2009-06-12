@@ -302,19 +302,17 @@ class CheddarGetter_Client {
 	protected function request($path, array $args = null) {
 		$url = $this->_url . '/xml/' . $path . ( ($this->getProductCode()) ? '/productCode/' . $this->getProductCode() : '' );
 		$url = preg_replace('~(\w)/+~', '\1/', $url);
-		
 		$http = null; //$this->getHttpClient();
 		
 		if (class_exists('Zend_Http_Client') && (!$http || $http instanceof Zend_Http_Client)) {
 			if (!$http) {
-				$userAgent = (isset($_SERVER['SERVER_NAME']) && isset($_SERVER['SERVER_SIGNATURE'])) ? $_SERVER['SERVER_NAME'] . ' - ' . $_SERVER['SERVER_SIGNATURE'] : 'CheddarGetter_Client PHP';
+				$userAgent = (isset($_SERVER['SERVER_NAME'])) ? $_SERVER['SERVER_NAME'] . ' - CheddarGetter_Client PHP' : 'CheddarGetter_Client PHP';
 				
 				$http = new Zend_Http_Client(
 					$url, 
 					array(
 						'timeout'		=> 60,
-						'useragent'		=> $userAgent/*,
-						'keepalive'		=> true*/
+						'useragent'		=> $userAgent
 					)
 				);
 				$this->setHttpClient($http);
@@ -336,11 +334,11 @@ class CheddarGetter_Client {
 			
 			$response = $http->request()->getBody();
 			
-			if (!CG_Util::isProduction()) {
+			//if (class_exists('CG_Util') && !CG_Util::isProduction()) {
 				Sprout_Log::debug('Request: ' . $url);
 				Sprout_Log::debug($args);
 				Sprout_Log::debug('Response: ' . $response);
-			}
+			//}
 			
 			return $response;
 		} else if (function_exists('curl_init') && (!$http || (is_resource($http) && get_resource_type($http) == 'curl')) ) {
