@@ -213,8 +213,8 @@ class CheddarGetter_Client {
 	 */
 	public function getCustomer($code, $id = null) {
 		$this->_requireIdentifier($code, $id);
-		return new CheddarGetter_Response($this->request('/customers/get/' . (($id) ? '/id/'.$id : '/code/'.$code) ), 
-			($id) ? 'id' : 'code'
+		return new CheddarGetter_Response(
+			$this->request('/customers/get/' . (($id) ? '/id/'.$id : '/code/'.$code) )
 		);
 	}
 	
@@ -247,11 +247,37 @@ class CheddarGetter_Client {
 	/**
 	 * Change customer information
 	 *
+	 * @param string $code Your code for the customer
+	 * @param string|null $id CG id for the customer
 	 * @param array|null $data
 	 * @return CheddarGetter_Response
 	 */
-	public function editCustomer(array $data) {
-		return new CheddarGetter_Response($this->request('/customers/edit', $data));
+	public function editCustomer($code, $id = null, array $data) {
+		$this->_requireIdentifier($code, $id);
+		return new CheddarGetter_Response(
+			$this->request(
+				'/customers/edit/' . (($id) ? '/id/'.$id : '/code/'.$code), 
+				$data
+			)
+		);
+	}
+	
+	/**
+	 * Change subscription information
+	 *
+	 * @param string $code Your code for the customer
+	 * @param string|null $id CG id for the customer
+	 * @param array|null $data
+	 * @return CheddarGetter_Response
+	 */
+	public function editSubscription($code, $id = null, array $data) {
+		$this->_requireIdentifier($code, $id);
+		return new CheddarGetter_Response(
+			$this->request(
+				'/customers/edit-subscription/' . (($id) ? '/id/'.$id : '/code/'.$code),
+				$data
+			)
+		);
 	}
 	
 	/**
