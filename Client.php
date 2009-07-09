@@ -299,6 +299,24 @@ class CheddarGetter_Client {
 	}
 	
 	/**
+	 * Decrement a usage item quantity
+	 * 
+	 * @param string $code Your code for the customer
+	 * @param string|null $id CG id for the customer
+	 * @param array $data Your (itemCode or CG itemId) and [quantity]
+	 * @return CheddarGetter_Response
+	 */
+	public function removeItemQuantity($code, $id = null, array $data) {
+		$this->_requireIdentifier($code, $id);
+		return new CheddarGetter_Response(
+			$this->request(
+				'/customers/remove-item-quantity/' . (($id) ? '/id/'.$id : '/code/'.$code),
+				$data
+			)
+		);
+	}
+	
+	/**
 	 * Set a usage item quantity
 	 * 
 	 * @param string $code Your code for the customer
