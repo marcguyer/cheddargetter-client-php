@@ -1,7 +1,7 @@
 INSTALL
 -------
 
-Just put everything into a directory called 'CG' in your include path. You can use git to do this:
+Just put everything into a directory called 'CheddarGetter' in your include path. You can use git to do this:
 
 	git clone git@github.com:marcguyer/cheddargetter-client-php.git /path/to/includepath/CheddarGetter
 
