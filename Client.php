@@ -3,13 +3,13 @@
 /**
  * @category CheddarGetter
  * @package CheddarGetter
- * @author Marc Guyer <marc@sproutbox.com>
+ * @author Marc Guyer <marc@cheddargetter.com>
  */
 /**
  * Client object for interacting with the CheddarGetter service
  * @category CheddarGetter
  * @package CheddarGetter
- * @author Marc Guyer <marc@sproutbox.com>
+ * @author Marc Guyer <marc@cheddargetter.com>
  */
  
 class CheddarGetter_Client {
@@ -35,6 +35,8 @@ class CheddarGetter_Client {
 	private $_productCode;
 	
 	/**
+	 * If you don't use Zend Framework, it's ok, the client will fallback to curl (so you need curl).
+	 * 
 	 * @var Zend_Http_Client 
 	 */
 	private $_httpClient;
@@ -171,6 +173,7 @@ class CheddarGetter_Client {
 	 *
 	 * @param array|null $filters 
 	 * @return CheddarGetter_Response
+	 * @throws CheddarGetter_Response_Exception
 	 */
 	public function getPlans(array $filters = null) {
 		return new CheddarGetter_Response( $this->request('/plans/get', $filters) );
@@ -182,6 +185,7 @@ class CheddarGetter_Client {
 	 * @param string $code Your code for the plan
 	 * @param string|null $id CG id for the plan
 	 * @return CheddarGetter_Response
+	 * @throws CheddarGetter_Response_Exception
 	 */
 	public function getPlan($code, $id = null) {
 		$this->_requireIdentifier($code, $id);
@@ -197,6 +201,7 @@ class CheddarGetter_Client {
 	 *
 	 * @param array|null $filters
 	 * @return CheddarGetter_Response
+	 * @throws CheddarGetter_Response_Exception
 	 */
 	public function getCustomers(array $filters = null) {
 		return new CheddarGetter_Response($this->request('/customers/get', $filters));
@@ -210,6 +215,7 @@ class CheddarGetter_Client {
 	 * @param string $code Your code for the customer
 	 * @param string|null $id CG id for the customer
 	 * @return CheddarGetter_Response
+	 * @throws CheddarGetter_Response_Exception
 	 */
 	public function getCustomer($code, $id = null) {
 		$this->_requireIdentifier($code, $id);
@@ -226,6 +232,7 @@ class CheddarGetter_Client {
 	 * @param array|null $filters
 	 * @return CheddarGetter_Response
 	 * @throws CheddarGetter_Client_Exception
+	 * @throws CheddarGetter_Response_Exception
 	 */
 	public function getAllCustomers(array $filters = null) {
 		if ($this->getProductCode()) {
@@ -239,6 +246,7 @@ class CheddarGetter_Client {
 	 *
 	 * @param array|null $data
 	 * @return CheddarGetter_Response
+	 * @throws CheddarGetter_Response_Exception
 	 */
 	public function newCustomer(array $data) {
 		return new CheddarGetter_Response($this->request('/customers/new', $data));
@@ -251,6 +259,7 @@ class CheddarGetter_Client {
 	 * @param string|null $id CG id for the customer
 	 * @param array|null $data
 	 * @return CheddarGetter_Response
+	 * @throws CheddarGetter_Response_Exception
 	 */
 	public function editCustomer($code, $id = null, array $data) {
 		$this->_requireIdentifier($code, $id);
@@ -269,6 +278,7 @@ class CheddarGetter_Client {
 	 * @param string|null $id CG id for the customer
 	 * @param array|null $data
 	 * @return CheddarGetter_Response
+	 * @throws CheddarGetter_Response_Exception
 	 */
 	public function editSubscription($code, $id = null, array $data) {
 		$this->_requireIdentifier($code, $id);
@@ -287,6 +297,7 @@ class CheddarGetter_Client {
 	 * @param string|null $id CG id for the customer
 	 * @param array $data Your (itemCode or CG itemId) and [quantity]
 	 * @return CheddarGetter_Response
+	 * @throws CheddarGetter_Response_Exception
 	 */
 	public function addItemQuantity($code, $id = null, array $data) {
 		$this->_requireIdentifier($code, $id);
@@ -305,6 +316,7 @@ class CheddarGetter_Client {
 	 * @param string|null $id CG id for the customer
 	 * @param array $data Your (itemCode or CG itemId) and [quantity]
 	 * @return CheddarGetter_Response
+	 * @throws CheddarGetter_Response_Exception
 	 */
 	public function removeItemQuantity($code, $id = null, array $data) {
 		$this->_requireIdentifier($code, $id);
@@ -323,6 +335,7 @@ class CheddarGetter_Client {
 	 * @param string|null $id CG id for the customer
 	 * @param array $data Your (itemCode or CG itemId) and quantity
 	 * @return CheddarGetter_Response
+	 * @throws CheddarGetter_Response_Exception
 	 */
 	public function setItemQuantity($code, $id = null, array $data) {
 		$this->_requireIdentifier($code, $id);

@@ -3,19 +3,25 @@
 /**
  * @category CheddarGetter
  * @package CheddarGetter
- * @author Marc Guyer <marc@sproutbox.com>
+ * @author Marc Guyer <marc@cheddargetter.com>
  */
 /**
- * Client object for interacting with the CheddarGetter service
+ * Response object
  * @category CheddarGetter
  * @package CheddarGetter
- * @author Marc Guyer <marc@sproutbox.com>
+ * @author Marc Guyer <marc@cheddargetter.com>
  */
  
 class CheddarGetter_Response extends DOMDocument {
 	
 	private $_responseType;
 	
+	/**
+	 * Constructor
+	 *
+	 * @param $response string well formed xml
+	 * @throws CheddarGetter_Response_Exception in the even the xml is not well formed
+	 */
 	public function __construct($response) {
 		parent::__construct('1.0', 'UTF-8');
 		if (!$this->loadXML($response)) {

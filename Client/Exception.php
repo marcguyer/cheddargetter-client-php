@@ -2,13 +2,13 @@
 /**
  * @category CheddarGetter
  * @package CheddarGetter
- * @author Marc Guyer <marc@sproutbox.com>
+ * @author Marc Guyer <marc@cheddargetter.com>
  */
 /**
- * Response exception object 
+ * Client exception object 
  * @category CheddarGetter
  * @package CheddarGetter
- * @author Marc Guyer <marc@sproutbox.com>
+ * @author Marc Guyer <marc@cheddargetter.com>
  */
  
 class CheddarGetter_Client_Exception extends Exception {

@@ -2,13 +2,13 @@
 /**
  * @category CheddarGetter
  * @package CheddarGetter
- * @author Marc Guyer <marc@sproutbox.com>
+ * @author Marc Guyer <marc@cheddargetter.com>
  */
 /**
  * Response exception object 
  * @category CheddarGetter
  * @package CheddarGetter
- * @author Marc Guyer <marc@sproutbox.com>
+ * @author Marc Guyer <marc@cheddargetter.com>
  */
  
 class CheddarGetter_Response_Exception extends Exception {
