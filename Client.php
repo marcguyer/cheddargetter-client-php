@@ -272,6 +272,23 @@ class CheddarGetter_Client {
 	}
 	
 	/**
+	 * Delete a customer
+	 *
+	 * @param string $code Your code for the customer
+	 * @param string|null $id CG id for the customer
+	 * @return CheddarGetter_Response
+	 * @throws CheddarGetter_Response_Exception
+	 */
+	public function deleteCustomer($code, $id = null) {
+		$this->_requireIdentifier($code, $id);
+		return new CheddarGetter_Response(
+			$this->request(
+				'/customers/delete/' . (($id) ? '/id/'.$id : '/code/'.$code)
+			)
+		);
+	}
+	
+	/**
 	 * Change subscription information
 	 *
 	 * @param string $code Your code for the customer
@@ -286,6 +303,23 @@ class CheddarGetter_Client {
 			$this->request(
 				'/customers/edit-subscription/' . (($id) ? '/id/'.$id : '/code/'.$code),
 				$data
+			)
+		);
+	}
+	
+	/**
+	 * Cancel subscription
+	 *
+	 * @param string $code Your code for the customer
+	 * @param string|null $id CG id for the customer
+	 * @return CheddarGetter_Response
+	 * @throws CheddarGetter_Response_Exception
+	 */
+	public function cancelSubscription($code, $id = null) {
+		$this->_requireIdentifier($code, $id);
+		return new CheddarGetter_Response(
+			$this->request(
+				'/customers/cancel/' . (($id) ? '/id/'.$id : '/code/'.$code)
 			)
 		);
 	}
