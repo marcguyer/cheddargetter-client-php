@@ -25,7 +25,9 @@ Then, just fire it up:
 
 	<?php
 		$client = new CheddarGetter_Client('https://theurlforcheddargetter.com', 'yourusername', 'yourpassword', 'yourproductcode');
-		print_r($client->getCustomers()->toArray());
+		$customers = $client->getCustomers();
+		print_r($customers->toArray());
+		echo $customers->toJson();
 	?>
 
 DOCUMENTATION
