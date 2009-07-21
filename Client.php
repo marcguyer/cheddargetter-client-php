@@ -423,15 +423,8 @@ class CheddarGetter_Client {
 				$http->resetParameters();
 			}
 			
-			$response = $http->request()->getBody();
+			return $http->request()->getBody();
 			
-			//if (class_exists('CG_Util') && !CG_Util::isProduction()) {
-				Sprout_Log::debug('Request: ' . $url);
-				Sprout_Log::debug($args);
-				Sprout_Log::debug('Response: ' . $response);
-			//}
-			
-			return $response;
 		} else if (function_exists('curl_init') && (!$http || (is_resource($http) && get_resource_type($http) == 'curl')) ) {
 			if (!$http) {
 				$http = curl_init($url);

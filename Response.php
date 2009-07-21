@@ -51,7 +51,6 @@ class CheddarGetter_Response extends DOMDocument {
 		}
 		
 		$this->_responseType = $root->nodeName;
-		set_time_limit(5);
 		return $this->_toArray($root->childNodes);
 		
 	}
