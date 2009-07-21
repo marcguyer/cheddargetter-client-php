@@ -3,7 +3,7 @@ INSTALL
 
 Just put everything into a directory called 'CheddarGetter' in your include path. You can use git to do this:
 
-	git clone git@github.com:marcguyer/cheddargetter-client-php.git /path/to/includepath/CheddarGetter
+	git clone git://github.com/marcguyer/cheddargetter-client-php.git /path/to/includepath/CheddarGetter
 
 The 'CheddarGetter' directory must not exist prior to running the above command.
 
