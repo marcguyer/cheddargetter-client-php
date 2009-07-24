@@ -84,6 +84,7 @@ class CheddarGetter_Response extends DOMDocument {
 	 * @return array
 	 */
 	protected function _toArray(DOMNodeList $nodes) {
+		$array = array();
 		foreach ($nodes as $node) {
 			if ($node->nodeType != XML_ELEMENT_NODE) {
 				continue;
