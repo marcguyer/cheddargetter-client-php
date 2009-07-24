@@ -118,6 +118,7 @@ class CheddarGetter_Response extends DOMDocument {
 	/**
 	 * Get an array representation of a single customer node
 	 *
+	 * @throws CheddarGetter_Response_Exception if the response type is incompatible or if a $code is not provided and the response contains more than one customer
 	 * @return array
 	 */
 	public function getCustomer($code = null) {
@@ -137,6 +138,7 @@ class CheddarGetter_Response extends DOMDocument {
 	/**
 	 * Get an array representation of a single customer's current subscription
 	 *
+	 * @throws CheddarGetter_Response_Exception if the response type is incompatible or if a $code is not provided and the response contains more than one customer
 	 * @return array
 	 */
 	public function getCustomerSubscription($code = null) {
@@ -147,6 +149,7 @@ class CheddarGetter_Response extends DOMDocument {
 	/**
 	 * Get an array representation of a single customer's currently subscribed plan
 	 *
+	 * @throws CheddarGetter_Response_Exception if the response type is incompatible or if a $code is not provided and the response contains more than one customer
 	 * @return array
 	 */
 	public function getCustomerPlan($code = null) {
@@ -157,6 +160,7 @@ class CheddarGetter_Response extends DOMDocument {
 	/**
 	 * Get an array representation of a single customer's current invoice
 	 *
+	 * @throws CheddarGetter_Response_Exception if the response type is incompatible or if a $code is not provided and the response contains more than one customer
 	 * @return array
 	 */
 	public function getCustomerInvoice($code = null) {
@@ -167,6 +171,7 @@ class CheddarGetter_Response extends DOMDocument {
 	/**
 	 * Get an array of a customer's item quantity and quantity included
 	 *
+	 * @throws CheddarGetter_Response_Exception if the response type is incompatible or if a $code is not provided and the response contains more than one customer or if a $itemCode is not provided and the plan contains more than one tracked item
 	 * @return array 2 keys: 'item' (item config for this plan) and 'quantity' the customer's current quantity usage
 	 */
 	public function getCustomerItemQuantity($code = null, $itemCode = null) {
