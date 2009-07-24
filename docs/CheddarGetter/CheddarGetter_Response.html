@@ -52,7 +52,7 @@
 		</div>
 		<div class="info-box-body">			
 			<div class="method-summary">
-																																																																								<div class="method-definition">
+																																																																																																																<div class="method-definition">
 					<img src="../media/images/Constructor.png" alt=" "/>
 											<span class="method-result">CheddarGetter_Response</span>
 										<a href="#__construct" title="details" class="method-name">__construct</a>
@@ -60,8 +60,38 @@
 									</div>
 																<div class="method-definition">
 					<img src="../media/images/Method.png" alt=" "/>
-											<span class="method-result">void</span>
-										<a href="#getReponseType" title="details" class="method-name">getReponseType</a>
+											<span class="method-result">array</span>
+										<a href="#getCustomer" title="details" class="method-name">getCustomer</a>
+											([<span class="var-type"></span>&nbsp;<span class="var-name">$code</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">array</span>
+										<a href="#getCustomerInvoice" title="details" class="method-name">getCustomerInvoice</a>
+											([<span class="var-type"></span>&nbsp;<span class="var-name">$code</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">array</span>
+										<a href="#getCustomerItemQuantity" title="details" class="method-name">getCustomerItemQuantity</a>
+											([<span class="var-type"></span>&nbsp;<span class="var-name">$code</span> = <span class="var-default">null</span>], [<span class="var-type"></span>&nbsp;<span class="var-name">$itemCode</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">array</span>
+										<a href="#getCustomerPlan" title="details" class="method-name">getCustomerPlan</a>
+											([<span class="var-type"></span>&nbsp;<span class="var-name">$code</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">array</span>
+										<a href="#getCustomerSubscription" title="details" class="method-name">getCustomerSubscription</a>
+											([<span class="var-type"></span>&nbsp;<span class="var-name">$code</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#getResponseType" title="details" class="method-name">getResponseType</a>
 										()
 									</div>
 																<div class="method-definition">
@@ -72,19 +102,19 @@
 									</div>
 																<div class="method-definition">
 					<img src="../media/images/Method.png" alt=" "/>
-											<span class="method-result">void</span>
+											<span class="method-result">array</span>
 										<a href="#toArray" title="details" class="method-name">toArray</a>
 										()
 									</div>
 																<div class="method-definition">
 					<img src="../media/images/Method.png" alt=" "/>
-											<span class="method-result">void</span>
+											<span class="method-result">string</span>
 										<a href="#toJson" title="details" class="method-name">toJson</a>
 										()
 									</div>
 																<div class="method-definition">
 					<img src="../media/images/Method.png" alt=" "/>
-											<span class="method-result">void</span>
+											<span class="method-result">array</span>
 										<a href="#_toArray" title="details" class="method-name">_toArray</a>
 											(<span class="var-type"></span>&nbsp;<span class="var-name">$nodes</span>)
 									</div>
@@ -114,7 +144,7 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Constructor.png" />
-		<span class="method-title">Constructor __construct</span> (line <span class="line-number">25</span>)
+		<span class="method-title">Constructor __construct</span> (line <span class="line-number">26</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -145,23 +175,178 @@
 					</dl>
 			
 	</div>
-<a name="methodgetReponseType" id="getReponseType"><!-- --></a>
+<a name="methodgetCustomer" id="getCustomer"><!-- --></a>
 <div class="evenrow">
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">getReponseType</span> (line <span class="line-number">37</span>)
+		<span class="method-title">getCustomer</span> (line <span class="line-number">123</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Get an array representation of a single customer node</p>
 	<ul class="tags">
 				<li><span class="field">access:</span> public</li>
 			</ul>
 	
 	<div class="method-signature">
-		<span class="method-result">void</span>
+		<span class="method-result">array</span>
 		<span class="method-name">
-			getReponseType
+			getCustomer
+		</span>
+					([<span class="var-type"></span>&nbsp;<span class="var-name">$code</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$code</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetCustomerInvoice" id="getCustomerInvoice"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getCustomerInvoice</span> (line <span class="line-number">162</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Get an array representation of a single customer's current invoice</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			getCustomerInvoice
+		</span>
+					([<span class="var-type"></span>&nbsp;<span class="var-name">$code</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$code</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetCustomerItemQuantity" id="getCustomerItemQuantity"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getCustomerItemQuantity</span> (line <span class="line-number">172</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Get an array of a customer's item quantity and quantity included</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> 2 keys: 'item' (item config for this plan) and 'quantity' the customer's current quantity usage</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			getCustomerItemQuantity
+		</span>
+					([<span class="var-type"></span>&nbsp;<span class="var-name">$code</span> = <span class="var-default">null</span>], [<span class="var-type"></span>&nbsp;<span class="var-name">$itemCode</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$code</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$itemCode</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetCustomerPlan" id="getCustomerPlan"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getCustomerPlan</span> (line <span class="line-number">152</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Get an array representation of a single customer's currently subscribed plan</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			getCustomerPlan
+		</span>
+					([<span class="var-type"></span>&nbsp;<span class="var-name">$code</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$code</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetCustomerSubscription" id="getCustomerSubscription"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getCustomerSubscription</span> (line <span class="line-number">142</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Get an array representation of a single customer's current subscription</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			getCustomerSubscription
+		</span>
+					([<span class="var-type"></span>&nbsp;<span class="var-name">$code</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$code</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetResponseType" id="getResponseType"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getResponseType</span> (line <span class="line-number">45</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Get the response type for this request object -- usually corresponds to the root node name</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getResponseType
 		</span>
 				()
 			</div>
@@ -170,11 +355,11 @@
 			
 	</div>
 <a name="methodhandleError" id="handleError"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">handleError</span> (line <span class="line-number">94</span>)
+		<span class="method-title">handleError</span> (line <span class="line-number">191</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -194,20 +379,21 @@
 			
 	</div>
 <a name="methodtoArray" id="toArray"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">toArray</span> (line <span class="line-number">41</span>)
+		<span class="method-title">toArray</span> (line <span class="line-number">54</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Get a nested array representation of the response doc</p>
 	<ul class="tags">
 				<li><span class="field">access:</span> public</li>
 			</ul>
 	
 	<div class="method-signature">
-		<span class="method-result">void</span>
+		<span class="method-result">array</span>
 		<span class="method-name">
 			toArray
 		</span>
@@ -218,20 +404,21 @@
 			
 	</div>
 <a name="methodtoJson" id="toJson"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">toJson</span> (line <span class="line-number">59</span>)
+		<span class="method-title">toJson</span> (line <span class="line-number">77</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Get a JSON encoded string representation of the response doc</p>
 	<ul class="tags">
 				<li><span class="field">access:</span> public</li>
 			</ul>
 	
 	<div class="method-signature">
-		<span class="method-result">void</span>
+		<span class="method-result">string</span>
 		<span class="method-name">
 			toJson
 		</span>
@@ -242,20 +429,21 @@
 			
 	</div>
 <a name="method_toArray" id="_toArray"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">_toArray</span> (line <span class="line-number">63</span>)
+		<span class="method-title">_toArray</span> (line <span class="line-number">86</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Recursive method to traverse the dom and produce an array</p>
 	<ul class="tags">
 				<li><span class="field">access:</span> protected</li>
 			</ul>
 	
 	<div class="method-signature">
-		<span class="method-result">void</span>
+		<span class="method-result">array</span>
 		<span class="method-name">
 			_toArray
 		</span>
@@ -271,11 +459,11 @@
 			
 	</div>
 <a name="method__toString" id="__toString"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">__toString</span> (line <span class="line-number">98</span>)
+		<span class="method-title">__toString</span> (line <span class="line-number">195</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -414,7 +602,7 @@
 
 	
 	<p class="notes" id="credit">
-		Documentation generated on Mon, 13 Jul 2009 14:28:19 -0400 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.1</a>
+		Documentation generated on Fri, 24 Jul 2009 10:11:51 -0400 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.1</a>
 	</p>
 	</div></body>
 </html>
