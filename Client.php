@@ -195,6 +195,53 @@ class CheddarGetter_Client {
 	}
 	
 	/**
+	 * Create new plan
+	 *
+	 * @param array|null $data
+	 * @return CheddarGetter_Response
+	 * @throws CheddarGetter_Response_Exception
+	 */
+	public function newPlan(array $data) {
+		return new CheddarGetter_Response($this->request('/plans/new', $data));
+	}
+	
+	/**
+	 * Change plan information
+	 *
+	 * @param string $code Your code for the plan
+	 * @param string|null $id CG id for the plan
+	 * @param array|null $data
+	 * @return CheddarGetter_Response
+	 * @throws CheddarGetter_Response_Exception
+	 */
+	public function editPlan($code, $id = null, array $data) {
+		$this->_requireIdentifier($code, $id);
+		return new CheddarGetter_Response(
+			$this->request(
+				'/plans/edit/' . (($id) ? '/id/'.$id : '/code/'.$code), 
+				$data
+			)
+		);
+	}
+	
+	/**
+	 * Delete a plan
+	 *
+	 * @param string $code Your code for the plan
+	 * @param string|null $id CG id for the plan
+	 * @return CheddarGetter_Response
+	 * @throws CheddarGetter_Response_Exception
+	 */
+	public function deletePlan($code, $id = null) {
+		$this->_requireIdentifier($code, $id);
+		return new CheddarGetter_Response(
+			$this->request(
+				'/plans/delete/' . (($id) ? '/id/'.$id : '/code/'.$code)
+			)
+		);
+	}
+	
+	/**
 	 * Get customers
 	 *
 	 * Get all customers in the product
@@ -392,6 +439,7 @@ class CheddarGetter_Client {
 	 */
 	protected function request($path, array $args = null) {
 		$url = $this->_url . '/xml/' . $path . ( ($this->getProductCode()) ? '/productCode/' . $this->getProductCode() : '' );
+		// remove multiple adjacent slashes
 		$url = preg_replace('~(\w)/+~', '\1/', $url);
 		$http = null; //$this->getHttpClient();
 		
