@@ -117,6 +117,43 @@ class CheddarGetter_Response extends DOMDocument {
 	}
 	
 	/**
+	 * Get an array representation of a single plan node
+	 *
+	 * @throws CheddarGetter_Response_Exception if the response type is incompatible or if a $code is not provided and the response contains more than one plan
+	 * @return array
+	 */
+	public function getPlan($code = null) {
+		if ($this->getResponseType() != 'plans') {
+			throw new CheddarGetter_Response_Exception("Can't get a plan from a response doc that isn't of type 'plans'", CheddarGetter_Response_Exception::USAGE_INVALID);
+		}
+		if (!$code && $this->getElementsByTagName('plan')->length > 1) {
+			throw new CheddarGetter_Response_Exception("This response contains more than one plan so you need to provide the code for the plan you wish to get", CheddarGetter_Response_Exception::USAGE_INVALID);
+		}
+		if (!$code) {
+			return current($this->toArray());
+		}
+		$array = $this->toArray();
+		return $array[$code];
+	}
+	
+	/**
+	 * Get an array representation of a single plan item node
+	 *
+	 * @throws CheddarGetter_Response_Exception if the response type is incompatible or if a $code is not provided and the response contains more than one plan
+	 * @return array
+	 */
+	public function getPlanItem($code = null, $itemCode = null) {
+		$plan = $this->getPlan($code);
+		if (!$itemCode && $this->getElementsByTagName('item')->length > 1) {
+			throw new CheddarGetter_Response_Exception("This plan contains more than one item so you need to provide the code for the item you wish to get", CheddarGetter_Response_Exception::USAGE_INVALID);
+		}
+		if (!$itemCode) {
+			return current($plans['items']);
+		}
+		return $plan['items']['itemCode'];
+	}
+	
+	/**
 	 * Get an array representation of a single customer node
 	 *
 	 * @throws CheddarGetter_Response_Exception if the response type is incompatible or if a $code is not provided and the response contains more than one customer
