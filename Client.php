@@ -189,8 +189,8 @@ class CheddarGetter_Client {
 	 */
 	public function getPlan($code, $id = null) {
 		$this->_requireIdentifier($code, $id);
-		return new CheddarGetter_Response($this->request('/plans/get/' . (($id) ? '/id/'.$id : '/code/'.$code) ), 
-			($id) ? 'id' : 'code'
+		return new CheddarGetter_Response(
+			$this->request('/plans/get/' . (($id) ? '/id/'.$id : '/code/'.$code) )
 		);
 	}
 	
