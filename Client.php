@@ -477,12 +477,13 @@ class CheddarGetter_Client {
 			if (!$http) {
 				$http = curl_init($url);
 				$this->setHttpClient($http);
+				$userAgent = (isset($_SERVER['SERVER_NAME'])) ? $_SERVER['SERVER_NAME'] . ' - CheddarGetter_Client PHP' : 'CheddarGetter_Client PHP';
 				$options = array(
 					CURLOPT_RETURNTRANSFER => true,
 					CURLOPT_SSL_VERIFYPEER => false,
 					CURLOPT_CONNECTTIMEOUT => 10,
 					CURLOPT_TIMEOUT => 60,
-					CURLOPT_USERAGENT => $_SERVER['SERVER_NAME'] . ' - ' . $_SERVER['SERVER_SIGNATURE'],
+					CURLOPT_USERAGENT => $userAgent,
 					CURLOPT_USERPWD => $this->getUsername() . ':' . $this->_getPassword()
 				);
 				foreach ($options as $key=>$val) {

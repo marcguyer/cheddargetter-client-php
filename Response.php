@@ -137,20 +137,31 @@ class CheddarGetter_Response extends DOMDocument {
 	}
 	
 	/**
+	 * Get an array representation of all of the plan items
+	 *
+	 * @throws CheddarGetter_Response_Exception if the response type is incompatible or if a $code is not provided and the response contains more than one plan
+	 * @return array
+	 */
+	public function getPlanItems($code = null) {
+		$plan = $this->getPlan($code);
+		return $plan[$items];
+	}
+	
+	/**
 	 * Get an array representation of a single plan item node
 	 *
 	 * @throws CheddarGetter_Response_Exception if the response type is incompatible or if a $code is not provided and the response contains more than one plan
 	 * @return array
 	 */
 	public function getPlanItem($code = null, $itemCode = null) {
-		$plan = $this->getPlan($code);
-		if (!$itemCode && $this->getElementsByTagName('item')->length > 1) {
+		$items = $this->getPlanItems($code);
+		if (!$itemCode && count($items) > 1) {
 			throw new CheddarGetter_Response_Exception("This plan contains more than one item so you need to provide the code for the item you wish to get", CheddarGetter_Response_Exception::USAGE_INVALID);
 		}
 		if (!$itemCode) {
-			return current($plans['items']);
+			return current($items);
 		}
-		return $plan['items']['itemCode'];
+		return $items[$itemCode];
 	}
 	
 	/**
