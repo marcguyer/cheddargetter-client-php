@@ -484,7 +484,9 @@ class CheddarGetter_Client {
 					CURLOPT_CONNECTTIMEOUT => 10,
 					CURLOPT_TIMEOUT => 60,
 					CURLOPT_USERAGENT => $userAgent,
-					CURLOPT_USERPWD => $this->getUsername() . ':' . $this->_getPassword()
+					CURLOPT_USERPWD => $this->getUsername() . ':' . $this->_getPassword(),
+					CURLOPT_FOLLOWLOCATION => true,
+					CURLOPT_MAXREDIRS => 10
 				);
 				foreach ($options as $key=>$val) {
 					curl_setopt($http, $key, $val);
