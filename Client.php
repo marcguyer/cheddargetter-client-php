@@ -312,7 +312,7 @@ class CheddarGetter_Client {
 		$this->_requireIdentifier($code, $id);
 		return new CheddarGetter_Response(
 			$this->request(
-				'/customers/edit/' . (($id) ? '/id/'.$id : '/code/'.$code), 
+				'/customers/edit/' . (($id) ? 'id/'.$id : 'code/'.$code), 
 				$data
 			)
 		);
@@ -330,7 +330,7 @@ class CheddarGetter_Client {
 		$this->_requireIdentifier($code, $id);
 		return new CheddarGetter_Response(
 			$this->request(
-				'/customers/delete/' . (($id) ? '/id/'.$id : '/code/'.$code)
+				'/customers/delete/' . (($id) ? 'id/'.$id : 'code/'.$code)
 			)
 		);
 	}
@@ -348,7 +348,7 @@ class CheddarGetter_Client {
 		$this->_requireIdentifier($code, $id);
 		return new CheddarGetter_Response(
 			$this->request(
-				'/customers/edit-subscription/' . (($id) ? '/id/'.$id : '/code/'.$code),
+				'/customers/edit-subscription/' . (($id) ? 'id/'.$id : 'code/'.$code),
 				$data
 			)
 		);
@@ -366,7 +366,7 @@ class CheddarGetter_Client {
 		$this->_requireIdentifier($code, $id);
 		return new CheddarGetter_Response(
 			$this->request(
-				'/customers/cancel/' . (($id) ? '/id/'.$id : '/code/'.$code)
+				'/customers/cancel/' . (($id) ? 'id/'.$id : 'code/'.$code)
 			)
 		);
 	}
@@ -384,7 +384,7 @@ class CheddarGetter_Client {
 		$this->_requireIdentifier($code, $id);
 		return new CheddarGetter_Response(
 			$this->request(
-				'/customers/add-item-quantity/' . (($id) ? '/id/'.$id : '/code/'.$code),
+				'/customers/add-item-quantity/' . (($id) ? 'id/'.$id : 'code/'.$code),
 				$data
 			)
 		);
@@ -403,7 +403,7 @@ class CheddarGetter_Client {
 		$this->_requireIdentifier($code, $id);
 		return new CheddarGetter_Response(
 			$this->request(
-				'/customers/remove-item-quantity/' . (($id) ? '/id/'.$id : '/code/'.$code),
+				'/customers/remove-item-quantity/' . (($id) ? 'id/'.$id : 'code/'.$code),
 				$data
 			)
 		);
@@ -422,7 +422,7 @@ class CheddarGetter_Client {
 		$this->_requireIdentifier($code, $id);
 		return new CheddarGetter_Response(
 			$this->request(
-				'/customers/set-item-quantity/' . (($id) ? '/id/'.$id : '/code/'.$code),
+				'/customers/set-item-quantity/' . (($id) ? 'id/'.$id : 'code/'.$code),
 				$data
 			)
 		);
@@ -439,8 +439,7 @@ class CheddarGetter_Client {
 	 */
 	protected function request($path, array $args = null) {
 		$url = $this->_url . '/xml/' . $path . ( ($this->getProductCode()) ? '/productCode/' . $this->getProductCode() : '' );
-		// remove multiple adjacent slashes
-		$url = preg_replace('~(\w)/+~', '\1/', $url);
+		
 		$http = null; //$this->getHttpClient();
 		
 		if (class_exists('Zend_Http_Client') && (!$http || $http instanceof Zend_Http_Client)) {
