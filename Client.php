@@ -438,7 +438,7 @@ class CheddarGetter_Client {
 	 * @throws CheddarGetter_Client_Exception Throws an exception if neither Zend_Http_Client nor php-curl is available.  Also, when curl is used, this exception is thrown if the curl session results in an error.  When Zend_Http_Client is used, a Zend_Http_Client_Exception may be thrown under a number of conditions but most likely if the tcp socket fails to connect.
 	 */
 	protected function request($path, array $args = null) {
-		$url = $this->_url . '/xml/' . $path . ( ($this->getProductCode()) ? '/productCode/' . $this->getProductCode() : '' );
+		$url = $this->_url . '/xml' . $path . ( ($this->getProductCode()) ? '/productCode/' . $this->getProductCode() : '' );
 		
 		$http = null; //$this->getHttpClient();
 		
