@@ -190,7 +190,7 @@ class CheddarGetter_Client {
 	public function getPlan($code, $id = null) {
 		$this->_requireIdentifier($code, $id);
 		return new CheddarGetter_Response(
-			$this->request('/plans/get/' . (($id) ? '/id/'.$id : '/code/'.$code) )
+			$this->request('/plans/get/' . (($id) ? 'id/'.$id : 'code/'.$code) )
 		);
 	}
 	
@@ -218,7 +218,7 @@ class CheddarGetter_Client {
 		$this->_requireIdentifier($code, $id);
 		return new CheddarGetter_Response(
 			$this->request(
-				'/plans/edit/' . (($id) ? '/id/'.$id : '/code/'.$code), 
+				'/plans/edit/' . (($id) ? 'id/'.$id : 'code/'.$code), 
 				$data
 			)
 		);
@@ -236,7 +236,7 @@ class CheddarGetter_Client {
 		$this->_requireIdentifier($code, $id);
 		return new CheddarGetter_Response(
 			$this->request(
-				'/plans/delete/' . (($id) ? '/id/'.$id : '/code/'.$code)
+				'/plans/delete/' . (($id) ? 'id/'.$id : 'code/'.$code)
 			)
 		);
 	}
@@ -267,7 +267,7 @@ class CheddarGetter_Client {
 	public function getCustomer($code, $id = null) {
 		$this->_requireIdentifier($code, $id);
 		return new CheddarGetter_Response(
-			$this->request('/customers/get/' . (($id) ? '/id/'.$id : '/code/'.$code) )
+			$this->request('/customers/get/' . (($id) ? 'id/'.$id : 'code/'.$code) )
 		);
 	}
 	
