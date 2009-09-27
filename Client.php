@@ -428,6 +428,26 @@ class CheddarGetter_Client {
 		);
 	}
 	
+	/**
+	 * Add a custom charge (debit) or credit to the current invoice
+	 * 
+	 * A positive 'eachAmount' will result in a debit. If negative, a credit.
+	 * 
+	 * @param string $code Your code for the customer
+	 * @param string|null $id CG id for the customer
+	 * @param array $data chargeCode, quantity, eachAmount[, description]
+	 * @return CheddarGetter_Response
+	 * @throws CheddarGetter_Response_Exception
+	 */
+	public function addCharge($code, $id = null, array $data) {
+		$this->_requireIdentifier($code, $id);
+		return new CheddarGetter_Response(
+			$this->request(
+				'/customers/add-charge/' . (($id) ? 'id/'.$id : 'code/'.$code),
+				$data
+			)
+		);
+	}
 	
 	/**
 	 * Execute CheddarGetter API request
