@@ -26,7 +26,8 @@ class CheddarGetter_Response extends DOMDocument {
 	public function __construct($response) {
 		$this->_array = null;
 		parent::__construct('1.0', 'UTF-8');
-		if (!$this->loadXML($response)) {
+		
+		if (!@$this->loadXML($response)) {
 			throw new CheddarGetter_Response_Exception("Response failed to load into the DOM.\n\n$response", CheddarGetter_Response_Exception::UNKNOWN);
 		}
 		
