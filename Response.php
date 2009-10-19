@@ -60,7 +60,9 @@ class CheddarGetter_Response extends DOMDocument {
 		if ($root == 'error') {
 			return array(
 				0 => array(
+					'id' => $root->getAttribute('id'),
 					'code' => $root->getAttribute('code'),
+					'auxCode' => $root->getAttribute('auxCode'),
 					'message' => $root->firstChild->nodeValue
 				)
 			);
@@ -90,24 +92,32 @@ class CheddarGetter_Response extends DOMDocument {
 			if ($node->nodeType != XML_ELEMENT_NODE) {
 				continue;
 			}
-			
 			if ($node->hasAttributes()) { // deep
-				if ($node->hasAttribute('code') && $node->getAttribute('code')) {  
-					$key = $node->getAttribute('code');
-					$array[$key] = array();
-					if ($node->hasAttribute('id')) {
-						$array[$key] = array(
-							'id' => $node->getAttribute('id')
-						);
-					}
-					$array[$key] = $array[$key] + array('code'=>$key);
+				if ($node->tagName == 'error') {
+					$array = array(
+						'id' => $node->getAttribute('id'),
+						'code' => $node->getAttribute('code'),
+						'auxCode' => $node->getAttribute('auxCode'),
+						'message' => $node->nodeValue
+					);
 				} else {
-					$key = $node->getAttribute('id');
-					$array[$key] = array();
+					if ($node->hasAttribute('code') && $node->getAttribute('code')) {  
+						$key = $node->getAttribute('code');
+						$array[$key] = array();
+						if ($node->hasAttribute('id')) {
+							$array[$key] = array(
+								'id' => $node->getAttribute('id')
+							);
+						}
+						$array[$key] = $array[$key] + array('code'=>$key);
+					} else {
+						$key = $node->getAttribute('id');
+						$array[$key] = array();
+					}
+					$array[$key] = $array[$key] + $this->_toArray($node->childNodes);
 				}
-				$array[$key] = $array[$key] + $this->_toArray($node->childNodes);
 			} else {
-				if ($node->childNodes->length > 1) { // sub array
+				if ($node->tagName == 'errors' || $node->childNodes->length > 1) { // sub array
 					$array[$node->tagName] = $this->_toArray($node->childNodes);
 				} else {
 					$array[$node->tagName] = $node->nodeValue;
