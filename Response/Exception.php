@@ -20,4 +20,31 @@ class CheddarGetter_Response_Exception extends Exception {
 	const USAGE_INVALID = 500;
 	const UNKNOWN = 500;
 	
+	protected $id;
+	protected $auxCode;
+	
+	public function __construct($message = null, $code = 0, $id = null, $auxCode = null) {
+		parent::__construct($message, $code);
+		$this->setId($id);
+		$this->setAuxCode($auxCode);
+	}
+	
+	public function setId($id) {
+		$this->id = $id;
+		return $this;
+	}
+	
+	public function setAuxCode($auxCode) {
+		$this->auxCode = $auxCode;
+		return $this;
+	}
+	
+	public function getId() {
+		return $this->id;
+	}
+	
+	public function getAuxCode() {
+		return $this->auxCode;
+	}
+	
 }

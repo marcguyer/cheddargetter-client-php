@@ -21,7 +21,7 @@ class CheddarGetter_Response extends DOMDocument {
 	 * Constructor
 	 *
 	 * @param $response string well formed xml
-	 * @throws CheddarGetter_Response_Exception in the even the xml is not well formed
+	 * @throws CheddarGetter_Response_Exception in the event the xml is not well formed
 	 */
 	public function __construct($response) {
 		$this->_array = null;
@@ -254,7 +254,7 @@ class CheddarGetter_Response extends DOMDocument {
 	}
 	
 	protected function handleError() {
-		throw new CheddarGetter_Response_Exception($this->documentElement->firstChild->nodeValue, $this->documentElement->getAttribute('code'));
+		throw new CheddarGetter_Response_Exception($this->documentElement->firstChild->nodeValue, $this->documentElement->getAttribute('code'), $this->documentElement->getAttribute('id'), $this->documentElement->getAttribute('auxCode'));
 	}
 	
 	public function __toString() {
