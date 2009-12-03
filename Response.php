@@ -48,6 +48,29 @@ class CheddarGetter_Response extends DOMDocument {
 	}
 	
 	/**
+	 * Determine whether or not the response doc contains embedded errors
+	 *
+	 * @return boolean
+	 */
+	public function hasEmbeddedErrors() {
+		$arr = $this->toArray();
+		return isset($arr['errors']);
+	}
+	
+	/**
+	 * Get embedded errors if any
+	 *
+	 * @return array|false
+	 */
+	public function getEmbeddedErrors() {
+		if ($this->hasEmbeddedErrors()) {
+			$arr = $this->toArray();
+			return $arr['errors'];
+		}
+		return false;
+	}
+	
+	/**
 	 * Get a nested array representation of the response doc
 	 *
 	 * @return array
@@ -117,7 +140,9 @@ class CheddarGetter_Response extends DOMDocument {
 					$array[$key] = $array[$key] + $this->_toArray($node->childNodes);
 				}
 			} else {
-				if ($node->tagName == 'errors' || $node->childNodes->length > 1) { // sub array
+				if ($node->tagName == 'errors') {
+					$array[$node->tagName][] = $this->_toArray($node->childNodes);
+				} else if ($node->childNodes->length > 1) { // sub array
 					$array[$node->tagName] = $this->_toArray($node->childNodes);
 				} else {
 					$array[$node->tagName] = $node->nodeValue;
