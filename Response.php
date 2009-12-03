@@ -278,8 +278,33 @@ class CheddarGetter_Response extends DOMDocument {
 		);
 	}
 	
-	protected function handleError() {
-		throw new CheddarGetter_Response_Exception($this->documentElement->firstChild->nodeValue, $this->documentElement->getAttribute('code'), $this->documentElement->getAttribute('id'), $this->documentElement->getAttribute('auxCode'));
+	public function handleError() {
+		if ($this->_responseType == 'error') {
+			throw new CheddarGetter_Response_Exception($this->documentElement->firstChild->nodeValue, $this->documentElement->getAttribute('code'), $this->documentElement->getAttribute('id'), $this->documentElement->getAttribute('auxCode'));
+		}
+		return false;
+	}
+	
+	/**
+	 * Checks for embedded errors and if found, throws an exception containing the first error
+	 *
+	 * Embedded errors typically occur when some transaction-related action is performed as part of another request.  For example, if a customer is created and subscribed to a paid plan with a setup fee, the customer is created and the credit card is validated and then a transaction is run for the amount of the setup fee.  If the transaction fails, there will be an embedded error with information about the failed transaction.
+	 *
+	 * @throws CheddarGetter_Response_Exception if there are embedded errors in the response
+	 * @return boolean false if no embedded errors
+	 */
+	public function handleEmbeddedErrors() {
+		if ($this->hasEmbeddedErrors()) {
+			$errors = $this->getEmbeddedErrors();
+			$error = $errors[0];
+			throw new CheddarGetter_Response_Exception(
+				$error['message'], 
+				$error['code'], 
+				$error['id'], 
+				$error['auxCode']
+			);
+		}
+		return false;
 	}
 	
 	public function __toString() {
