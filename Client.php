@@ -197,23 +197,29 @@ class CheddarGetter_Client {
 	/**
 	 * Create new plan
 	 *
+	 * This method is not currently supported and could change in the future.
+	 * Use at your own risk.
+	 *
 	 * @param array|null $data
 	 * @return CheddarGetter_Response
 	 * @throws CheddarGetter_Response_Exception
-	 */
+	 *//*
 	public function newPlan(array $data) {
 		return new CheddarGetter_Response($this->request('/plans/new', $data));
-	}
+	}*/
 	
 	/**
 	 * Change plan information
 	 *
+	 * This method is not currently supported and could change in the future.
+	 * Use at your own risk.
+	 * 
 	 * @param string $code Your code for the plan
 	 * @param string|null $id CG id for the plan
 	 * @param array|null $data
 	 * @return CheddarGetter_Response
 	 * @throws CheddarGetter_Response_Exception
-	 */
+	 *//*
 	public function editPlan($code, $id = null, array $data) {
 		$this->_requireIdentifier($code, $id);
 		return new CheddarGetter_Response(
@@ -222,7 +228,7 @@ class CheddarGetter_Client {
 				$data
 			)
 		);
-	}
+	}*/
 	
 	/**
 	 * Delete a plan
