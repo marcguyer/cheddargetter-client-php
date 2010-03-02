@@ -14,8 +14,9 @@
 class CheddarGetter_Response_Exception extends Exception {
 	
 	const REQUEST_INVALID = 400;
-	const PRECONDITION_FAILED = 412;
 	const NOT_FOUND = 404;
+	const PRECONDITION_FAILED = 412;
+	const UNPROCESSABLE_ENTITY = 422;
 	const DATA_INVALID = 500;
 	const USAGE_INVALID = 500;
 	const UNKNOWN = 500;

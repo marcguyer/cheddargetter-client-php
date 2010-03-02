@@ -254,6 +254,26 @@ class CheddarGetter_Response extends DOMDocument {
 	}
 	
 	/**
+	 * Get an array representation of a single customer's outstanding invoices
+	 *
+	 * @throws CheddarGetter_Response_Exception if the response type is incompatible or if a $code is not provided and the response contains more than one customer
+	 * @return array|false
+	 */
+	public function getCustomerOutstandingInvoices($code = null) {
+		$subscription = $this->getCustomerSubscription($code);
+		foreach ($subscription['invoices'] as $key => $i) {
+			// if the billing date is in the future or has been paid
+			if ($i['paidTransactionId'] || strtotime($i['billingDatetime']) > time()) {
+				unset($subscription['invoices'][$key]);
+			}
+		}
+		if ($subscription['invoices']) {
+			return $subscription['invoices'];
+		}
+		return false;
+	}
+	
+	/**
 	 * Get an array of a customer's item quantity and quantity included
 	 *
 	 * @throws CheddarGetter_Response_Exception if the response type is incompatible or if a $code is not provided and the response contains more than one customer or if a $itemCode is not provided and the plan contains more than one tracked item
