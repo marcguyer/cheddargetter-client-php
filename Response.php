@@ -124,15 +124,28 @@ class CheddarGetter_Response extends DOMDocument {
 						'message' => $node->nodeValue
 					);
 				} else {
+					// in the case of custom charges, use the id for the key
 					if ($node->hasAttribute('code') && $node->getAttribute('code')) {  
 						$key = $node->getAttribute('code');
-						$array[$key] = array();
+						
+						$tmpArr = array();
+						
 						if ($node->hasAttribute('id')) {
-							$array[$key] = array(
+							$tmpArr = array(
 								'id' => $node->getAttribute('id')
 							);
 						}
-						$array[$key] = $array[$key] + array('code'=>$key);
+						$tmpArr = $tmpArr + array('code'=>$key);
+						
+						// charges need to be a nested array since there can be multiple charges with the same charge code
+						if ($node->tagName == 'charge') {
+							$array[$key][] = $tmpArr;
+						} else {
+							$array[$key] = $tmpArr;
+						}
+						
+						unset($tmpArr);
+						
 					} else {
 						$key = $node->getAttribute('id');
 						$array[$key] = array();
