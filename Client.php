@@ -506,6 +506,7 @@ class CheddarGetter_Client {
 				$options = array(
 					CURLOPT_RETURNTRANSFER => true,
 					CURLOPT_SSL_VERIFYPEER => false,
+					CURLOPT_SSL_VERIFYHOST => false,
 					CURLOPT_CONNECTTIMEOUT => 10,
 					CURLOPT_TIMEOUT => 60,
 					CURLOPT_USERAGENT => $userAgent,
