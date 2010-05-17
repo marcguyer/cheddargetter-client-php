@@ -190,7 +190,7 @@ class CheddarGetter_Client {
 	public function getPlan($code, $id = null) {
 		$this->_requireIdentifier($code, $id);
 		return new CheddarGetter_Response(
-			$this->request('/plans/get/' . (($id) ? 'id/'.$id : 'code/'.$code) )
+			$this->request('/plans/get/' . (($id) ? 'id/'.$id : 'code/'.urlencode($code)) )
 		);
 	}
 	
@@ -224,7 +224,7 @@ class CheddarGetter_Client {
 		$this->_requireIdentifier($code, $id);
 		return new CheddarGetter_Response(
 			$this->request(
-				'/plans/edit/' . (($id) ? 'id/'.$id : 'code/'.$code), 
+				'/plans/edit/' . (($id) ? 'id/'.$id : 'code/'.urlencode($code)), 
 				$data
 			)
 		);
@@ -242,7 +242,7 @@ class CheddarGetter_Client {
 		$this->_requireIdentifier($code, $id);
 		return new CheddarGetter_Response(
 			$this->request(
-				'/plans/delete/' . (($id) ? 'id/'.$id : 'code/'.$code)
+				'/plans/delete/' . (($id) ? 'id/'.$id : 'code/'.urlencode($code))
 			)
 		);
 	}
@@ -273,7 +273,7 @@ class CheddarGetter_Client {
 	public function getCustomer($code, $id = null) {
 		$this->_requireIdentifier($code, $id);
 		return new CheddarGetter_Response(
-			$this->request('/customers/get/' . (($id) ? 'id/'.$id : 'code/'.$code) )
+			$this->request('/customers/get/' . (($id) ? 'id/'.$id : 'code/'.urlencode($code)) )
 		);
 	}
 	
@@ -318,7 +318,7 @@ class CheddarGetter_Client {
 		$this->_requireIdentifier($code, $id);
 		return new CheddarGetter_Response(
 			$this->request(
-				'/customers/edit/' . (($id) ? 'id/'.$id : 'code/'.$code), 
+				'/customers/edit/' . (($id) ? 'id/'.$id : 'code/'.urlencode($code)), 
 				$data
 			)
 		);
@@ -336,7 +336,7 @@ class CheddarGetter_Client {
 		$this->_requireIdentifier($code, $id);
 		return new CheddarGetter_Response(
 			$this->request(
-				'/customers/delete/' . (($id) ? 'id/'.$id : 'code/'.$code)
+				'/customers/delete/' . (($id) ? 'id/'.$id : 'code/'.urlencode($code))
 			)
 		);
 	}
@@ -354,7 +354,7 @@ class CheddarGetter_Client {
 		$this->_requireIdentifier($code, $id);
 		return new CheddarGetter_Response(
 			$this->request(
-				'/customers/edit-subscription/' . (($id) ? 'id/'.$id : 'code/'.$code),
+				'/customers/edit-subscription/' . (($id) ? 'id/'.$id : 'code/'.urlencode($code)),
 				$data
 			)
 		);
@@ -372,7 +372,7 @@ class CheddarGetter_Client {
 		$this->_requireIdentifier($code, $id);
 		return new CheddarGetter_Response(
 			$this->request(
-				'/customers/cancel/' . (($id) ? 'id/'.$id : 'code/'.$code)
+				'/customers/cancel/' . (($id) ? 'id/'.$id : 'code/'.urlencode($code))
 			)
 		);
 	}
@@ -390,7 +390,7 @@ class CheddarGetter_Client {
 		$this->_requireIdentifier($code, $id);
 		return new CheddarGetter_Response(
 			$this->request(
-				'/customers/add-item-quantity/' . (($id) ? 'id/'.$id : 'code/'.$code),
+				'/customers/add-item-quantity/' . (($id) ? 'id/'.$id : 'code/'.urlencode($code)),
 				$data
 			)
 		);
@@ -409,7 +409,7 @@ class CheddarGetter_Client {
 		$this->_requireIdentifier($code, $id);
 		return new CheddarGetter_Response(
 			$this->request(
-				'/customers/remove-item-quantity/' . (($id) ? 'id/'.$id : 'code/'.$code),
+				'/customers/remove-item-quantity/' . (($id) ? 'id/'.$id : 'code/'.urlencode($code)),
 				$data
 			)
 		);
@@ -428,7 +428,7 @@ class CheddarGetter_Client {
 		$this->_requireIdentifier($code, $id);
 		return new CheddarGetter_Response(
 			$this->request(
-				'/customers/set-item-quantity/' . (($id) ? 'id/'.$id : 'code/'.$code),
+				'/customers/set-item-quantity/' . (($id) ? 'id/'.$id : 'code/'.urlencode($code)),
 				$data
 			)
 		);
@@ -449,7 +449,7 @@ class CheddarGetter_Client {
 		$this->_requireIdentifier($code, $id);
 		return new CheddarGetter_Response(
 			$this->request(
-				'/customers/add-charge/' . (($id) ? 'id/'.$id : 'code/'.$code),
+				'/customers/add-charge/' . (($id) ? 'id/'.$id : 'code/'.urlencode($code)),
 				$data
 			)
 		);
@@ -464,7 +464,7 @@ class CheddarGetter_Client {
 	 * @throws CheddarGetter_Client_Exception Throws an exception if neither Zend_Http_Client nor php-curl is available.  Also, when curl is used, this exception is thrown if the curl session results in an error.  When Zend_Http_Client is used, a Zend_Http_Client_Exception may be thrown under a number of conditions but most likely if the tcp socket fails to connect.
 	 */
 	protected function request($path, array $args = null) {
-		$url = $this->_url . '/xml' . $path . ( ($this->getProductCode()) ? '/productCode/' . $this->getProductCode() : '' );
+		$url = $this->_url . '/xml' . $path . ( ($this->getProductCode()) ? '/productCode/' . urlencode($this->getProductCode()) : '' );
 		
 		$http = null; //$this->getHttpClient();
 		
