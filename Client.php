@@ -288,6 +288,10 @@ class CheddarGetter_Client {
 	 * @throws CheddarGetter_Response_Exception
 	 */
 	public function getAllCustomers(array $filters = null) {
+		
+		// this doesn't work yet
+		throw new CheddarGetter_Client_Exception("This method is a stub for future functionality.  You're probable looking for CheddarGetter_Client::getCustomers()", CheddarGetter_Client_Exception::USAGE_INVALID);
+		
 		if ($this->getProductCode()) {
 			throw new CheddarGetter_Client_Exception("Can't use a productCode when requesting getAllCustomers()", CheddarGetter_Client_Exception::USAGE_INVALID);
 		}
