@@ -35,6 +35,11 @@ class CheddarGetter_Client {
 	private $_productCode;
 	
 	/**
+	 * @var string Product identifier (not necessary if productCode is used)
+	 */
+	private $_productId;
+	
+	/**
 	 * If you don't use Zend Framework, it's ok, the client will fallback to curl (so you need curl).
 	 * 
 	 * @var Zend_Http_Client 
@@ -49,12 +54,13 @@ class CheddarGetter_Client {
 	 * @param $password string
 	 * @param $productCode string
 	 */
-	public function __construct($url, $username, $password, $productCode = null) {
+	public function __construct($url, $username, $password, $productCode = null, $productId = null) {
 		
 		$this->setUrl($url);
 		$this->setUsername($username);
 		$this->setPassword($password);
 		$this->setProductCode($productCode);
+		$this->setProductId($productId);
 		
 	}
 	
@@ -139,6 +145,26 @@ class CheddarGetter_Client {
 	}
 	
 	/**
+	 * Set product id (required for all calls except getAllCustomers unless productCode is used)
+	 *
+	 * @param $productId string
+	 * @return CheddarGetter_Client
+	 */
+	public function setProductId($productId) {
+		$this->_productId = $productId;
+		return $this;
+	}
+	
+	/**
+	 * Get current product id 
+	 *
+	 * @return string
+	 */
+	public function getProductId() {
+		return $this->_productId;
+	}
+	
+	/**
 	 * Magic method wrapper
 	 *
 	 * Essentially just a sanity check making sure we have a productCode for those methods that require it
@@ -159,7 +185,7 @@ class CheddarGetter_Client {
 				return call_user_func_array(array($this, $method), $args);
 				break;
 			default:
-				if (!$this->getProductCode()) {
+				if (!$this->getProductCode() && !$this->getProductId()) {
 					throw new CheddarGetter_Client_Exception('A product code is required for ' . __CLASS__ . '::' . $method . '().  Use ' . __CLASS__ . '::setProductCode()', CheddarGetter_Client_Exception::USAGE_INVALID);
 				}
 		}
@@ -468,7 +494,12 @@ class CheddarGetter_Client {
 	 * @throws CheddarGetter_Client_Exception Throws an exception if neither Zend_Http_Client nor php-curl is available.  Also, when curl is used, this exception is thrown if the curl session results in an error.  When Zend_Http_Client is used, a Zend_Http_Client_Exception may be thrown under a number of conditions but most likely if the tcp socket fails to connect.
 	 */
 	protected function request($path, array $args = null) {
-		$url = $this->_url . '/xml' . $path . ( ($this->getProductCode()) ? '/productCode/' . urlencode($this->getProductCode()) : '' );
+		$url = $this->_url . '/xml' . $path;
+		if ($this->getProductId()) {
+			$url .= '/productId/' . urlencode($this->getProductId());
+		} else if ($this->getProductCode()) {
+			$url .= '/productCode/' . urlencode($this->getProductCode());
+		}
 		
 		$http = null; //$this->getHttpClient();
 		
