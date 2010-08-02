@@ -193,7 +193,7 @@ class CheddarGetter_Response extends DOMDocument {
 	 */
 	public function getPlanItems($code = null) {
 		$plan = $this->getPlan($code);
-		return $plan[$items];
+		return $plan['items'];
 	}
 	
 	/**
