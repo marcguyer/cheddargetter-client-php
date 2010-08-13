@@ -27,9 +27,10 @@
 <p class="short-description">Client object for interacting with the CheddarGetter service</p>
 	<ul class="tags">
 				<li><span class="field">author:</span> Marc Guyer &lt;<a href="mailto:marc@cheddargetter.com">marc@cheddargetter.com</a>&gt;</li>
+				<li><span class="field">example:</span> <a href="../__examplesource/exsource_argetter_library_CheddarGetter_example_example.php_f913022b547673e98f51d37ab238d20f.html">example</a></li>
 			</ul>
 		<p class="notes">
-			Located in <a class="field" href="_Client.php.html">/Client.php</a> (line <span class="field">15</span>)
+			Located in <a class="field" href="_Client.php.html">/Client.php</a> (line <span class="field"><a href="../__filesource/fsource_CheddarGetter__Client.php.html#a16">16</a></span>)
 		</p>
 		
 				
@@ -50,11 +51,11 @@
 		</div>
 		<div class="info-box-body">			
 			<div class="method-summary">
-																																																																																																																																																																																																																																								<div class="method-definition">
+																																																																																																																																																																																																																																																																								<div class="method-definition">
 					<img src="../media/images/Constructor.png" alt=" "/>
 											<span class="method-result">CheddarGetter_Client</span>
 										<a href="#__construct" title="details" class="method-name">__construct</a>
-											(<span class="var-type">$url</span>&nbsp;<span class="var-name">$url</span>, <span class="var-type">$username</span>&nbsp;<span class="var-name">$username</span>, <span class="var-type">$password</span>&nbsp;<span class="var-name">$password</span>, [<span class="var-type">$productCode</span>&nbsp;<span class="var-name">$productCode</span> = <span class="var-default">null</span>])
+											(<span class="var-type">$url</span>&nbsp;<span class="var-name">$url</span>, <span class="var-type">$username</span>&nbsp;<span class="var-name">$username</span>, <span class="var-type">$password</span>&nbsp;<span class="var-name">$password</span>, [<span class="var-type">$productCode</span>&nbsp;<span class="var-name">$productCode</span> = <span class="var-default">null</span>], [<span class="var-type"></span>&nbsp;<span class="var-name">$productId</span> = <span class="var-default">null</span>])
 									</div>
 																<div class="method-definition">
 					<img src="../media/images/Method.png" alt=" "/>
@@ -83,6 +84,12 @@
 																<div class="method-definition">
 					<img src="../media/images/Method.png" alt=" "/>
 											<span class="method-result"><a href="../CheddarGetter/CheddarGetter_Response.html">CheddarGetter_Response</a></span>
+										<a href="#deleteCustomers" title="details" class="method-name">deleteCustomers</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$code</span>, <span class="var-type">string|null</span>&nbsp;<span class="var-name">$id</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result"><a href="../CheddarGetter/CheddarGetter_Response.html">CheddarGetter_Response</a></span>
 										<a href="#deletePlan" title="details" class="method-name">deletePlan</a>
 											(<span class="var-type">string</span>&nbsp;<span class="var-name">$code</span>, [<span class="var-type">string|null</span>&nbsp;<span class="var-name">$id</span> = <span class="var-default">null</span>])
 									</div>
@@ -90,6 +97,12 @@
 					<img src="../media/images/Method.png" alt=" "/>
 											<span class="method-result"><a href="../CheddarGetter/CheddarGetter_Response.html">CheddarGetter_Response</a></span>
 										<a href="#editCustomer" title="details" class="method-name">editCustomer</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$code</span>, [<span class="var-type">string|null</span>&nbsp;<span class="var-name">$id</span> = <span class="var-default">null</span>], <span class="var-type"></span>&nbsp;<span class="var-name">$data</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result"><a href="../CheddarGetter/CheddarGetter_Response.html">CheddarGetter_Response</a></span>
+										<a href="#editCustomerOnly" title="details" class="method-name">editCustomerOnly</a>
 											(<span class="var-type">string</span>&nbsp;<span class="var-name">$code</span>, [<span class="var-type">string|null</span>&nbsp;<span class="var-name">$id</span> = <span class="var-default">null</span>], <span class="var-type"></span>&nbsp;<span class="var-name">$data</span>)
 									</div>
 																<div class="method-definition">
@@ -138,6 +151,12 @@
 					<img src="../media/images/Method.png" alt=" "/>
 											<span class="method-result">string</span>
 										<a href="#getProductCode" title="details" class="method-name">getProductCode</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#getProductId" title="details" class="method-name">getProductId</a>
 										()
 									</div>
 																<div class="method-definition">
@@ -197,6 +216,12 @@
 																<div class="method-definition">
 					<img src="../media/images/Method.png" alt=" "/>
 											<span class="method-result"><a href="../CheddarGetter/CheddarGetter_Client.html">CheddarGetter_Client</a></span>
+										<a href="#setProductId" title="details" class="method-name">setProductId</a>
+											(<span class="var-type">$productId</span>&nbsp;<span class="var-name">$productId</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result"><a href="../CheddarGetter/CheddarGetter_Client.html">CheddarGetter_Client</a></span>
 										<a href="#setUrl" title="details" class="method-name">setUrl</a>
 											(<span class="var-type">$url</span>&nbsp;<span class="var-name">$url</span>)
 									</div>
@@ -232,7 +257,7 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Constructor.png" />
-		<span class="method-title">Constructor __construct</span> (line <span class="line-number">52</span>)
+		<span class="method-title">Constructor __construct</span> (line <span class="line-number"><a href="../__filesource/fsource_CheddarGetter__Client.php.html#a58">58</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -246,7 +271,7 @@
 		<span class="method-name">
 			__construct
 		</span>
-					(<span class="var-type">$url</span>&nbsp;<span class="var-name">$url</span>, <span class="var-type">$username</span>&nbsp;<span class="var-name">$username</span>, <span class="var-type">$password</span>&nbsp;<span class="var-name">$password</span>, [<span class="var-type">$productCode</span>&nbsp;<span class="var-name">$productCode</span> = <span class="var-default">null</span>])
+					(<span class="var-type">$url</span>&nbsp;<span class="var-name">$url</span>, <span class="var-type">$username</span>&nbsp;<span class="var-name">$username</span>, <span class="var-type">$password</span>&nbsp;<span class="var-name">$password</span>, [<span class="var-type">$productCode</span>&nbsp;<span class="var-name">$productCode</span> = <span class="var-default">null</span>], [<span class="var-type"></span>&nbsp;<span class="var-name">$productId</span> = <span class="var-default">null</span>])
 			</div>
 	
 			<ul class="parameters">
@@ -262,6 +287,9 @@
 					<li>
 				<span class="var-type">$productCode</span>
 				<span class="var-name">$productCode</span><span class="var-description">: string</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$productId</span>			</li>
 				</ul>
 		
 			
@@ -271,13 +299,14 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">addCharge</span> (line <span class="line-number">448</span>)
+		<span class="method-title">addCharge</span> (line <span class="line-number"><a href="../__filesource/fsource_CheddarGetter__Client.php.html#a531">531</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
 <p class="short-description">Add a custom charge (debit) or credit to the current invoice</p>
 <p class="description"><p>A positive 'eachAmount' will result in a debit. If negative, a credit.</p></p>
 	<ul class="tags">
+				<li><span class="field">link:</span> <a href="https://cheddargetter.com/developers#add-charge">https://cheddargetter.com/developers#add-charge</a></li>
 				<li><span class="field">throws:</span> CheddarGetter_Response_Exception</li>
 				<li><span class="field">access:</span> public</li>
 			</ul>
@@ -309,12 +338,13 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">addItemQuantity</span> (line <span class="line-number">389</span>)
+		<span class="method-title">addItemQuantity</span> (line <span class="line-number"><a href="../__filesource/fsource_CheddarGetter__Client.php.html#a469">469</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
 <p class="short-description">Increment a usage item quantity</p>
 	<ul class="tags">
+				<li><span class="field">link:</span> <a href="https://cheddargetter.com/developers#add-item-quantity">https://cheddargetter.com/developers#add-item-quantity</a></li>
 				<li><span class="field">throws:</span> CheddarGetter_Response_Exception</li>
 				<li><span class="field">access:</span> public</li>
 			</ul>
@@ -346,12 +376,13 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">cancelSubscription</span> (line <span class="line-number">371</span>)
+		<span class="method-title">cancelSubscription</span> (line <span class="line-number"><a href="../__filesource/fsource_CheddarGetter__Client.php.html#a450">450</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
 <p class="short-description">Cancel subscription</p>
 	<ul class="tags">
+				<li><span class="field">link:</span> <a href="https://cheddargetter.com/developers#cancel-subscription">https://cheddargetter.com/developers#cancel-subscription</a></li>
 				<li><span class="field">throws:</span> CheddarGetter_Response_Exception</li>
 				<li><span class="field">access:</span> public</li>
 			</ul>
@@ -380,12 +411,13 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">deleteCustomer</span> (line <span class="line-number">335</span>)
+		<span class="method-title">deleteCustomer</span> (line <span class="line-number"><a href="../__filesource/fsource_CheddarGetter__Client.php.html#a391">391</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
 <p class="short-description">Delete a customer</p>
 	<ul class="tags">
+				<li><span class="field">link:</span> <a href="https://cheddargetter.com/developers#delete-customer">https://cheddargetter.com/developers#delete-customer</a></li>
 				<li><span class="field">throws:</span> CheddarGetter_Response_Exception</li>
 				<li><span class="field">access:</span> public</li>
 			</ul>
@@ -409,12 +441,48 @@
 		
 			
 	</div>
-<a name="methoddeletePlan" id="deletePlan"><!-- --></a>
+<a name="methoddeleteCustomers" id="deleteCustomers"><!-- --></a>
 <div class="oddrow">
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">deletePlan</span> (line <span class="line-number">241</span>)
+		<span class="method-title">deleteCustomers</span> (line <span class="line-number"><a href="../__filesource/fsource_CheddarGetter__Client.php.html#a413">413</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Delete all customers</p>
+<p class="description"><p>WARNING: This will delete all customers and all related data in  CheddarGetter and will delete all customer data at the gateway  if a gateway is configured.</p></p>
+	<ul class="tags">
+				<li><span class="field">link:</span> <a href="https://cheddargetter.com/developers#delete-all-customers">https://cheddargetter.com/developers#delete-all-customers</a></li>
+				<li><span class="field">throws:</span> CheddarGetter_Response_Exception</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../CheddarGetter/CheddarGetter_Response.html">CheddarGetter_Response</a></span>
+		<span class="method-name">
+			deleteCustomers
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$code</span>, <span class="var-type">string|null</span>&nbsp;<span class="var-name">$id</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$code</span><span class="var-description">: Your code for the customer</span>			</li>
+					<li>
+				<span class="var-type">string|null</span>
+				<span class="var-name">$id</span><span class="var-description">: CG id for the customer</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methoddeletePlan" id="deletePlan"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">deletePlan</span> (line <span class="line-number"><a href="../__filesource/fsource_CheddarGetter__Client.php.html#a270">270</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -444,16 +512,17 @@
 			
 	</div>
 <a name="methodeditCustomer" id="editCustomer"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">editCustomer</span> (line <span class="line-number">317</span>)
+		<span class="method-title">editCustomer</span> (line <span class="line-number"><a href="../__filesource/fsource_CheddarGetter__Client.php.html#a352">352</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
-<p class="short-description">Change customer information</p>
+<p class="short-description">Change customer and subscription information</p>
 	<ul class="tags">
+				<li><span class="field">link:</span> <a href="https://cheddargetter.com/developers#update-customer-subscription">https://cheddargetter.com/developers#update-customer-subscription</a></li>
 				<li><span class="field">throws:</span> CheddarGetter_Response_Exception</li>
 				<li><span class="field">access:</span> public</li>
 			</ul>
@@ -480,17 +549,56 @@
 		
 			
 	</div>
+<a name="methodeditCustomerOnly" id="editCustomerOnly"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">editCustomerOnly</span> (line <span class="line-number"><a href="../__filesource/fsource_CheddarGetter__Client.php.html#a372">372</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Change customer information only</p>
+	<ul class="tags">
+				<li><span class="field">link:</span> <a href="https://cheddargetter.com/developers#update-customer">https://cheddargetter.com/developers#update-customer</a></li>
+				<li><span class="field">throws:</span> CheddarGetter_Response_Exception</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../CheddarGetter/CheddarGetter_Response.html">CheddarGetter_Response</a></span>
+		<span class="method-name">
+			editCustomerOnly
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$code</span>, [<span class="var-type">string|null</span>&nbsp;<span class="var-name">$id</span> = <span class="var-default">null</span>], <span class="var-type"></span>&nbsp;<span class="var-name">$data</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$code</span><span class="var-description">: Your code for the customer</span>			</li>
+					<li>
+				<span class="var-type">string|null</span>
+				<span class="var-name">$id</span><span class="var-description">: CG id for the customer</span>			</li>
+					<li>
+				<span class="var-type">array|null</span>
+				<span class="var-name">$data</span>			</li>
+				</ul>
+		
+			
+	</div>
 <a name="methodeditSubscription" id="editSubscription"><!-- --></a>
 <div class="oddrow">
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">editSubscription</span> (line <span class="line-number">353</span>)
+		<span class="method-title">editSubscription</span> (line <span class="line-number"><a href="../__filesource/fsource_CheddarGetter__Client.php.html#a431">431</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
 <p class="short-description">Change subscription information</p>
 	<ul class="tags">
+				<li><span class="field">link:</span> <a href="https://cheddargetter.com/developers#update-subscription">https://cheddargetter.com/developers#update-subscription</a></li>
 				<li><span class="field">throws:</span> CheddarGetter_Response_Exception</li>
 				<li><span class="field">access:</span> public</li>
 			</ul>
@@ -522,7 +630,7 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">getAllCustomers</span> (line <span class="line-number">290</span>)
+		<span class="method-title">getAllCustomers</span> (line <span class="line-number"><a href="../__filesource/fsource_CheddarGetter__Client.php.html#a319">319</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -555,13 +663,13 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">getCustomer</span> (line <span class="line-number">273</span>)
+		<span class="method-title">getCustomer</span> (line <span class="line-number"><a href="../__filesource/fsource_CheddarGetter__Client.php.html#a302">302</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
 <p class="short-description">Get a single customer</p>
-<p class="description"><p>Get all plans in the product</p></p>
 	<ul class="tags">
+				<li><span class="field">link:</span> <a href="https://cheddargetter.com/developers#single-customer">https://cheddargetter.com/developers#single-customer</a></li>
 				<li><span class="field">throws:</span> CheddarGetter_Response_Exception</li>
 				<li><span class="field">access:</span> public</li>
 			</ul>
@@ -590,13 +698,14 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">getCustomers</span> (line <span class="line-number">259</span>)
+		<span class="method-title">getCustomers</span> (line <span class="line-number"><a href="../__filesource/fsource_CheddarGetter__Client.php.html#a289">289</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
 <p class="short-description">Get customers</p>
 <p class="description"><p>Get all customers in the product</p></p>
 	<ul class="tags">
+				<li><span class="field">link:</span> <a href="https://cheddargetter.com/developers#all-customers">https://cheddargetter.com/developers#all-customers</a></li>
 				<li><span class="field">throws:</span> CheddarGetter_Response_Exception</li>
 				<li><span class="field">access:</span> public</li>
 			</ul>
@@ -622,7 +731,7 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">getHttpClient</span> (line <span class="line-number">563</span>)
+		<span class="method-title">getHttpClient</span> (line <span class="line-number"><a href="../__filesource/fsource_CheddarGetter__Client.php.html#a652">652</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -647,12 +756,13 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">getPlan</span> (line <span class="line-number">190</span>)
+		<span class="method-title">getPlan</span> (line <span class="line-number"><a href="../__filesource/fsource_CheddarGetter__Client.php.html#a219">219</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
 <p class="short-description">Get a single pricing plan</p>
 	<ul class="tags">
+				<li><span class="field">link:</span> <a href="https://cheddargetter.com/developers#single-plan">https://cheddargetter.com/developers#single-plan</a></li>
 				<li><span class="field">throws:</span> CheddarGetter_Response_Exception</li>
 				<li><span class="field">access:</span> public</li>
 			</ul>
@@ -681,13 +791,14 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">getPlans</span> (line <span class="line-number">178</span>)
+		<span class="method-title">getPlans</span> (line <span class="line-number"><a href="../__filesource/fsource_CheddarGetter__Client.php.html#a206">206</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
 <p class="short-description">Get pricing plans</p>
-<p class="description"><p>Get all plans in the product</p></p>
+<p class="description"><p>Get all plans in the product.</p></p>
 	<ul class="tags">
+				<li><span class="field">link:</span> <a href="https://cheddargetter.com/developers#all-plans">https://cheddargetter.com/developers#all-plans</a></li>
 				<li><span class="field">throws:</span> CheddarGetter_Response_Exception</li>
 				<li><span class="field">access:</span> public</li>
 			</ul>
@@ -713,7 +824,7 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">getProductCode</span> (line <span class="line-number">137</span>)
+		<span class="method-title">getProductCode</span> (line <span class="line-number"><a href="../__filesource/fsource_CheddarGetter__Client.php.html#a144">144</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -733,12 +844,37 @@
 		
 			
 	</div>
-<a name="methodgetUrl" id="getUrl"><!-- --></a>
+<a name="methodgetProductId" id="getProductId"><!-- --></a>
 <div class="oddrow">
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">getUrl</span> (line <span class="line-number">77</span>)
+		<span class="method-title">getProductId</span> (line <span class="line-number"><a href="../__filesource/fsource_CheddarGetter__Client.php.html#a164">164</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Get current product id</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getProductId
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetUrl" id="getUrl"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getUrl</span> (line <span class="line-number"><a href="../__filesource/fsource_CheddarGetter__Client.php.html#a84">84</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -759,11 +895,11 @@
 			
 	</div>
 <a name="methodgetUsername" id="getUsername"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">getUsername</span> (line <span class="line-number">97</span>)
+		<span class="method-title">getUsername</span> (line <span class="line-number"><a href="../__filesource/fsource_CheddarGetter__Client.php.html#a104">104</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -784,16 +920,17 @@
 			
 	</div>
 <a name="methodnewCustomer" id="newCustomer"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">newCustomer</span> (line <span class="line-number">304</span>)
+		<span class="method-title">newCustomer</span> (line <span class="line-number"><a href="../__filesource/fsource_CheddarGetter__Client.php.html#a338">338</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
 <p class="short-description">Create new customer</p>
 	<ul class="tags">
+				<li><span class="field">link:</span> <a href="https://cheddargetter.com/developers#add-customer">https://cheddargetter.com/developers#add-customer</a></li>
 				<li><span class="field">throws:</span> CheddarGetter_Response_Exception</li>
 				<li><span class="field">access:</span> public</li>
 			</ul>
@@ -815,16 +952,17 @@
 			
 	</div>
 <a name="methodremoveItemQuantity" id="removeItemQuantity"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">removeItemQuantity</span> (line <span class="line-number">408</span>)
+		<span class="method-title">removeItemQuantity</span> (line <span class="line-number"><a href="../__filesource/fsource_CheddarGetter__Client.php.html#a489">489</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
 <p class="short-description">Decrement a usage item quantity</p>
 	<ul class="tags">
+				<li><span class="field">link:</span> <a href="https://cheddargetter.com/developers#remove-item-quantity">https://cheddargetter.com/developers#remove-item-quantity</a></li>
 				<li><span class="field">throws:</span> CheddarGetter_Response_Exception</li>
 				<li><span class="field">access:</span> public</li>
 			</ul>
@@ -852,11 +990,11 @@
 			
 	</div>
 <a name="methodrequest" id="request"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">request</span> (line <span class="line-number">466</span>)
+		<span class="method-title">request</span> (line <span class="line-number"><a href="../__filesource/fsource_CheddarGetter__Client.php.html#a549">549</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -887,11 +1025,11 @@
 			
 	</div>
 <a name="methodsetHttpClient" id="setHttpClient"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">setHttpClient</span> (line <span class="line-number">549</span>)
+		<span class="method-title">setHttpClient</span> (line <span class="line-number"><a href="../__filesource/fsource_CheddarGetter__Client.php.html#a638">638</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -918,16 +1056,17 @@
 			
 	</div>
 <a name="methodsetItemQuantity" id="setItemQuantity"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">setItemQuantity</span> (line <span class="line-number">427</span>)
+		<span class="method-title">setItemQuantity</span> (line <span class="line-number"><a href="../__filesource/fsource_CheddarGetter__Client.php.html#a509">509</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
 <p class="short-description">Set a usage item quantity</p>
 	<ul class="tags">
+				<li><span class="field">link:</span> <a href="https://cheddargetter.com/developers#set-item-quantity">https://cheddargetter.com/developers#set-item-quantity</a></li>
 				<li><span class="field">throws:</span> CheddarGetter_Response_Exception</li>
 				<li><span class="field">access:</span> public</li>
 			</ul>
@@ -955,11 +1094,11 @@
 			
 	</div>
 <a name="methodsetPassword" id="setPassword"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">setPassword</span> (line <span class="line-number">107</span>)
+		<span class="method-title">setPassword</span> (line <span class="line-number"><a href="../__filesource/fsource_CheddarGetter__Client.php.html#a114">114</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -985,11 +1124,11 @@
 			
 	</div>
 <a name="methodsetProductCode" id="setProductCode"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">setProductCode</span> (line <span class="line-number">127</span>)
+		<span class="method-title">setProductCode</span> (line <span class="line-number"><a href="../__filesource/fsource_CheddarGetter__Client.php.html#a134">134</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1014,12 +1153,42 @@
 		
 			
 	</div>
+<a name="methodsetProductId" id="setProductId"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">setProductId</span> (line <span class="line-number"><a href="../__filesource/fsource_CheddarGetter__Client.php.html#a154">154</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set product id (required for all calls except getAllCustomers unless productCode is used)</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../CheddarGetter/CheddarGetter_Client.html">CheddarGetter_Client</a></span>
+		<span class="method-name">
+			setProductId
+		</span>
+					(<span class="var-type">$productId</span>&nbsp;<span class="var-name">$productId</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">$productId</span>
+				<span class="var-name">$productId</span><span class="var-description">: string</span>			</li>
+				</ul>
+		
+			
+	</div>
 <a name="methodsetUrl" id="setUrl"><!-- --></a>
 <div class="evenrow">
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">setUrl</span> (line <span class="line-number">67</span>)
+		<span class="method-title">setUrl</span> (line <span class="line-number"><a href="../__filesource/fsource_CheddarGetter__Client.php.html#a74">74</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1049,7 +1218,7 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">setUsername</span> (line <span class="line-number">87</span>)
+		<span class="method-title">setUsername</span> (line <span class="line-number"><a href="../__filesource/fsource_CheddarGetter__Client.php.html#a94">94</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1079,7 +1248,7 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">__call</span> (line <span class="line-number">149</span>)
+		<span class="method-title">__call</span> (line <span class="line-number"><a href="../__filesource/fsource_CheddarGetter__Client.php.html#a176">176</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1114,7 +1283,7 @@
 
 	
 	<p class="notes" id="credit">
-		Documentation generated on Mon, 07 Dec 2009 12:43:13 -0500 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.2</a>
+		Documentation generated on Fri, 13 Aug 2010 18:25:29 -0400 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
 	</p>
 	</div></body>
 </html>

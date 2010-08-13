@@ -10,6 +10,7 @@
  * @category CheddarGetter
  * @package CheddarGetter
  * @author Marc Guyer <marc@cheddargetter.com>
+ * @example example/example.php
  */
  
 class CheddarGetter_Client {
@@ -195,8 +196,9 @@ class CheddarGetter_Client {
 	/**
 	 * Get pricing plans
 	 *
-	 * Get all plans in the product
+	 * Get all plans in the product.
 	 *
+	 * @link https://cheddargetter.com/developers#all-plans
 	 * @param array|null $filters 
 	 * @return CheddarGetter_Response
 	 * @throws CheddarGetter_Response_Exception
@@ -208,6 +210,7 @@ class CheddarGetter_Client {
 	/**
 	 * Get a single pricing plan
 	 *
+	 * @link https://cheddargetter.com/developers#single-plan
 	 * @param string $code Your code for the plan
 	 * @param string|null $id CG id for the plan
 	 * @return CheddarGetter_Response
@@ -278,6 +281,7 @@ class CheddarGetter_Client {
 	 *
 	 * Get all customers in the product
 	 *
+	 * @link https://cheddargetter.com/developers#all-customers
 	 * @param array|null $filters
 	 * @return CheddarGetter_Response
 	 * @throws CheddarGetter_Response_Exception
@@ -289,8 +293,7 @@ class CheddarGetter_Client {
 	/**
 	 * Get a single customer
 	 *
-	 * Get all plans in the product
-	 *
+	 * @link https://cheddargetter.com/developers#single-customer
 	 * @param string $code Your code for the customer
 	 * @param string|null $id CG id for the customer
 	 * @return CheddarGetter_Response
@@ -327,6 +330,7 @@ class CheddarGetter_Client {
 	/**
 	 * Create new customer
 	 *
+	 * @link https://cheddargetter.com/developers#add-customer
 	 * @param array|null $data
 	 * @return CheddarGetter_Response
 	 * @throws CheddarGetter_Response_Exception
@@ -336,8 +340,9 @@ class CheddarGetter_Client {
 	}
 	
 	/**
-	 * Change customer information
+	 * Change customer and subscription information
 	 *
+	 * @link https://cheddargetter.com/developers#update-customer-subscription
 	 * @param string $code Your code for the customer
 	 * @param string|null $id CG id for the customer
 	 * @param array|null $data
@@ -355,8 +360,29 @@ class CheddarGetter_Client {
 	}
 	
 	/**
+	 * Change customer information only
+	 *
+	 * @link https://cheddargetter.com/developers#update-customer
+	 * @param string $code Your code for the customer
+	 * @param string|null $id CG id for the customer
+	 * @param array|null $data
+	 * @return CheddarGetter_Response
+	 * @throws CheddarGetter_Response_Exception
+	 */
+	public function editCustomerOnly($code, $id = null, array $data) {
+		$this->_requireIdentifier($code, $id);
+		return new CheddarGetter_Response(
+			$this->request(
+				'/customers/edit-customer/' . (($id) ? 'id/'.$id : 'code/'.urlencode($code)), 
+				$data
+			)
+		);
+	}
+	
+	/**
 	 * Delete a customer
 	 *
+	 * @link https://cheddargetter.com/developers#delete-customer
 	 * @param string $code Your code for the customer
 	 * @param string|null $id CG id for the customer
 	 * @return CheddarGetter_Response
@@ -372,8 +398,30 @@ class CheddarGetter_Client {
 	}
 	
 	/**
+	 * Delete all customers
+	 *
+	 * WARNING: This will delete all customers and all related data in 
+	 * CheddarGetter and will delete all customer data at the gateway 
+	 * if a gateway is configured.
+	 *
+	 * @link https://cheddargetter.com/developers#delete-all-customers
+	 * @param string $code Your code for the customer
+	 * @param string|null $id CG id for the customer
+	 * @return CheddarGetter_Response
+	 * @throws CheddarGetter_Response_Exception
+	 */
+	public function deleteCustomers() {
+		return new CheddarGetter_Response(
+			$this->request(
+				'/customers/delete-all/confirm/1'
+			)
+		);
+	}
+	
+	/**
 	 * Change subscription information
 	 *
+	 * @link https://cheddargetter.com/developers#update-subscription
 	 * @param string $code Your code for the customer
 	 * @param string|null $id CG id for the customer
 	 * @param array|null $data
@@ -393,6 +441,7 @@ class CheddarGetter_Client {
 	/**
 	 * Cancel subscription
 	 *
+	 * @link https://cheddargetter.com/developers#cancel-subscription
 	 * @param string $code Your code for the customer
 	 * @param string|null $id CG id for the customer
 	 * @return CheddarGetter_Response
@@ -409,7 +458,8 @@ class CheddarGetter_Client {
 	
 	/**
 	 * Increment a usage item quantity
-	 * 
+	 *
+	 * @link https://cheddargetter.com/developers#add-item-quantity
 	 * @param string $code Your code for the customer
 	 * @param string|null $id CG id for the customer
 	 * @param array $data Your (itemCode or CG itemId) and [quantity]
@@ -428,7 +478,8 @@ class CheddarGetter_Client {
 	
 	/**
 	 * Decrement a usage item quantity
-	 * 
+	 *
+	 * @link https://cheddargetter.com/developers#remove-item-quantity
 	 * @param string $code Your code for the customer
 	 * @param string|null $id CG id for the customer
 	 * @param array $data Your (itemCode or CG itemId) and [quantity]
@@ -447,7 +498,8 @@ class CheddarGetter_Client {
 	
 	/**
 	 * Set a usage item quantity
-	 * 
+	 *
+	 * @link https://cheddargetter.com/developers#set-item-quantity
 	 * @param string $code Your code for the customer
 	 * @param string|null $id CG id for the customer
 	 * @param array $data Your (itemCode or CG itemId) and quantity
@@ -468,7 +520,8 @@ class CheddarGetter_Client {
 	 * Add a custom charge (debit) or credit to the current invoice
 	 * 
 	 * A positive 'eachAmount' will result in a debit. If negative, a credit.
-	 * 
+	 
+	 * @link https://cheddargetter.com/developers#add-charge 
 	 * @param string $code Your code for the customer
 	 * @param string|null $id CG id for the customer
 	 * @param array $data chargeCode, quantity, eachAmount[, description]
