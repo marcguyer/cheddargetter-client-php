@@ -282,7 +282,7 @@ class CheddarGetter_Client {
 	 * Get all customers in the product
 	 *
 	 * @link https://cheddargetter.com/developers#all-customers
-	 * @param array|null $filters
+	 * @param array|null $filters {@link https://cheddargetter.com/developers#all-customers}
 	 * @return CheddarGetter_Response
 	 * @throws CheddarGetter_Response_Exception
 	 */
@@ -331,7 +331,7 @@ class CheddarGetter_Client {
 	 * Create new customer
 	 *
 	 * @link https://cheddargetter.com/developers#add-customer
-	 * @param array|null $data
+	 * @param array|null $data {@link https://cheddargetter.com/developers#add-customer}
 	 * @return CheddarGetter_Response
 	 * @throws CheddarGetter_Response_Exception
 	 */
@@ -345,7 +345,7 @@ class CheddarGetter_Client {
 	 * @link https://cheddargetter.com/developers#update-customer-subscription
 	 * @param string $code Your code for the customer
 	 * @param string|null $id CG id for the customer
-	 * @param array|null $data
+	 * @param array|null $data {@link https://cheddargetter.com/developers#update-customer-subscription}
 	 * @return CheddarGetter_Response
 	 * @throws CheddarGetter_Response_Exception
 	 */
@@ -365,7 +365,7 @@ class CheddarGetter_Client {
 	 * @link https://cheddargetter.com/developers#update-customer
 	 * @param string $code Your code for the customer
 	 * @param string|null $id CG id for the customer
-	 * @param array|null $data
+	 * @param array|null $data {@link https://cheddargetter.com/developers#update-customer}
 	 * @return CheddarGetter_Response
 	 * @throws CheddarGetter_Response_Exception
 	 */
@@ -424,7 +424,7 @@ class CheddarGetter_Client {
 	 * @link https://cheddargetter.com/developers#update-subscription
 	 * @param string $code Your code for the customer
 	 * @param string|null $id CG id for the customer
-	 * @param array|null $data
+	 * @param array|null $data {@link https://cheddargetter.com/developers#update-subscription}
 	 * @return CheddarGetter_Response
 	 * @throws CheddarGetter_Response_Exception
 	 */
@@ -462,7 +462,7 @@ class CheddarGetter_Client {
 	 * @link https://cheddargetter.com/developers#add-item-quantity
 	 * @param string $code Your code for the customer
 	 * @param string|null $id CG id for the customer
-	 * @param array $data Your (itemCode or CG itemId) and [quantity]
+	 * @param array $data Your (itemCode or CG itemId) and [quantity] {@link https://cheddargetter.com/developers#add-item-quantity}
 	 * @return CheddarGetter_Response
 	 * @throws CheddarGetter_Response_Exception
 	 */
@@ -482,7 +482,7 @@ class CheddarGetter_Client {
 	 * @link https://cheddargetter.com/developers#remove-item-quantity
 	 * @param string $code Your code for the customer
 	 * @param string|null $id CG id for the customer
-	 * @param array $data Your (itemCode or CG itemId) and [quantity]
+	 * @param array $data Your (itemCode or CG itemId) and [quantity] {@link https://cheddargetter.com/developers#remove-item-quantity}
 	 * @return CheddarGetter_Response
 	 * @throws CheddarGetter_Response_Exception
 	 */
@@ -502,7 +502,7 @@ class CheddarGetter_Client {
 	 * @link https://cheddargetter.com/developers#set-item-quantity
 	 * @param string $code Your code for the customer
 	 * @param string|null $id CG id for the customer
-	 * @param array $data Your (itemCode or CG itemId) and quantity
+	 * @param array $data Your (itemCode or CG itemId) and quantity {@link https://cheddargetter.com/developers#set-item-quantity}
 	 * @return CheddarGetter_Response
 	 * @throws CheddarGetter_Response_Exception
 	 */
@@ -524,7 +524,7 @@ class CheddarGetter_Client {
 	 * @link https://cheddargetter.com/developers#add-charge 
 	 * @param string $code Your code for the customer
 	 * @param string|null $id CG id for the customer
-	 * @param array $data chargeCode, quantity, eachAmount[, description]
+	 * @param array $data chargeCode, quantity, eachAmount[, description] {@link https://cheddargetter.com/developers#add-charge}
 	 * @return CheddarGetter_Response
 	 * @throws CheddarGetter_Response_Exception
 	 */
