@@ -240,8 +240,19 @@ class CheddarGetter_Response extends DOMDocument {
 	 * @return array
 	 */
 	public function getCustomerSubscription($code = null) {
+		$subscriptions = $this->getCustomerSubscriptions($code);
+		return current($subscriptions);
+	}
+	
+	/**
+	 * Get an array representation of a single customer's subscriptions (history)
+	 *
+	 * @throws CheddarGetter_Response_Exception if the response type is incompatible or if a $code is not provided and the response contains more than one customer
+	 * @return array
+	 */
+	public function getCustomerSubscriptions($code = null) {
 		$customer = $this->getCustomer($code);
-		return current($customer['subscriptions']);
+		return $customer['subscriptions'];
 	}
 	
 	/**
@@ -264,6 +275,73 @@ class CheddarGetter_Response extends DOMDocument {
 	public function getCustomerInvoice($code = null) {
 		$subscription = $this->getCustomerSubscription($code);
 		return current($subscription['invoices']);
+	}
+	
+	/**
+	 * Get an array representation of a single customer's current invoice
+	 *
+	 * @throws CheddarGetter_Response_Exception if the response type is incompatible or if a $code is not provided and the response contains more than one customer
+	 * @return array
+	 */
+	public function getCustomerLastBilledInvoice($code = null) {
+		$invoices = $this->getCustomerInvoices($code);
+		return current(array_slice($invoices, 1, 1));
+	}
+	
+	/**
+	 * Get an array representation of a single customer's outstanding invoices
+	 *
+	 * @throws CheddarGetter_Response_Exception if the response type is incompatible or if a $code is not provided and the response contains more than one customer
+	 * @return array|false
+	 */
+	public function getCustomerInvoices($code = null) {
+		$invoices = array();
+		$subscriptions = $this->getCustomerSubscriptions($code);
+		foreach ($subscriptions as $subscription) {
+			if (isset($subscription['invoices'])) {
+				foreach ($subscription['invoices'] as $key => $i) {
+					$invoices[$key] = $i;
+				}
+			}
+		}
+		return $invoices;
+	}
+	
+	/**
+	 * Get an array representation of a single customer's transactions
+	 *
+	 * @throws CheddarGetter_Response_Exception if the response type is incompatible or if a $code is not provided and the response contains more than one customer
+	 * @return array|false
+	 */
+	public function getCustomerTransactions($code = null) {
+		$txns = array();
+		$subscriptions = $this->getCustomerSubscriptions($code);
+		foreach ($subscriptions as $subscription) {
+			if (isset($subscription['invoices'])) {
+				foreach ($subscription['invoices'] as $key => $i) {
+					if (isset($i['transactions'])) {
+						foreach ($i['transactions'] as $idx => $t) {
+							$txns[$idx] = $t;
+						}
+					}
+				}
+			}
+		}
+		return $txns;
+	}
+	
+	/**
+	 * Get an array representation of a single customer's last transaction (successful or otherwise)
+	 *
+	 * @throws CheddarGetter_Response_Exception if the response type is incompatible or if a $code is not provided and the response contains more than one customer
+	 * @return array|false
+	 */
+	public function getCustomerLastTransaction($code = null) {
+		$lastBilledInvoice = $this->getCustomerLastBilledInvoice($code);
+		if (isset($lastBilledInvoice['transactions'])) {
+			return current($lastBilledInvoice['transactions']);
+		}
+		return false;
 	}
 	
 	/**
