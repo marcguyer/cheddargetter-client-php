@@ -31,11 +31,9 @@ class CheddarGetter_Response extends DOMDocument {
 			throw new CheddarGetter_Response_Exception("Response failed to load into the DOM.\n\n$response", CheddarGetter_Response_Exception::UNKNOWN);
 		}
 		
-		if ($this->documentElement->nodeName == 'error') {
-			$this->_responseType = 'error';
-			$this->handleError();
-		}
 		$this->_responseType = $this->documentElement->nodeName;
+		
+		$this->handleError();
 	}
 	
 	/**
