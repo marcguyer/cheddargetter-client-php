@@ -389,6 +389,46 @@ class CheddarGetter_Response extends DOMDocument {
 		);
 	}
 	
+	/**
+	 * Get remaining quantity (quantity included minus current quantity)
+	 *
+	 * @throws CheddarGetter_Response_Exception if the response type is incompatible or if a $code is not provided and the response contains more than one customer or if a $itemCode is not provided and the plan contains more than one tracked item
+	 * @return string
+	 */
+	public function getCustomerItemQuantityRemaining($code = null, $itemCode = null) {
+		$item = $this->getCustomerItemQuantity($code, $itemCode);
+		return $item['item']['quantityIncluded'] - $item['quantity']['quantity'];
+	}
+	
+	/**
+	 * Get quantity usage greater than included quantity
+	 *
+	 * @throws CheddarGetter_Response_Exception if the response type is incompatible or if a $code is not provided and the response contains more than one customer or if a $itemCode is not provided and the plan contains more than one tracked item
+	 * @return string
+	 */
+	public function getCustomerItemQuantityOverage($code = null, $itemCode = null) {
+		$remaining = $this->getCustomerItemQuantityRemaining($code, $itemCode);
+		if ($remaining > 0) {
+			return 0;
+		}
+		return abs($remaining);
+	}
+	
+	/**
+	 * Get current item overage cost
+	 *
+	 * @throws CheddarGetter_Response_Exception if the response type is incompatible or if a $code is not provided and the response contains more than one customer or if a $itemCode is not provided and the plan contains more than one tracked item
+	 * @return string
+	 */
+	public function getCustomerItemQuantityOverageCost($code = null, $itemCode = null) {
+		$item = $this->getCustomerItemQuantity($code, $itemCode);
+		$overage = $this->getCustomerItemQuantityOverage($code, $itemCode);
+		if ($overage) {
+			return sprintf("%01.2f", $overage * $item['item']['overageAmount']);
+		}
+		return 0;
+	}
+	
 	public function handleError() {
 		if ($this->_responseType == 'error') {
 			throw new CheddarGetter_Response_Exception($this->documentElement->firstChild->nodeValue, $this->documentElement->getAttribute('code'), $this->documentElement->getAttribute('id'), $this->documentElement->getAttribute('auxCode'));
