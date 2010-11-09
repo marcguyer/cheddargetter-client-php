@@ -668,4 +668,136 @@ class CheddarGetter_Client {
 		return true;
 	}
 	
+	/**
+	 * Convenience wrapper of setcookie() for setting a persistent cookie containing marketing metrics compatible with CheddarGetter's marketing metrics tracking.
+	 * 
+	 * Running this method on every request to your marketing site sets or refines the marketing cookie data over time.  There is no performance disadvantage to running this method on every request.
+	 * 
+	 * If a lead has this cookie set at the time of signup, CheddarGetter_Client::newCustomer() will automatically add the data to the customer record.  In other words, simply run this method on every request and there's nothing else to do to take advantage of the metrics tracking in CheddarGetter. 
+	 * 
+	 * {@link http://support.cheddargetter.com/faqs/marketing-metrics/marketing-metrics More about CheddarGetter's marketing metrics tracking } 
+	 * 
+	 * @see newCustomer
+	 * @param string $name 
+	 * @param int $expire 
+	 * @param string $path
+	 * @param string $domain
+	 * @param bool $secure
+	 * @param bool $httpOnly
+	 * @throws CheddarGetter_Client_Exception if headers are already sent
+	 */
+	public static function setMarketingCookie($cookieName = 'CGMK', $expire = null, $path = '/', $domain = null, $secure = false, $httpOnly = false) {
+		
+		// default to a two year cookie
+		if (!$expire) {
+			$expire = time() + 60*60*24*365*2;
+		}
+		
+		$utmParams = array(
+			'utm_term' => 'campaignTerm', 
+			'utm_campaign' => 'campaignName', 
+			'utm_source' => 'campaignSource', 
+			'utm_medium' => 'campaignMedium', 
+			'utm_content' => 'campaignContent' 
+		);
+	
+		// no cookie yet -- set the first contact date and referer in the cookie
+		// (only first request)
+		if (!isset($_COOKIE[$cookieName])) {
+	
+			// when did this lead first find us? (right now!)
+			// we'll use this to determine the customer "vintage"
+			$cookieData = array('firstContactDatetime' => date('c'));
+	
+			// if there's a __utma cookie, we can get a more accurate time
+			// which helps us get better data from visitors who first found us
+			// before we started setting our own cookie
+			if ( isset($_COOKIE['__utma']) ) {
+				list(
+					$domainHash, $visitorId, $initialVisit, $previousVisit, $currentVisit, $visitCounter
+				) = explode('.', $_COOKIE['__utma']);
+				if (isset($initialVisit) && $initialVisit && is_int($initialVisit)) {
+					$cookieData['firstContactDatetime'] = date('c', $initialVisit);
+				}
+			}
+	
+			// set the raw referer (defaults to 'direct')
+			$cookieData['referer'] = 'direct';
+			if (isset($_SERVER['HTTP_REFERER'])) {
+				$cookieData['referer'] = $_SERVER['HTTP_REFERER'];
+			}
+	
+			// if there's some utm vars
+			// When tagging your inbound links for google analytics 
+			//   http://www.google.com/support/analytics/bin/answer.py?answer=55518
+			// our cookie will also benenfit by the added params
+			foreach ($utmParams as $key=>$val) {
+				// do it with the Zend Framework front controller if available 
+				if (class_exists('Zend_Controller_Front')) {
+					$fc = Zend_Controller_Front::getInstance();
+					$cookieData[$val] = $fc->getParam($key);
+				} else {
+					$cookieData[$val] = ($_REQUEST[$key]) ? $_REQUEST[$key] : null;
+				}
+			}
+			
+			if (headers_sent($filename, $line)) {
+				throw new CheddarGetter_Client_Exception(CheddarGetter_Client_Exception::USAGE_INVALID, "Cookie cannot be sent. Headers already sent in $filename on line $line");
+			}
+			
+			// set the cookie and make it last 2 years
+			setcookie($cookieName, json_encode($cookieData), $expire, $path, $domain, $secure, $httpOnly);
+		
+		// cookie is already set but maybe we can refine it with __utmz data
+		// (second and subsequent requests)
+		} else if (isset($_COOKIE['__utmz'])) {
+			// get the existing cookie information
+			$cookieData = (array) json_decode($_COOKIE[$cookieName]);
+			
+			// see if the cookie is baked
+			// it's baked when it has firstContact, referer and at least one other value
+			if (isset($cookieData['firstContactDatetime']) && isset($cookieData['referer'])
+				&& $cookieData['firstContactDatetime'] && $cookieData['referer']
+			) {
+				$baked = false;
+				foreach ($utmParams as $key=>$val) {
+					if ($cookieData[$val]) {
+						$baked = true;
+						break;
+					}
+				}
+				if (!$baked) {
+					// split the __utmz cookie on periods
+					list(
+						$domainHash, $timestamp, $sessionNumber, $campaignNumber, $campaignData
+					) = explode('.', $_COOKIE['__utmz']);
+	
+					// parse the data
+					parse_str(strtr($campaignData, "|", "&"));
+	
+					// see if it's a google adwords lead 
+					// in this case, we only get the keyword
+					if (isset($utmgclid) && $utmgclid) {
+						$cookieData['campaignSource'] = 'google';
+						$cookieData['campaignMedium'] = 'ppc';
+						$cookieData['campaignTerm'] = (isset($utmctr)) ? $utmctr : '';
+					} else {
+						$cookieData['campaignSource'] = (isset($utmcsr)) ? $utmcsr : '';
+						$cookieData['campaignName'] = (isset($utmccn)) ? $utmccn : '';
+						$cookieData['campaignMedium'] = (isset($utmcmd)) ? $utmcmd : '';
+						$cookieData['campaignTerm'] = (isset($utmctr)) ? $utmctr : '';
+						$cookieData['campaignContent'] = (isset($utmcct)) ? $utmcct : '';
+					}
+					
+					if (headers_sent($filename, $line)) {
+						throw new CheddarGetter_Client_Exception(CheddarGetter_Client_Exception::USAGE_INVALID, "Cookie cannot be sent. Headers already sent in $filename on line $line");
+					}
+					// set the cookie again
+					return setcookie($cookieName, json_encode($cookieData), $expire, $path, $domain, $secure, $httpOnly);
+				}
+			}
+		}
+	 	 
+	 }
+	
 }

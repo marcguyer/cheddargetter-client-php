@@ -33,7 +33,7 @@ Then, just fire it up:
 DOCUMENTATION
 -------------
 
-Check 'em out in http://cheddargetter.com/php-client/docs
+Check 'em out in [http://cheddargetter.com/php-client/docs](http://cheddargetter.com/php-client/docs)
 
-Also, raw API docs are here: http://cheddargetter.com/developers
+Also, raw API docs are here: [http://cheddargetter.com/developers](http://cheddargetter.com/developers)
 
