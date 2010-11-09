@@ -41,6 +41,12 @@ class CheddarGetter_Client {
 	private $_productId;
 	
 	/**
+	 * @var string Name to use for the marketing cookie
+	 * @see setMarketingCookie
+	 */
+	private $_marketingCookieName = 'CGMK';
+	
+	/**
 	 * If you don't use Zend Framework, it's ok, the client will fallback to curl (so you need curl).
 	 * 
 	 * @var Zend_Http_Client 
@@ -163,6 +169,28 @@ class CheddarGetter_Client {
 	 */
 	public function getProductId() {
 		return $this->_productId;
+	}
+	
+	/**
+	 * Set name for marketing metrics cookie
+	 *
+	 * @see setMarketingCookie
+	 * @param $name string
+	 * @return CheddarGetter_Client
+	 */
+	public function setMarketingCookieName($name) {
+		$this->_marketingCookieName = $name;
+		return $this; 
+	}
+	
+	/**
+	 * Get marketing cookie name
+	 *
+	 * @see setMarketingCookie
+	 * @return string
+	 */
+	public function getMarketingCookieName() {
+		return $this->_marketingCookieName;
 	}
 	
 	/**
@@ -331,11 +359,33 @@ class CheddarGetter_Client {
 	 * Create new customer
 	 *
 	 * @link https://cheddargetter.com/developers#add-customer
+	 * @see setMarketingCookie
 	 * @param array|null $data {@link https://cheddargetter.com/developers#add-customer}
 	 * @return CheddarGetter_Response
 	 * @throws CheddarGetter_Response_Exception
 	 */
 	public function newCustomer(array $data) {
+		
+		if (isset($_COOKIE[$this->getMarketingCookieName()])) {
+			// if there's marketing cookie information, add it to the data
+			$marketingFields = array(
+				'firstContactDatetime',
+				'referer',
+				'campaignTerm', 
+				'campaignName', 
+				'campaignSource', 
+				'campaignMedium', 
+				'campaignContent'			
+			);
+			$intersect = array_intersect($marketingFields, array_keys($data));
+			if (empty($intersect)) {
+				$cookieData = json_decode($_COOKIE[$this->getMarketingCookieName()]);
+				foreach ($marketingFields as $f) {
+					$data[$f] = $cookieData->{$f};
+				}
+			}
+		}
+		
 		return new CheddarGetter_Response($this->request('/customers/new', $data));
 	}
 	
@@ -678,7 +728,7 @@ class CheddarGetter_Client {
 	 * {@link http://support.cheddargetter.com/faqs/marketing-metrics/marketing-metrics More about CheddarGetter's marketing metrics tracking } 
 	 * 
 	 * @see newCustomer
-	 * @param string $name 
+	 * @param string $cookieName 
 	 * @param int $expire 
 	 * @param string $path
 	 * @param string $domain

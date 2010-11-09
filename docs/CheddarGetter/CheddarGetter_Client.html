@@ -51,13 +51,13 @@
 		</div>
 		<div class="info-box-body">			
 			<div class="method-summary">
-																																																																																																																																																																																																																				<div class="method-definition">
+																																																																																																																																																																																																																												<div class="method-definition">
 					<img src="../media/images/StaticMethod.png" alt=" "/>
 											static <span class="method-result">void</span>
 										<a href="#setMarketingCookie" title="details" class="method-name">setMarketingCookie</a>
-											([<span class="var-type"></span>&nbsp;<span class="var-name">$cookieName</span> = <span class="var-default">'CGMK'</span>], [<span class="var-type">int</span>&nbsp;<span class="var-name">$expire</span> = <span class="var-default">null</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$path</span> = <span class="var-default">'/'</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$domain</span> = <span class="var-default">null</span>], [<span class="var-type">bool</span>&nbsp;<span class="var-name">$secure</span> = <span class="var-default">false</span>], [<span class="var-type">bool</span>&nbsp;<span class="var-name">$httpOnly</span> = <span class="var-default">false</span>], <span class="var-type">string</span>&nbsp;<span class="var-name">$name</span>)
+											([<span class="var-type">string</span>&nbsp;<span class="var-name">$cookieName</span> = <span class="var-default">'CGMK'</span>], [<span class="var-type">int</span>&nbsp;<span class="var-name">$expire</span> = <span class="var-default">null</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$path</span> = <span class="var-default">'/'</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$domain</span> = <span class="var-default">null</span>], [<span class="var-type">bool</span>&nbsp;<span class="var-name">$secure</span> = <span class="var-default">false</span>], [<span class="var-type">bool</span>&nbsp;<span class="var-name">$httpOnly</span> = <span class="var-default">false</span>])
 									</div>
-																																																																				<div class="method-definition">
+																																																																												<div class="method-definition">
 					<img src="../media/images/Constructor.png" alt=" "/>
 											<span class="method-result">CheddarGetter_Client</span>
 										<a href="#__construct" title="details" class="method-name">__construct</a>
@@ -143,6 +143,12 @@
 									</div>
 																<div class="method-definition">
 					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#getMarketingCookieName" title="details" class="method-name">getMarketingCookieName</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
 											<span class="method-result"><a href="../CheddarGetter/CheddarGetter_Response.html">CheddarGetter_Response</a></span>
 										<a href="#getPlan" title="details" class="method-name">getPlan</a>
 											(<span class="var-type">string</span>&nbsp;<span class="var-name">$code</span>, [<span class="var-type">string|null</span>&nbsp;<span class="var-name">$id</span> = <span class="var-default">null</span>])
@@ -210,6 +216,12 @@
 																								<div class="method-definition">
 					<img src="../media/images/Method.png" alt=" "/>
 											<span class="method-result"><a href="../CheddarGetter/CheddarGetter_Client.html">CheddarGetter_Client</a></span>
+										<a href="#setMarketingCookieName" title="details" class="method-name">setMarketingCookieName</a>
+											(<span class="var-type">$name</span>&nbsp;<span class="var-name">$name</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result"><a href="../CheddarGetter/CheddarGetter_Client.html">CheddarGetter_Client</a></span>
 										<a href="#setPassword" title="details" class="method-name">setPassword</a>
 											(<span class="var-type">$password</span>&nbsp;<span class="var-name">$password</span>)
 									</div>
@@ -263,7 +275,7 @@
 	
 	<div class="method-header">
 		<img src="../media/images/StaticMethod.png" />
-		<span class="method-title">static setMarketingCookie</span> (line <span class="line-number">689</span>)
+		<span class="method-title">static setMarketingCookie</span> (line <span class="line-number">739</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -280,13 +292,13 @@
 		<span class="method-name">
 			setMarketingCookie
 		</span>
-					([<span class="var-type"></span>&nbsp;<span class="var-name">$cookieName</span> = <span class="var-default">'CGMK'</span>], [<span class="var-type">int</span>&nbsp;<span class="var-name">$expire</span> = <span class="var-default">null</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$path</span> = <span class="var-default">'/'</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$domain</span> = <span class="var-default">null</span>], [<span class="var-type">bool</span>&nbsp;<span class="var-name">$secure</span> = <span class="var-default">false</span>], [<span class="var-type">bool</span>&nbsp;<span class="var-name">$httpOnly</span> = <span class="var-default">false</span>], <span class="var-type">string</span>&nbsp;<span class="var-name">$name</span>)
+					([<span class="var-type">string</span>&nbsp;<span class="var-name">$cookieName</span> = <span class="var-default">'CGMK'</span>], [<span class="var-type">int</span>&nbsp;<span class="var-name">$expire</span> = <span class="var-default">null</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$path</span> = <span class="var-default">'/'</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$domain</span> = <span class="var-default">null</span>], [<span class="var-type">bool</span>&nbsp;<span class="var-name">$secure</span> = <span class="var-default">false</span>], [<span class="var-type">bool</span>&nbsp;<span class="var-name">$httpOnly</span> = <span class="var-default">false</span>])
 			</div>
 	
 			<ul class="parameters">
 					<li>
 				<span class="var-type">string</span>
-				<span class="var-name">$name</span>			</li>
+				<span class="var-name">$cookieName</span>			</li>
 					<li>
 				<span class="var-type">int</span>
 				<span class="var-name">$expire</span>			</li>
@@ -302,9 +314,6 @@
 					<li>
 				<span class="var-type">bool</span>
 				<span class="var-name">$httpOnly</span>			</li>
-					<li>
-				<span class="var-type"></span>
-				<span class="var-name">$cookieName</span>			</li>
 				</ul>
 		
 			
@@ -314,7 +323,7 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Constructor.png" />
-		<span class="method-title">Constructor __construct</span> (line <span class="line-number">58</span>)
+		<span class="method-title">Constructor __construct</span> (line <span class="line-number">64</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -356,7 +365,7 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">addCharge</span> (line <span class="line-number">531</span>)
+		<span class="method-title">addCharge</span> (line <span class="line-number">581</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -395,7 +404,7 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">addItemQuantity</span> (line <span class="line-number">469</span>)
+		<span class="method-title">addItemQuantity</span> (line <span class="line-number">519</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -433,7 +442,7 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">cancelSubscription</span> (line <span class="line-number">450</span>)
+		<span class="method-title">cancelSubscription</span> (line <span class="line-number">500</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -468,7 +477,7 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">deleteCustomer</span> (line <span class="line-number">391</span>)
+		<span class="method-title">deleteCustomer</span> (line <span class="line-number">441</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -503,7 +512,7 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">deleteCustomers</span> (line <span class="line-number">413</span>)
+		<span class="method-title">deleteCustomers</span> (line <span class="line-number">463</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -539,7 +548,7 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">deletePlan</span> (line <span class="line-number">270</span>)
+		<span class="method-title">deletePlan</span> (line <span class="line-number">298</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -573,7 +582,7 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">editCustomer</span> (line <span class="line-number">352</span>)
+		<span class="method-title">editCustomer</span> (line <span class="line-number">402</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -611,7 +620,7 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">editCustomerOnly</span> (line <span class="line-number">372</span>)
+		<span class="method-title">editCustomerOnly</span> (line <span class="line-number">422</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -649,7 +658,7 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">editSubscription</span> (line <span class="line-number">431</span>)
+		<span class="method-title">editSubscription</span> (line <span class="line-number">481</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -687,7 +696,7 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">getAllCustomers</span> (line <span class="line-number">319</span>)
+		<span class="method-title">getAllCustomers</span> (line <span class="line-number">347</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -720,7 +729,7 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">getCustomer</span> (line <span class="line-number">302</span>)
+		<span class="method-title">getCustomer</span> (line <span class="line-number">330</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -755,7 +764,7 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">getCustomers</span> (line <span class="line-number">289</span>)
+		<span class="method-title">getCustomers</span> (line <span class="line-number">317</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -788,7 +797,7 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">getHttpClient</span> (line <span class="line-number">652</span>)
+		<span class="method-title">getHttpClient</span> (line <span class="line-number">702</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -808,12 +817,38 @@
 		
 			
 	</div>
-<a name="methodgetPlan" id="getPlan"><!-- --></a>
+<a name="methodgetMarketingCookieName" id="getMarketingCookieName"><!-- --></a>
 <div class="oddrow">
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">getPlan</span> (line <span class="line-number">219</span>)
+		<span class="method-title">getMarketingCookieName</span> (line <span class="line-number">192</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Get marketing cookie name</p>
+	<ul class="tags">
+				<li><span class="field">see:</span> <a href="../CheddarGetter/CheddarGetter_Client.html#methodsetMarketingCookie">CheddarGetter_Client::setMarketingCookie()</a></li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getMarketingCookieName
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetPlan" id="getPlan"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getPlan</span> (line <span class="line-number">247</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -844,11 +879,11 @@
 			
 	</div>
 <a name="methodgetPlans" id="getPlans"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">getPlans</span> (line <span class="line-number">206</span>)
+		<span class="method-title">getPlans</span> (line <span class="line-number">234</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -877,11 +912,11 @@
 			
 	</div>
 <a name="methodgetProductCode" id="getProductCode"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">getProductCode</span> (line <span class="line-number">144</span>)
+		<span class="method-title">getProductCode</span> (line <span class="line-number">150</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -902,11 +937,11 @@
 			
 	</div>
 <a name="methodgetProductId" id="getProductId"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">getProductId</span> (line <span class="line-number">164</span>)
+		<span class="method-title">getProductId</span> (line <span class="line-number">170</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -927,11 +962,11 @@
 			
 	</div>
 <a name="methodgetUrl" id="getUrl"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">getUrl</span> (line <span class="line-number">84</span>)
+		<span class="method-title">getUrl</span> (line <span class="line-number">90</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -952,11 +987,11 @@
 			
 	</div>
 <a name="methodgetUsername" id="getUsername"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">getUsername</span> (line <span class="line-number">104</span>)
+		<span class="method-title">getUsername</span> (line <span class="line-number">110</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -977,16 +1012,17 @@
 			
 	</div>
 <a name="methodnewCustomer" id="newCustomer"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">newCustomer</span> (line <span class="line-number">338</span>)
+		<span class="method-title">newCustomer</span> (line <span class="line-number">367</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
 <p class="short-description">Create new customer</p>
 	<ul class="tags">
+				<li><span class="field">see:</span> <a href="../CheddarGetter/CheddarGetter_Client.html#methodsetMarketingCookie">CheddarGetter_Client::setMarketingCookie()</a></li>
 				<li><span class="field">link:</span> <a href="https://cheddargetter.com/developers#add-customer">https://cheddargetter.com/developers#add-customer</a></li>
 				<li><span class="field">throws:</span> CheddarGetter_Response_Exception</li>
 				<li><span class="field">access:</span> public</li>
@@ -1009,11 +1045,11 @@
 			
 	</div>
 <a name="methodremoveItemQuantity" id="removeItemQuantity"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">removeItemQuantity</span> (line <span class="line-number">489</span>)
+		<span class="method-title">removeItemQuantity</span> (line <span class="line-number">539</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1047,11 +1083,11 @@
 			
 	</div>
 <a name="methodrequest" id="request"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">request</span> (line <span class="line-number">549</span>)
+		<span class="method-title">request</span> (line <span class="line-number">599</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1082,11 +1118,11 @@
 			
 	</div>
 <a name="methodsetHttpClient" id="setHttpClient"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">setHttpClient</span> (line <span class="line-number">638</span>)
+		<span class="method-title">setHttpClient</span> (line <span class="line-number">688</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1113,11 +1149,11 @@
 			
 	</div>
 <a name="methodsetItemQuantity" id="setItemQuantity"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">setItemQuantity</span> (line <span class="line-number">509</span>)
+		<span class="method-title">setItemQuantity</span> (line <span class="line-number">559</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1150,12 +1186,43 @@
 		
 			
 	</div>
+<a name="methodsetMarketingCookieName" id="setMarketingCookieName"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">setMarketingCookieName</span> (line <span class="line-number">181</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set name for marketing metrics cookie</p>
+	<ul class="tags">
+				<li><span class="field">see:</span> <a href="../CheddarGetter/CheddarGetter_Client.html#methodsetMarketingCookie">CheddarGetter_Client::setMarketingCookie()</a></li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../CheddarGetter/CheddarGetter_Client.html">CheddarGetter_Client</a></span>
+		<span class="method-name">
+			setMarketingCookieName
+		</span>
+					(<span class="var-type">$name</span>&nbsp;<span class="var-name">$name</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">$name</span>
+				<span class="var-name">$name</span><span class="var-description">: string</span>			</li>
+				</ul>
+		
+			
+	</div>
 <a name="methodsetPassword" id="setPassword"><!-- --></a>
 <div class="evenrow">
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">setPassword</span> (line <span class="line-number">114</span>)
+		<span class="method-title">setPassword</span> (line <span class="line-number">120</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1185,7 +1252,7 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">setProductCode</span> (line <span class="line-number">134</span>)
+		<span class="method-title">setProductCode</span> (line <span class="line-number">140</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1215,7 +1282,7 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">setProductId</span> (line <span class="line-number">154</span>)
+		<span class="method-title">setProductId</span> (line <span class="line-number">160</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1245,7 +1312,7 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">setUrl</span> (line <span class="line-number">74</span>)
+		<span class="method-title">setUrl</span> (line <span class="line-number">80</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1275,7 +1342,7 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">setUsername</span> (line <span class="line-number">94</span>)
+		<span class="method-title">setUsername</span> (line <span class="line-number">100</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1305,7 +1372,7 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">__call</span> (line <span class="line-number">176</span>)
+		<span class="method-title">__call</span> (line <span class="line-number">204</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1340,7 +1407,7 @@
 
 	
 	<p class="notes" id="credit">
-		Documentation generated on Tue, 09 Nov 2010 21:13:17 +0000 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+		Documentation generated on Tue, 09 Nov 2010 21:39:56 +0000 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
 	</p>
 	</div></body>
 </html>
