@@ -243,6 +243,22 @@ class CheddarGetter_Response extends DOMDocument {
 	}
 	
 	/**
+	 * Get an array representation of a single customer's current subscription
+	 *
+	 * @throws CheddarGetter_Response_Exception if the response type is incompatible or if a $code is not provided and the response contains more than one customer
+	 * @return array
+	 */
+	public function getCustomerIsActive($code = null) {
+		$subscription = $this->getCustomerSubscription($code);
+		if ($subscription['canceledDatetime']) {
+			if (strtotime($subscription['canceledDatetime']) <= time()) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	/**
 	 * Get an array representation of a single customer's subscriptions (history)
 	 *
 	 * @throws CheddarGetter_Response_Exception if the response type is incompatible or if a $code is not provided and the response contains more than one customer
