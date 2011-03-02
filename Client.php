@@ -785,18 +785,16 @@ class CheddarGetter_Client {
 				// do it with the Zend Framework front controller if available 
 				if (class_exists('Zend_Controller_Front')) {
 					$fc = Zend_Controller_Front::getInstance();
-					$cookieData[$val] = $fc->getParam($key);
+					$cookieData[$val] = $fc->getRequest()->getParam($key);
 				} else {
 					$cookieData[$val] = ($_REQUEST[$key]) ? $_REQUEST[$key] : null;
 				}
 			}
 			
-			if (headers_sent($filename, $line)) {
-				throw new CheddarGetter_Client_Exception(CheddarGetter_Client_Exception::USAGE_INVALID, "Cookie cannot be sent. Headers already sent in $filename on line $line");
+			if (!headers_sent()) {
+				// set the cookie and make it last 2 years
+				return setcookie($cookieName, json_encode($cookieData), $expire, $path, $domain, $secure, $httpOnly);
 			}
-			
-			// set the cookie and make it last 2 years
-			setcookie($cookieName, json_encode($cookieData), $expire, $path, $domain, $secure, $httpOnly);
 		
 		// cookie is already set but maybe we can refine it with __utmz data
 		// (second and subsequent requests)
@@ -839,11 +837,10 @@ class CheddarGetter_Client {
 						$cookieData['campaignContent'] = (isset($utmcct)) ? $utmcct : '';
 					}
 					
-					if (headers_sent($filename, $line)) {
-						throw new CheddarGetter_Client_Exception(CheddarGetter_Client_Exception::USAGE_INVALID, "Cookie cannot be sent. Headers already sent in $filename on line $line");
+					if (!headers_sent()) {
+						// set the cookie again
+						return setcookie($cookieName, json_encode($cookieData), $expire, $path, $domain, $secure, $httpOnly);
 					}
-					// set the cookie again
-					return setcookie($cookieName, json_encode($cookieData), $expire, $path, $domain, $secure, $httpOnly);
 				}
 			}
 		}
