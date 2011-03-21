@@ -35,6 +35,15 @@ class CheddarGetter_Response extends DOMDocument {
 		
 		$this->handleError();
 	}
+
+	public function __sleep() {
+		$this->_xml = $this->saveXML();
+		return array('_xml', '_responseType');
+	}
+
+	public function __wakeup() {
+		$this->loadXML( $this->_xml );
+	}
 	
 	/**
 	 * Get the response type for this request object -- usually corresponds to the root node name
