@@ -589,6 +589,28 @@ class CheddarGetter_Client {
 	}
 	
 	/**
+	 * Delete a custom charge (debit) or credit from the customer's current invoice
+	 * 
+	 * CG's chargeId is required (found in the customers/get response)
+	 *
+	 * @link https://cheddargetter.com/developers#delete-charge 
+	 * @param string $code Your code for the customer
+	 * @param string|null $id CG id for the customer
+	 * @param array $data chargeId {@link https://cheddargetter.com/developers#delete-charge}
+	 * @return CheddarGetter_Response
+	 * @throws CheddarGetter_Response_Exception
+	 */
+	public function deleteCharge($code, $id = null, array $data) {
+		$this->_requireIdentifier($code, $id);
+		return new CheddarGetter_Response(
+			$this->request(
+				'/customers/delete-charge/' . (($id) ? 'id/'.$id : 'code/'.urlencode($code)),
+				$data
+			)
+		);
+	}
+	
+	/**
 	 * Execute CheddarGetter API request
 	 *
 	 * @param string $path Path to the API action
