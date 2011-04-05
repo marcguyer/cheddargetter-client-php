@@ -305,7 +305,7 @@ class CheddarGetter_Client {
 	}
 	
 	/**
-	 * Get customers
+	 * Get customers (DEPRECATED: use getCustomersList to query for multiple customers)
 	 *
 	 * Get all customers in the product
 	 *
@@ -316,6 +316,20 @@ class CheddarGetter_Client {
 	 */
 	public function getCustomers(array $filters = null) {
 		return new CheddarGetter_Response($this->request('/customers/get', $filters));
+	}
+	
+	/**
+	 * Get customers
+	 *
+	 * Get all customers in the product
+	 *
+	 * @link https://cheddargetter.com/developers#all-customers
+	 * @param array|null $filters {@link https://cheddargetter.com/developers#all-customers}
+	 * @return CheddarGetter_Response
+	 * @throws CheddarGetter_Response_Exception
+	 */
+	public function getCustomersList(array $filters = null) {
+		return new CheddarGetter_Response($this->request('/customers/list', $filters));
 	}
 	
 	/**
