@@ -268,6 +268,24 @@ class CheddarGetter_Response extends DOMDocument {
 	}
 	
 	/**
+	 * Is this customer's account pending paypal preapproval confirmation?
+	 *
+	 * @throws CheddarGetter_Response_Exception if the response type is incompatible or if a $code is not provided and the response contains more than one customer
+	 * @return array
+	 */
+	public function getCustomerIsWaitingForPayPal($code = null) {
+		$subscription = $this->getCustomerSubscription($code);
+		if (
+			$subscription['canceledDatetime']
+			&& strtotime($subscription['canceledDatetime']) <= time()
+			&& $subscription['cancelType'] == 'paypal-wait'
+		) {
+			return true;
+		}
+		return false;
+	}
+	
+	/**
 	 * Get an array representation of a single customer's subscriptions (history)
 	 *
 	 * @throws CheddarGetter_Response_Exception if the response type is incompatible or if a $code is not provided and the response contains more than one customer
