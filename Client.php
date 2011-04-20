@@ -623,6 +623,28 @@ class CheddarGetter_Client {
 			)
 		);
 	}
+
+	/**
+	 * Create a new one-time invoice
+	 * 
+	 * One-time invoices take one or more charges in the same format as newCustomer().  One-time invoices are executed immediately using the customer's existing subscription payment method.  One-time invoices do not directly effect the subscription pending invoice or billing period.
+	 *
+	 * @link https://cheddargetter.com/developers#one-time-invoice 
+	 * @param string $code Your code for the customer
+	 * @param string|null $id CG id for the customer
+	 * @param array $data an array of arrays each with: chargeCode, quantity, eachAmount[, description] {@link https://cheddargetter.com/developers#one-time-invoice}
+	 * @return CheddarGetter_Response
+	 * @throws CheddarGetter_Response_Exception
+	 */
+	public function newOneTimeInvoice($code, $id = null, array $data) {
+		$this->_requireIdentifier($code, $id);
+		return new CheddarGetter_Response(
+			$this->request(
+				'/invoices/new/' . (($id) ? 'id/'.$id : 'code/'.urlencode($code)),
+				$data
+			)
+		);
+	}
 	
 	/**
 	 * Execute CheddarGetter API request
