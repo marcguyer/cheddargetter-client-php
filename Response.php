@@ -114,6 +114,7 @@ class CheddarGetter_Response extends DOMDocument {
 	/**
 	 * Recursive method to traverse the dom and produce an array
 	 *
+	 * @param $nodes DOMNodeList
 	 * @return array
 	 */
 	protected function _toArray(DOMNodeList $nodes) {
@@ -175,6 +176,7 @@ class CheddarGetter_Response extends DOMDocument {
 	/**
 	 * Get an array representation of a single plan node
 	 *
+	 * @param $code string your code for the plan - required if more than one plan is in the response
 	 * @throws CheddarGetter_Response_Exception if the response type is incompatible or if a $code is not provided and the response contains more than one plan
 	 * @return array
 	 */
@@ -195,6 +197,7 @@ class CheddarGetter_Response extends DOMDocument {
 	/**
 	 * Get an array representation of all of the plan items
 	 *
+	 * @param $code string your code for the plan - required if more than one plan is in the response
 	 * @throws CheddarGetter_Response_Exception if the response type is incompatible or if a $code is not provided and the response contains more than one plan
 	 * @return array
 	 */
@@ -206,6 +209,8 @@ class CheddarGetter_Response extends DOMDocument {
 	/**
 	 * Get an array representation of a single plan item node
 	 *
+	 * @param $code string your code for the plan - required if more than one plan is in the response
+	 * @param $itemCode your code for the item - required if more than one item is in the response
 	 * @throws CheddarGetter_Response_Exception if the response type is incompatible or if a $code is not provided and the response contains more than one plan
 	 * @return array
 	 */
@@ -223,6 +228,7 @@ class CheddarGetter_Response extends DOMDocument {
 	/**
 	 * Get an array representation of a single customer node
 	 *
+	 * @param $code string your code for the customer - required if more than one customer is in the response
 	 * @throws CheddarGetter_Response_Exception if the response type is incompatible or if a $code is not provided and the response contains more than one customer
 	 * @return array
 	 */
@@ -243,6 +249,7 @@ class CheddarGetter_Response extends DOMDocument {
 	/**
 	 * Get an array representation of a single customer's current subscription
 	 *
+	 * @param $code string your code for the customer - required if more than one customer is in the response
 	 * @throws CheddarGetter_Response_Exception if the response type is incompatible or if a $code is not provided and the response contains more than one customer
 	 * @return array
 	 */
@@ -252,15 +259,23 @@ class CheddarGetter_Response extends DOMDocument {
 	}
 	
 	/**
-	 * Get an array representation of a single customer's current subscription
+	 * Whether or not a customer's subscription is active and in good standing
 	 *
+	 * @param $code string your code for the customer - required if more than one customer is in the response
+	 * @param $remainActiveThroughEndOfPeriod bool Set to true if you'd like the account to remain active until the end of the current payment period rather than inactive at the moment of cancelation
 	 * @throws CheddarGetter_Response_Exception if the response type is incompatible or if a $code is not provided and the response contains more than one customer
 	 * @return array
 	 */
-	public function getCustomerIsActive($code = null) {
+	public function getCustomerIsActive($code = null, $remainActiveThroughEndOfPeriod = false) {
 		$subscription = $this->getCustomerSubscription($code);
 		if ($subscription['canceledDatetime']) {
 			if (strtotime($subscription['canceledDatetime']) <= time()) {
+				if ($remainActiveThroughEndOfPeriod) {
+					$invoice = $this->getCustomerInvoice($code);
+					if (strtotime($invoice['billingDatetime']) > time()) {
+						return true;
+					}
+				}
 				return false;
 			}
 		}
@@ -270,6 +285,7 @@ class CheddarGetter_Response extends DOMDocument {
 	/**
 	 * Is this customer's account pending paypal preapproval confirmation?
 	 *
+	 * @param $code string your code for the customer - required if more than one customer is in the response
 	 * @throws CheddarGetter_Response_Exception if the response type is incompatible or if a $code is not provided and the response contains more than one customer
 	 * @return array
 	 */
@@ -288,6 +304,7 @@ class CheddarGetter_Response extends DOMDocument {
 	/**
 	 * Get an array representation of a single customer's subscriptions (history)
 	 *
+	 * @param $code string your code for the customer - required if more than one customer is in the response
 	 * @throws CheddarGetter_Response_Exception if the response type is incompatible or if a $code is not provided and the response contains more than one customer
 	 * @return array
 	 */
@@ -299,6 +316,7 @@ class CheddarGetter_Response extends DOMDocument {
 	/**
 	 * Get an array representation of a single customer's currently subscribed plan
 	 *
+	 * @param $code string your code for the customer - required if more than one customer is in the response
 	 * @throws CheddarGetter_Response_Exception if the response type is incompatible or if a $code is not provided and the response contains more than one customer
 	 * @return array
 	 */
@@ -310,6 +328,7 @@ class CheddarGetter_Response extends DOMDocument {
 	/**
 	 * Get an array representation of a single customer's current invoice
 	 *
+	 * @param $code string your code for the customer - required if more than one customer is in the response
 	 * @throws CheddarGetter_Response_Exception if the response type is incompatible or if a $code is not provided and the response contains more than one customer
 	 * @return array
 	 */
@@ -321,6 +340,7 @@ class CheddarGetter_Response extends DOMDocument {
 	/**
 	 * Get an array representation of a single customer's current invoice
 	 *
+	 * @param $code string your code for the customer - required if more than one customer is in the response
 	 * @throws CheddarGetter_Response_Exception if the response type is incompatible or if a $code is not provided and the response contains more than one customer
 	 * @return array
 	 */
@@ -332,6 +352,7 @@ class CheddarGetter_Response extends DOMDocument {
 	/**
 	 * Get an array representation of a single customer's outstanding invoices
 	 *
+	 * @param $code string your code for the customer - required if more than one customer is in the response
 	 * @throws CheddarGetter_Response_Exception if the response type is incompatible or if a $code is not provided and the response contains more than one customer
 	 * @return array|false
 	 */
@@ -351,6 +372,7 @@ class CheddarGetter_Response extends DOMDocument {
 	/**
 	 * Get an array representation of a single customer's transactions
 	 *
+	 * @param $code string your code for the customer - required if more than one customer is in the response
 	 * @throws CheddarGetter_Response_Exception if the response type is incompatible or if a $code is not provided and the response contains more than one customer
 	 * @return array|false
 	 */
@@ -374,6 +396,7 @@ class CheddarGetter_Response extends DOMDocument {
 	/**
 	 * Get an array representation of a single customer's last transaction (successful or otherwise)
 	 *
+	 * @param $code string your code for the customer - required if more than one customer is in the response
 	 * @throws CheddarGetter_Response_Exception if the response type is incompatible or if a $code is not provided and the response contains more than one customer
 	 * @return array|false
 	 */
@@ -388,6 +411,7 @@ class CheddarGetter_Response extends DOMDocument {
 	/**
 	 * Get an array representation of a single customer's outstanding invoices
 	 *
+	 * @param $code string your code for the customer - required if more than one customer is in the response
 	 * @throws CheddarGetter_Response_Exception if the response type is incompatible or if a $code is not provided and the response contains more than one customer
 	 * @return array|false
 	 */
@@ -408,6 +432,8 @@ class CheddarGetter_Response extends DOMDocument {
 	/**
 	 * Get an array of a customer's item quantity and quantity included
 	 *
+	 * @param $code string your code for the plan - required if more than one plan is in the response
+	 * @param $itemCode your code for the item - required if more than one item is in the response
 	 * @throws CheddarGetter_Response_Exception if the response type is incompatible or if a $code is not provided and the response contains more than one customer or if a $itemCode is not provided and the plan contains more than one tracked item
 	 * @return array 2 keys: 'item' (item config for this plan) and 'quantity' the customer's current quantity usage
 	 */
@@ -433,6 +459,8 @@ class CheddarGetter_Response extends DOMDocument {
 	/**
 	 * Get remaining quantity (quantity included minus current quantity)
 	 *
+	 * @param $code string your code for the plan - required if more than one plan is in the response
+	 * @param $itemCode your code for the item - required if more than one item is in the response
 	 * @throws CheddarGetter_Response_Exception if the response type is incompatible or if a $code is not provided and the response contains more than one customer or if a $itemCode is not provided and the plan contains more than one tracked item
 	 * @return string
 	 */
@@ -444,6 +472,8 @@ class CheddarGetter_Response extends DOMDocument {
 	/**
 	 * Get quantity usage greater than included quantity
 	 *
+	 * @param $code string your code for the plan - required if more than one plan is in the response
+	 * @param $itemCode your code for the item - required if more than one item is in the response
 	 * @throws CheddarGetter_Response_Exception if the response type is incompatible or if a $code is not provided and the response contains more than one customer or if a $itemCode is not provided and the plan contains more than one tracked item
 	 * @return string
 	 */
@@ -458,6 +488,8 @@ class CheddarGetter_Response extends DOMDocument {
 	/**
 	 * Get current item overage cost
 	 *
+	 * @param $code string your code for the plan - required if more than one plan is in the response
+	 * @param $itemCode your code for the item - required if more than one item is in the response
 	 * @throws CheddarGetter_Response_Exception if the response type is incompatible or if a $code is not provided and the response contains more than one customer or if a $itemCode is not provided and the plan contains more than one tracked item
 	 * @return string
 	 */
