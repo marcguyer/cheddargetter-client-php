@@ -156,7 +156,7 @@ class CheddarGetter_Response extends DOMDocument {
 						
 					} else {
 						$key = $node->getAttribute('id');
-						$array[$key] = array();
+						$array[$key] = array('id' => $node->getAttribute('id'));
 					}
 					$array[$key] = $array[$key] + $this->_toArray($node->childNodes);
 				}
