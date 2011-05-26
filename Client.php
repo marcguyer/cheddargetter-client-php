@@ -477,7 +477,7 @@ class CheddarGetter_Client {
 	public function deleteCustomers() {
 		return new CheddarGetter_Response(
 			$this->request(
-				'/customers/delete-all/confirm/1'
+				'/customers/delete-all/confirm/' . time()
 			)
 		);
 	}
