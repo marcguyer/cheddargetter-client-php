@@ -72,4 +72,10 @@ class CheddarGetter_Client_ZendAdapter implements CheddarGetter_Client_AdapterIn
 
 	}
 
+	/**
+	 * @return null|Zend_Http_Client
+	 */
+	public function getClient() {
+		return $this->_client;
+	}
 }

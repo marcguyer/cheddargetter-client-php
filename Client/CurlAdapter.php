@@ -83,4 +83,10 @@ class CheddarGetter_Client_CurlAdapter implements CheddarGetter_Client_AdapterIn
 
 	}
 
+	/**
+	 * @return null|resource
+	 */
+	public function getCurlResource() {
+		return $this->_resource;
+	}
 }
