@@ -16,6 +16,15 @@
 class CheddarGetter_Client {
 
 	/**
+	 * The adapter to access cookie data and such.
+	 * By default, it will use PHP superglobals directly but an implementation based on the
+	 * abstraction of a framework can be used.
+	 *
+	 * @var CheddarGetter_Http_AdapterInterface
+	 */
+	static private $_requestAdapter;
+
+	/**
 	 * @var string Username credential for accessing the CheddarGetter API
 	 */
 	private $_username;
@@ -60,6 +69,8 @@ class CheddarGetter_Client {
 	 * @param $username string
 	 * @param $password string
 	 * @param $productCode string
+	 * @param string $productId
+	 * @param CheddarGetter_Client_AdapterInterface $adapter
 	 */
 	public function __construct($url, $username, $password, $productCode = null, $productId = null, CheddarGetter_Client_AdapterInterface $adapter = null) {
 
@@ -68,6 +79,7 @@ class CheddarGetter_Client {
 		$this->setPassword($password);
 		$this->setProductCode($productCode);
 		$this->setProductId($productId);
+
 		if (!$adapter) {
 			$adapter = new CheddarGetter_Client_CurlAdapter();
 		}
@@ -383,7 +395,8 @@ class CheddarGetter_Client {
 	 */
 	public function newCustomer(array $data) {
 
-		if (isset($_COOKIE[$this->getMarketingCookieName()])) {
+		$requestAdapter = self::getRequestAdapter();
+		if ($requestAdapter->hasCookie($this->getMarketingCookieName())) {
 			// if there's marketing cookie information, add it to the data
 			$marketingFields = array(
 				'firstContactDatetime',
@@ -396,7 +409,7 @@ class CheddarGetter_Client {
 			);
 			$intersect = array_intersect($marketingFields, array_keys($data));
 			if (empty($intersect)) {
-				$cookieData = json_decode($_COOKIE[$this->getMarketingCookieName()]);
+				$cookieData = json_decode($requestAdapter->getCookie($this->getMarketingCookieName()));
 				foreach ($marketingFields as $f) {
 					$data[$f] = $cookieData->{$f};
 				}
@@ -704,6 +717,28 @@ class CheddarGetter_Client {
 	}
 
 	/**
+	 * Set request adapter
+	 *
+	 * @param CheddarGetter_Http_AdapterInterface $requestAdapter
+	 */
+	static public function setRequestAdapter(CheddarGetter_Http_AdapterInterface $requestAdapter) {
+		self::$_requestAdapter = $requestAdapter;
+	}
+
+	/**
+	 * Gets the request adapter.
+	 *
+	 * @return CheddarGetter_Http_AdapterInterface
+	 */
+	static public function getRequestAdapter() {
+		if (!self::$_requestAdapter) {
+			self::$_requestAdapter = new CheddarGetter_Http_NativeAdapter();
+		}
+
+		return self::$_requestAdapter;
+	}
+
+	/**
 	 * Convenience method for requiring an identifier
 	 *
 	 * @param string $code
@@ -751,9 +786,10 @@ class CheddarGetter_Client {
 			'utm_content' => 'campaignContent'
 		);
 
+		$requestAdapter = self::getRequestAdapter();
 		// no cookie yet -- set the first contact date and referer in the cookie
 		// (only first request)
-		if (!isset($_COOKIE[$cookieName])) {
+		if ($requestAdapter->hasCookie($cookieName)) {
 
 			// when did this lead first find us? (right now!)
 			// we'll use this to determine the customer "vintage"
@@ -762,10 +798,10 @@ class CheddarGetter_Client {
 			// if there's a __utma cookie, we can get a more accurate time
 			// which helps us get better data from visitors who first found us
 			// before we started setting our own cookie
-			if ( isset($_COOKIE['__utma']) ) {
+			if ($requestAdapter->hasCookie('__utma')) {
 				list(
 					$domainHash, $visitorId, $initialVisit, $previousVisit, $currentVisit, $visitCounter
-				) = explode('.', $_COOKIE['__utma']);
+				) = explode('.', $requestAdapter->getCookie('__utma'));
 				if (isset($initialVisit) && $initialVisit && is_int($initialVisit)) {
 					$cookieData['firstContactDatetime'] = date('c', $initialVisit);
 				}
@@ -773,34 +809,25 @@ class CheddarGetter_Client {
 
 			// set the raw referer (defaults to 'direct')
 			$cookieData['referer'] = 'direct';
-			if (isset($_SERVER['HTTP_REFERER'])) {
-				$cookieData['referer'] = $_SERVER['HTTP_REFERER'];
+			if ($requestAdapter->hasReferrer()) {
+				$cookieData['referer'] = $requestAdapter->getReferrer();
 			}
 
 			// if there's some utm vars
 			// When tagging your inbound links for google analytics
 			//   http://www.google.com/support/analytics/bin/answer.py?answer=55518
-			// our cookie will also benenfit by the added params
+			// our cookie will also benefit by the added params
 			foreach ($utmParams as $key=>$val) {
-				// do it with the Zend Framework front controller if available
-				if (class_exists('Zend_Controller_Front')) {
-					$fc = Zend_Controller_Front::getInstance();
-					$cookieData[$val] = $fc->getRequest()->getParam($key);
-				} else {
-					$cookieData[$val] = ($_REQUEST[$key]) ? $_REQUEST[$key] : null;
-				}
+				$cookieData[$val] = $requestAdapter->getRequestValue($key);
 			}
 
-			if (!headers_sent()) {
-				// set the cookie and make it last 2 years
-				return setcookie($cookieName, json_encode($cookieData), $expire, $path, $domain, $secure, $httpOnly);
-			}
+			$requestAdapter->setCookie($cookieName, json_encode($cookieData), $expire, $path, $domain, $secure, $httpOnly);
 
 		// cookie is already set but maybe we can refine it with __utmz data
 		// (second and subsequent requests)
-		} else if (isset($_COOKIE['__utmz'])) {
+		} else if ($requestAdapter->hasCookie('__utmz')) {
 			// get the existing cookie information
-			$cookieData = (array) json_decode($_COOKIE[$cookieName]);
+			$cookieData = (array) json_decode($requestAdapter->getCookie($cookieName));
 
 			// see if the cookie is baked
 			// it's baked when it has firstContact, referer and at least one other value
@@ -818,7 +845,7 @@ class CheddarGetter_Client {
 					// split the __utmz cookie on periods
 					list(
 						$domainHash, $timestamp, $sessionNumber, $campaignNumber, $campaignData
-					) = explode('.', $_COOKIE['__utmz']);
+					) = explode('.', $requestAdapter->getCookie('__utmz'));
 
 					// parse the data
 					parse_str(strtr($campaignData, "|", "&"));
@@ -837,10 +864,7 @@ class CheddarGetter_Client {
 						$cookieData['campaignContent'] = (isset($utmcct)) ? $utmcct : '';
 					}
 
-					if (!headers_sent()) {
-						// set the cookie again
-						return setcookie($cookieName, json_encode($cookieData), $expire, $path, $domain, $secure, $httpOnly);
-					}
+					$requestAdapter->setCookie($cookieName, json_encode($cookieData), $expire, $path, $domain, $secure, $httpOnly);
 				}
 			}
 		}
