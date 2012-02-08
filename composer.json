@@ -1,0 +1,21 @@
+{
+    "name":         "cheddar-getter/client",
+    "type":         "library",
+    "description":  "The official PHP client for the CheddarGetter API",
+    "keywords":     ["CheddarGetter"],
+    "homepage":     "https://cheddargetter.com/developers",
+    "license":      "MIT",
+    "authors":      [
+        {
+            "name":  "Marc Guyer",
+            "email": "marc@cheddargetter.com"
+        }
+    ],
+    "recommend":    {
+        "ext-curl": "*"
+    },
+    "autoload":     {
+        "psr-0": { "CheddarGetter_": "" }
+    },
+    "target-dir": "CheddarGetter"
+}
