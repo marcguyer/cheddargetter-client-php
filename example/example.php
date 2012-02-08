@@ -1,21 +1,28 @@
 <?php
 	require('../../CheddarGetter/Client.php');
 	require('../../CheddarGetter/Client/Exception.php');
+	require('../../CheddarGetter/Client/AdapterInterface.php');
+	require('../../CheddarGetter/Client/CurlAdapter.php');
+	require('../../CheddarGetter/Http/AdapterInterface.php');
+	require('../../CheddarGetter/Http/NativeAdapter.php');
 	require('../../CheddarGetter/Response.php');
 	require('../../CheddarGetter/Response/Exception.php');
-	
+	// These one are needed only if you want to use the ZF1 integration
+	require('../../CheddarGetter/Client/ZendAdapter.php');
+	require('../../CheddarGetter/Http/ZendAdapter.php');
+
 	$client = new CheddarGetter_Client(
 		'https://cheddargetter.com',
 		'your.username@example.com',
 		'your.password',
 		'YOUR_PRODUCT_CODE'
 	);
-	
+
 	echo "\n";
 	echo "****************************************************\n";
 	echo "** DELETING PREVIOUSLY CREATED EXAMPLE CUSTOMERS  **\n";
 	echo "****************************************************\n";
-	
+
 	// delete customers if they're already there
 	try {
 		$response = $client->deleteCustomer('MILTON_WADDAMS');
@@ -25,12 +32,12 @@
 		$response = $client->deleteCustomer('BILL_LUMBERG');
 		echo "\n\tDeleted Bill Lumberg\n";
 	} catch (Exception $e) {}
-	
+
 	echo "\n";
 	echo "****************************************************\n";
 	echo "** CREATE CUSTOMER ON THE FREE PLAN               **\n";
 	echo "****************************************************\n";
-	
+
 	// create a customer on a free plan
 	$data = array(
 		'code' 			=> 'MILTON_WADDAMS',
@@ -42,17 +49,17 @@
 		)
 	);
 	try {
-		$response = $client->newCustomer($data); 
+		$response = $client->newCustomer($data);
 		echo "\n\tCreated Milton Waddams with code=MILTON_WADDAMS\n";
 	} catch (Exception $e) {
-		echo "\n\t" . 'ERROR: (' . $e->getCode() . ') ' . $e->getMessage() . "\n"; 
+		echo "\n\t" . 'ERROR: (' . $e->getCode() . ') ' . $e->getMessage() . "\n";
 	}
-	
+
 	echo "\n";
 	echo "****************************************************\n";
 	echo "** SIMULATE ERROR CREATING CUSTOMER ON PAID PLAN  **\n";
 	echo "****************************************************\n";
-	
+
 	// try to create a customer on a paid plan (simulated error)
 	$data = array(
 		'code' 			=> 'BILL_LUMBERG',
@@ -70,7 +77,7 @@
 		)
 	);
 	try {
-		$response = $client->newCustomer($data); 
+		$response = $client->newCustomer($data);
 	} catch (CheddarGetter_Response_Exception $re) {
 		if ($re->getCode() == 412) { // missing fields or field format errors
 			echo "\n\tERROR - MISSING OR INVALID FIELDS:\n";
@@ -82,15 +89,15 @@
 			echo "\n\t" . 'ERROR: (' . $re->getCode() . ':' . $re->getAuxCode() . ') ' . $re->getMessage() . "\n";
 		}
 	} catch (Exception $e) {
-		echo "\n\t" . 'ERROR: (' . $e->getCode() . ') ' . $e->getMessage() . "\n"; 
+		echo "\n\t" . 'ERROR: (' . $e->getCode() . ') ' . $e->getMessage() . "\n";
 	}
-	
+
 	echo "\n";
 	echo "****************************************************\n";
 	echo "** CREATE CUSTOMER ON PAID PLAN AND GET CURRENT   **\n";
 	echo "** INVOICE INFORMATION                            **\n";
 	echo "****************************************************\n";
-	
+
 	$data = array(
 		'code' 			=> 'BILL_LUMBERG',
 		'firstName' 		=> 'Bill',
@@ -107,11 +114,11 @@
 		)
 	);
 	try {
-		$response = $client->newCustomer($data); 
+		$response = $client->newCustomer($data);
 	} catch (Exception $e) {
-		echo "\n\t" . 'ERROR: (' . $e->getCode() . ') ' . $e->getMessage() . "\n"; 
+		echo "\n\t" . 'ERROR: (' . $e->getCode() . ') ' . $e->getMessage() . "\n";
 	}
-	
+
 	// get lumberg and display current details
 	try {
 		$response = $client->getCustomer('BILL_LUMBERG');
@@ -119,15 +126,15 @@
 		$subscription = $response->getCustomerSubscription();
 		$plan = $response->getCustomerPlan();
 		$invoice = $response->getCustomerInvoice();
-		
+
 		echo "\n\t{$customer['firstName']} {$customer['lastName']}\n";
 		echo "\tPricing Plan: {$plan['name']}\n";
 		echo "\tPending Invoice Scheduled: " . date('m/d/Y') . "\n";
 		foreach ($invoice['charges'] as $chargeCode=>$charge) {
 			echo "\t\t({$charge['quantity']}) $chargeCode " . number_format($charge['eachAmount']*$charge['quantity'], 2) . "\n\n";
 		}
-		
+
 	} catch (Exception $e) {
-		echo "\n\t" . 'ERROR: (' . $e->getCode() . ') ' . $e->getMessage() . "\n"; 
+		echo "\n\t" . 'ERROR: (' . $e->getCode() . ') ' . $e->getMessage() . "\n";
 	}
-	
+
