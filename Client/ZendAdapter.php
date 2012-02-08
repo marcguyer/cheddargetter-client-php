@@ -53,9 +53,8 @@ class CheddarGetter_Client_ZendAdapter implements CheddarGetter_Client_AdapterIn
 				)
 			);
 		} else {
-			if ($this->_client->getUri() != $url) {
-				$this->_client->setUri($url);
-			}
+			$this->_client->setUri($url);
+			$this->_client->resetParameters();
 		}
 
 		$this->_client->setAuth($username, $password);
@@ -65,10 +64,11 @@ class CheddarGetter_Client_ZendAdapter implements CheddarGetter_Client_AdapterIn
 			$this->_client->setParameterPost($args);
 		} else {
 			$this->_client->setMethod(Zend_Http_Client::GET);
-			$this->_client->resetParameters();
 		}
 
-		return $this->_client->request()->getBody();
+		$response = $this->_client->request();
+
+		return $response->getBody();
 
 	}
 

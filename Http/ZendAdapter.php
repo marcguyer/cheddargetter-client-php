@@ -16,10 +16,13 @@
 
 class CheddarGetter_Http_ZendAdapter extends CheddarGetter_Http_NativeAdapter {
 
+	private $_request;
+
 	public function __construct() {
 		if (!class_exists('Zend_Controller_Front')) {
 			throw new CheddarGetter_Client_Exception('The Zend front controller is not available.', CheddarGetter_Client_Exception::USAGE_INVALID);
 		}
+		$this->_request = Zend_Controller_Front::getInstance()->getRequest();
 	}
 
 	/**
@@ -27,8 +30,59 @@ class CheddarGetter_Http_ZendAdapter extends CheddarGetter_Http_NativeAdapter {
 	 * @return mixed
 	 */
 	public function getRequestValue($key) {
-		$fc = Zend_Controller_Front::getInstance();
-
-		return $fc->getRequest()->getParam($key);
+		return $this->_request->getParam($key);
 	}
+
+	/**
+	 * Checks whether a cookie exists.
+	 *
+	 * @param string $name Cookie name
+	 * @return boolean
+	 */
+	function hasCookie($name) {
+		return $this->_request && $this->_request->getCookie($name) !== null;
+	}
+
+	/**
+	 * Gets the value of a cookie.
+	 *
+	 * @param string $name Cookie name
+	 * @return mixed
+	 */
+	function getCookie($name) {
+		return $this->_request && $this->_request->getCookie($name);
+	}
+
+	/**
+	 * Sets the value of a cookie.
+	 *
+	 * @param string $name Cookie name
+	 * @param string $data Value of the cookie
+	 * @param int $expire
+	 * @param string $path
+	 * @param string $domain
+	 * @param boolean $secure
+	 * @param boolean $httpOnly
+	 */
+	function setCookie($name, $data, $expire, $path, $domain, $secure = false, $httpOnly = false) {
+		if (!headers_sent()) {
+			// set the cookie
+			setcookie($name, $data, $expire, $path, $domain, $secure, $httpOnly);
+		}
+	}
+
+	/**
+	 * @return boolean
+	 */
+	function hasReferrer() {
+		return $this->_request->getServer('HTTP_REFERER') !== null;
+	}
+
+	/**
+	 * @return string
+	 */
+	function getReferrer() {
+		return $this->_request->getServer('HTTP_REFERER');
+	}
+
 }

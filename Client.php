@@ -81,7 +81,11 @@ class CheddarGetter_Client {
 		$this->setProductId($productId);
 
 		if (!$adapter) {
-			$adapter = new CheddarGetter_Client_CurlAdapter();
+			if (class_exists('Zend_Http_Client')) {
+				$adapter = new CheddarGetter_Client_ZendAdapter();
+			} else {
+				$adapter = new CheddarGetter_Client_CurlAdapter();
+			}
 		}
 		$this->_httpClient = $adapter;
 	}
@@ -732,7 +736,11 @@ class CheddarGetter_Client {
 	 */
 	static public function getRequestAdapter() {
 		if (!self::$_requestAdapter) {
-			self::$_requestAdapter = new CheddarGetter_Http_NativeAdapter();
+			if (class_exists('Zend_Controller_Front')) {
+				self::$_requestAdapter = new CheddarGetter_Http_ZendAdapter();
+			} else {
+				self::$_requestAdapter = new CheddarGetter_Http_NativeAdapter();
+			}
 		}
 
 		return self::$_requestAdapter;

@@ -17,8 +17,12 @@ If you use an autoloader, you're good.  If not, just require all the files like 
 	<?php
 		require('CheddarGetter/Client.php');
 		require('CheddarGetter/Client/Exception.php');
+		require('CheddarGetter/Client/AdapterInterface.php');
+		require('CheddarGetter/Client/CurlAdapter.php');
 		require('CheddarGetter/Response.php');
 		require('CheddarGetter/Response/Exception.php');
+		require('CheddarGetter/Http/AdapterInterface.php');
+		require('CheddarGetter/Http/NativeAdapter.php');
 	?>
 
 Then, just fire it up:
@@ -28,6 +32,24 @@ Then, just fire it up:
 		$customers = $client->getCustomers();
 		print_r($customers->toArray());
 		echo $customers->toJson();
+	?>
+
+ADVANCED USAGE
+--------------
+
+This wrapper uses a adapter pattern (thanks to [https://github.com/stof](https://github.com/stof)) so you can specify your own http adapter and super globals access adapter.  The default built-in adapter uses cUrl for http communication and direct access to super globals.  Also included are Zend Framework compatible adapters.  If you've created an adapter of your own that should be included, just send us a pull request from your fork.  Here's an example using the ZF1 adapter:
+
+	<?php
+		$client = new CheddarGetter_Client('https://theurlforcheddargetter.com', 'yourusername', 'yourpassword', 'yourproductcode', new CheddarGetter_Client_ZendAdapter());
+		$customers = $client->getCustomers();
+		print_r($customers->toArray());
+		echo $customers->toJson();
+	?>
+
+If you'd like to use your own (or any built-in) adapter for accessing request params and super globals and setting cookies, you can specify the adapter:
+
+	<?php
+		CheddarGetter_Client::setRequestAdapter(new CheddarGetter_Http_ZendAdapter());
 	?>
 
 DOCUMENTATION
