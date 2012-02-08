@@ -40,7 +40,7 @@ class CheddarGetter_Http_ZendAdapter extends CheddarGetter_Http_NativeAdapter {
 	 * @return boolean
 	 */
 	function hasCookie($name) {
-		return $this->_request && $this->_request->getCookie($name) !== null;
+		return $this->getCookie($name) !== null;
 	}
 
 	/**
@@ -50,25 +50,7 @@ class CheddarGetter_Http_ZendAdapter extends CheddarGetter_Http_NativeAdapter {
 	 * @return mixed
 	 */
 	function getCookie($name) {
-		return $this->_request && $this->_request->getCookie($name);
-	}
-
-	/**
-	 * Sets the value of a cookie.
-	 *
-	 * @param string $name Cookie name
-	 * @param string $data Value of the cookie
-	 * @param int $expire
-	 * @param string $path
-	 * @param string $domain
-	 * @param boolean $secure
-	 * @param boolean $httpOnly
-	 */
-	function setCookie($name, $data, $expire, $path, $domain, $secure = false, $httpOnly = false) {
-		if (!headers_sent()) {
-			// set the cookie
-			setcookie($name, $data, $expire, $path, $domain, $secure, $httpOnly);
-		}
+		return ($this->_request) ? $this->_request->getCookie($name) : null;
 	}
 
 	/**
