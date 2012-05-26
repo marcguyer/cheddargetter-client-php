@@ -66,6 +66,7 @@ class CheddarGetter_Client_CurlAdapter implements CheddarGetter_Client_AdapterIn
 		} else {
 			curl_setopt($this->_resource, CURLOPT_USERPWD, $username . ':' . $password);
 			curl_setopt($this->_resource, CURLOPT_HTTPGET, true);
+			curl_setopt($this->_resource, CURLOPT_URL, $url);
 		}
 
 		if ($args) {
