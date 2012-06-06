@@ -11,12 +11,12 @@
  * @package CheddarGetter
  * @author Marc Guyer <marc@cheddargetter.com>
  */
- 
+
 class CheddarGetter_Response extends DOMDocument {
-	
+
 	private $_responseType;
 	private $_array;
-	
+
 	/**
 	 * Constructor
 	 *
@@ -26,13 +26,13 @@ class CheddarGetter_Response extends DOMDocument {
 	public function __construct($response) {
 		$this->_array = null;
 		parent::__construct('1.0', 'UTF-8');
-		
+
 		if (!@$this->loadXML($response)) {
 			throw new CheddarGetter_Response_Exception("Response failed to load into the DOM.\n\n$response", CheddarGetter_Response_Exception::UNKNOWN);
 		}
-		
+
 		$this->_responseType = $this->documentElement->nodeName;
-		
+
 		$this->handleError();
 	}
 
@@ -44,7 +44,7 @@ class CheddarGetter_Response extends DOMDocument {
 	public function __wakeup() {
 		$this->loadXML( $this->_xml );
 	}
-	
+
 	/**
 	 * Get the response type for this request object -- usually corresponds to the root node name
 	 *
@@ -53,7 +53,7 @@ class CheddarGetter_Response extends DOMDocument {
 	public function getResponseType() {
 		return $this->_responseType;
 	}
-	
+
 	/**
 	 * Determine whether or not the response doc contains embedded errors
 	 *
@@ -63,7 +63,7 @@ class CheddarGetter_Response extends DOMDocument {
 		$arr = $this->toArray();
 		return isset($arr['errors']);
 	}
-	
+
 	/**
 	 * Get embedded errors if any
 	 *
@@ -76,7 +76,7 @@ class CheddarGetter_Response extends DOMDocument {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Get a nested array representation of the response doc
 	 *
@@ -99,9 +99,9 @@ class CheddarGetter_Response extends DOMDocument {
 		}
 		$this->_array = $this->_toArray($root->childNodes);
 		return $this->_array;
-		
+
 	}
-	
+
 	/**
 	 * Get a JSON encoded string representation of the response doc
 	 *
@@ -110,7 +110,7 @@ class CheddarGetter_Response extends DOMDocument {
 	public function toJson() {
 		return json_encode($this->toArray());
 	}
-	
+
 	/**
 	 * Recursive method to traverse the dom and produce an array
 	 *
@@ -133,27 +133,27 @@ class CheddarGetter_Response extends DOMDocument {
 					);
 				} else {
 					// in the case of custom charges, use the id for the key
-					if ($node->hasAttribute('code') && $node->getAttribute('code')) {  
+					if ($node->hasAttribute('code') && $node->getAttribute('code')) {
 						$key = $node->getAttribute('code');
-						
+
 						$tmpArr = array();
-						
+
 						if ($node->hasAttribute('id')) {
 							$tmpArr = array(
 								'id' => $node->getAttribute('id')
 							);
 						}
 						$tmpArr = $tmpArr + array('code'=>$key);
-						
+
 						// charges need to be a nested array since there can be multiple charges with the same charge code
 						if ($node->tagName == 'charge') {
 							$array[$key][] = $tmpArr;
 						} else {
 							$array[$key] = $tmpArr;
 						}
-						
+
 						unset($tmpArr);
-						
+
 					} else {
 						$key = $node->getAttribute('id');
 						$array[$key] = array('id' => $node->getAttribute('id'));
@@ -172,7 +172,7 @@ class CheddarGetter_Response extends DOMDocument {
 		}
 		return $array;
 	}
-	
+
 	/**
 	 * Get an array representation of a single plan node
 	 *
@@ -193,7 +193,7 @@ class CheddarGetter_Response extends DOMDocument {
 		$array = $this->toArray();
 		return $array[$code];
 	}
-	
+
 	/**
 	 * Get an array representation of all of the plan items
 	 *
@@ -205,7 +205,7 @@ class CheddarGetter_Response extends DOMDocument {
 		$plan = $this->getPlan($code);
 		return $plan['items'];
 	}
-	
+
 	/**
 	 * Get an array representation of a single plan item node
 	 *
@@ -224,7 +224,28 @@ class CheddarGetter_Response extends DOMDocument {
 		}
 		return $items[$itemCode];
 	}
-	
+
+	/**
+	 * Get an array representation of a single promotion node
+	 *
+	 * @param $couponCode string your code for the coupon within the promotion - required if more than one promotion is in the response
+	 * @throws CheddarGetter_Response_Exception if the response type is incompatible or if a $code is not provided and the response contains more than one promotion
+	 * @return array
+	 */
+	public function getPromotion($couponCode = null) {
+		if ($this->getResponseType() != 'promotions') {
+			throw new CheddarGetter_Response_Exception("Can't get a promotion from a response doc that isn't of type 'promotions'", CheddarGetter_Response_Exception::USAGE_INVALID);
+		}
+		if (!$couponCode && $this->getElementsByTagName('promotion')->length > 1) {
+			throw new CheddarGetter_Response_Exception("This response contains more than one promotion so you need to provide the coupon code for the promotion you wish to get", CheddarGetter_Response_Exception::USAGE_INVALID);
+		}
+		if (!$couponCode) {
+			return current($this->toArray());
+		}
+		$array = $this->toArray();
+		return $array[$couponCode];
+	}
+
 	/**
 	 * Get an array representation of a single customer node
 	 *
@@ -245,7 +266,7 @@ class CheddarGetter_Response extends DOMDocument {
 		$array = $this->toArray();
 		return $array[$code];
 	}
-	
+
 	/**
 	 * Get an array representation of a single customer's current subscription
 	 *
@@ -257,7 +278,7 @@ class CheddarGetter_Response extends DOMDocument {
 		$subscriptions = $this->getCustomerSubscriptions($code);
 		return current($subscriptions);
 	}
-	
+
 	/**
 	 * Whether or not a customer's subscription is active and in good standing
 	 *
@@ -281,7 +302,7 @@ class CheddarGetter_Response extends DOMDocument {
 		}
 		return true;
 	}
-	
+
 	/**
 	 * Is this customer's account pending paypal preapproval confirmation?
 	 *
@@ -300,7 +321,7 @@ class CheddarGetter_Response extends DOMDocument {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Get an array representation of a single customer's subscriptions (history)
 	 *
@@ -312,7 +333,7 @@ class CheddarGetter_Response extends DOMDocument {
 		$customer = $this->getCustomer($code);
 		return $customer['subscriptions'];
 	}
-	
+
 	/**
 	 * Get an array representation of a single customer's currently subscribed plan
 	 *
@@ -324,7 +345,7 @@ class CheddarGetter_Response extends DOMDocument {
 		$subscription = $this->getCustomerSubscription($code);
 		return current($subscription['plans']);
 	}
-	
+
 	/**
 	 * Get an array representation of a single customer's current invoice
 	 *
@@ -336,7 +357,7 @@ class CheddarGetter_Response extends DOMDocument {
 		$subscription = $this->getCustomerSubscription($code);
 		return current($subscription['invoices']);
 	}
-	
+
 	/**
 	 * Get an array representation of a single customer's current invoice
 	 *
@@ -348,7 +369,7 @@ class CheddarGetter_Response extends DOMDocument {
 		$invoices = $this->getCustomerInvoices($code);
 		return current(array_slice($invoices, 1, 1));
 	}
-	
+
 	/**
 	 * Get an array representation of a single customer's outstanding invoices
 	 *
@@ -368,7 +389,7 @@ class CheddarGetter_Response extends DOMDocument {
 		}
 		return $invoices;
 	}
-	
+
 	/**
 	 * Get an array representation of a single customer's transactions
 	 *
@@ -392,7 +413,7 @@ class CheddarGetter_Response extends DOMDocument {
 		}
 		return $txns;
 	}
-	
+
 	/**
 	 * Get an array representation of a single customer's last transaction (successful or otherwise)
 	 *
@@ -407,7 +428,7 @@ class CheddarGetter_Response extends DOMDocument {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Get an array representation of a single customer's outstanding invoices
 	 *
@@ -428,7 +449,7 @@ class CheddarGetter_Response extends DOMDocument {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Get an array of a customer's item quantity and quantity included
 	 *
@@ -455,7 +476,7 @@ class CheddarGetter_Response extends DOMDocument {
 			'quantity' => $itemQuantity
 		);
 	}
-	
+
 	/**
 	 * Get remaining quantity (quantity included minus current quantity)
 	 *
@@ -468,7 +489,7 @@ class CheddarGetter_Response extends DOMDocument {
 		$item = $this->getCustomerItemQuantity($code, $itemCode);
 		return $item['item']['quantityIncluded'] - $item['quantity']['quantity'];
 	}
-	
+
 	/**
 	 * Get quantity usage greater than included quantity
 	 *
@@ -484,7 +505,7 @@ class CheddarGetter_Response extends DOMDocument {
 		}
 		return abs($remaining);
 	}
-	
+
 	/**
 	 * Get current item overage cost
 	 *
@@ -501,14 +522,14 @@ class CheddarGetter_Response extends DOMDocument {
 		}
 		return 0;
 	}
-	
+
 	public function handleError() {
 		if ($this->_responseType == 'error') {
 			throw new CheddarGetter_Response_Exception($this->documentElement->firstChild->nodeValue, $this->documentElement->getAttribute('code'), $this->documentElement->getAttribute('id'), $this->documentElement->getAttribute('auxCode'));
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Checks for embedded errors and if found, throws an exception containing the first error
 	 *
@@ -522,17 +543,17 @@ class CheddarGetter_Response extends DOMDocument {
 			$errors = $this->getEmbeddedErrors();
 			$error = $errors[0];
 			throw new CheddarGetter_Response_Exception(
-				$error['message'], 
-				$error['code'], 
-				$error['id'], 
+				$error['message'],
+				$error['code'],
+				$error['id'],
 				$error['auxCode']
 			);
 		}
 		return false;
 	}
-	
+
 	public function __toString() {
 		return $this->saveXML();
 	}
-	
+
 }

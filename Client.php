@@ -667,6 +667,36 @@ class CheddarGetter_Client {
 	}
 
 	/**
+	 * Get promotions
+	 *
+	 * Get all promotions in the product.
+	 *
+	 * @link https://cheddargetter.com/developers#all-promotions
+	 * @param array|null $filters
+	 * @return CheddarGetter_Response
+	 * @throws CheddarGetter_Response_Exception
+	 */
+	public function getPromotions(array $filters = null) {
+		return new CheddarGetter_Response( $this->request('/promotions/get', $filters) );
+	}
+
+	/**
+	 * Get a single promotion
+	 *
+	 * @link https://cheddargetter.com/developers#single-promotion
+	 * @param string $code Coupon code
+	 * @param string|null $id CG id for the promotion
+	 * @return CheddarGetter_Response
+	 * @throws CheddarGetter_Response_Exception
+	 */
+	public function getPromotion($code, $id = null) {
+		$this->_requireIdentifier($code, $id);
+		return new CheddarGetter_Response(
+			$this->request('/promotions/get' . (($id) ? '/id/'.$id : ''), array('couponCodes' => array($code)) )
+		);
+	}
+
+	/**
 	 * Execute CheddarGetter API request
 	 *
 	 * @param string $path Path to the API action
