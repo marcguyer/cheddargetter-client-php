@@ -692,7 +692,7 @@ class CheddarGetter_Client {
 	public function getPromotion($code, $id = null) {
 		$this->_requireIdentifier($code, $id);
 		return new CheddarGetter_Response(
-			$this->request('/promotions/get' . (($id) ? '/id/'.$id : ''), array('couponCodes' => array($code)) )
+			$this->request('/promotions/get' . (($id) ? '/id/'.$id : '/code/' . urlencode($code)))
 		);
 	}
 
