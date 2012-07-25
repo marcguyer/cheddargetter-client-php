@@ -63,4 +63,15 @@ interface CheddarGetter_Http_AdapterInterface {
 	 * @return string
 	 */
 	function getReferrer();
+
+	/**
+	 * @return boolean
+	 */
+	function hasIp();
+
+	/**
+	 * @return string
+	 */
+	function getIp();
+
 }

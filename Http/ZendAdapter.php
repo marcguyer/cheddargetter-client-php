@@ -67,4 +67,18 @@ class CheddarGetter_Http_ZendAdapter extends CheddarGetter_Http_NativeAdapter {
 		return $this->_request->getServer('HTTP_REFERER');
 	}
 
+	/**
+	 * @return boolean
+	 */
+	public function hasIp() {
+		return $this->_request->getServer('REMOTE_ADDR') !== null;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getIp() {
+		return $this->hasIp() ? $this->_request->getServer('REMOTE_ADDR') : '';
+	}
+
 }

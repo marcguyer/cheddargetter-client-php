@@ -65,13 +65,27 @@ class CheddarGetter_Http_NativeAdapter implements CheddarGetter_Http_AdapterInte
 	 * @return boolean
 	 */
 	public function hasReferrer() {
-		return isset($_SERVER['HTTP_REFERER']);
+		return !empty($_SERVER['HTTP_REFERER']);
 	}
 
 	/**
 	 * @return string
 	 */
 	public function getReferrer() {
-		return $_SERVER['HTTP_REFERER'];
+		return $this->hasReferrer() ? $_SERVER['HTTP_REFERER'] : '';
+	}
+
+	/**
+	 * @return boolean
+	 */
+	public function hasIp() {
+		return !empty($_SERVER['REMOTE_ADDR']);
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getIp() {
+		return $this->hasIp() ? $_SERVER['REMOTE_ADDR'] : '';
 	}
 }

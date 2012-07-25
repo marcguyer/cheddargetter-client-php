@@ -712,6 +712,17 @@ class CheddarGetter_Client {
 			$url .= '/productCode/' . urlencode($this->getProductCode());
 		}
 
+		if (self::getRequestAdapter()->hasIp()) {
+			if (!empty($args) && empty($args['remoteAddress'])) {
+				$args['remoteAddress'] = self::getRequestAdapter()->getIp();
+			} else if (count($args) == 1 && !empty($args['remoteAddress'])) {
+				$url .= '/remoteAddress/' . $args['remoteAddress'];
+				unset($args['remoteAddress']);
+			} else {
+				$url .= '/remoteAddress/' . self::getRequestAdapter()->getIp();
+			}
+		}
+
 		return $this->_httpClient->request($url, $this->getUsername(), $this->_getPassword(), $args);
 	}
 
