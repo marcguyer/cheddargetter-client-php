@@ -19,10 +19,18 @@ class CheddarGetter_Http_ZendAdapter extends CheddarGetter_Http_NativeAdapter {
 	private $_request;
 
 	public function __construct() {
+
+	}
+
+	private function _request() {
+		if ($this->_request) {
+			return $this->_request;
+		}
 		if (!class_exists('Zend_Controller_Front')) {
 			throw new CheddarGetter_Client_Exception('The Zend front controller is not available.', CheddarGetter_Client_Exception::USAGE_INVALID);
 		}
 		$this->_request = Zend_Controller_Front::getInstance()->getRequest();
+		return $this->_request;
 	}
 
 	/**
@@ -30,7 +38,7 @@ class CheddarGetter_Http_ZendAdapter extends CheddarGetter_Http_NativeAdapter {
 	 * @return mixed
 	 */
 	public function getRequestValue($key) {
-		return $this->_request->getParam($key);
+		return $this->_request() ? $this->_request()->getParam($key) : null;
 	}
 
 	/**
@@ -40,7 +48,7 @@ class CheddarGetter_Http_ZendAdapter extends CheddarGetter_Http_NativeAdapter {
 	 * @return boolean
 	 */
 	function hasCookie($name) {
-		return $this->getCookie($name) !== null;
+		return (bool) $this->getCookie($name);
 	}
 
 	/**
@@ -50,35 +58,35 @@ class CheddarGetter_Http_ZendAdapter extends CheddarGetter_Http_NativeAdapter {
 	 * @return mixed
 	 */
 	function getCookie($name) {
-		return ($this->_request) ? $this->_request->getCookie($name) : null;
+		return $this->_request() ? $this->_request()->getCookie($name) : null;
 	}
 
 	/**
 	 * @return boolean
 	 */
 	function hasReferrer() {
-		return $this->_request->getServer('HTTP_REFERER') !== null;
+		return $this->_request() ? (bool) $this->_request()->getServer('HTTP_REFERER') : false;
 	}
 
 	/**
 	 * @return string
 	 */
 	function getReferrer() {
-		return $this->_request->getServer('HTTP_REFERER');
+		return $this->_request() ? $this->_request()->getServer('HTTP_REFERER') : null;
 	}
 
 	/**
 	 * @return boolean
 	 */
 	public function hasIp() {
-		return $this->_request->getServer('REMOTE_ADDR') !== null;
+		return $this->_request() ? (bool) $this->_request()->getServer('REMOTE_ADDR') : false;
 	}
 
 	/**
 	 * @return string
 	 */
 	public function getIp() {
-		return $this->hasIp() ? $this->_request->getServer('REMOTE_ADDR') : '';
+		return $this->hasIp() ? $this->_request()->getServer('REMOTE_ADDR') : '';
 	}
 
 }
