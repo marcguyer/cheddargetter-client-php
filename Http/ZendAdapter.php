@@ -19,15 +19,14 @@ class CheddarGetter_Http_ZendAdapter extends CheddarGetter_Http_NativeAdapter {
 	private $_request;
 
 	public function __construct() {
-
+		if (!class_exists('Zend_Controller_Front')) {
+			throw new CheddarGetter_Client_Exception('The Zend front controller is not available.', CheddarGetter_Client_Exception::USAGE_INVALID);
+		}
 	}
 
 	private function _request() {
 		if ($this->_request) {
 			return $this->_request;
-		}
-		if (!class_exists('Zend_Controller_Front')) {
-			throw new CheddarGetter_Client_Exception('The Zend front controller is not available.', CheddarGetter_Client_Exception::USAGE_INVALID);
 		}
 		$this->_request = Zend_Controller_Front::getInstance()->getRequest();
 		return $this->_request;
