@@ -63,6 +63,12 @@ class CheddarGetter_Client {
 	private $_httpClient;
 
 	/**
+	 * @var Do we use caching?
+	 */
+	private $_caching = false;
+	
+	
+	/**
 	 * Constructor
 	 *
 	 * @param $url string
@@ -88,6 +94,37 @@ class CheddarGetter_Client {
 			}
 		}
 		$this->_httpClient = $adapter;
+	}
+	
+	//TODO document
+	public function turnOnCaching()
+	{
+		$this->_caching = true;
+	}
+	public function turnOffCaching()
+	{
+		$this->_caching = false;
+	}
+	public function cache($key, $value)
+	{
+		//TODO detect type of caching (memcache, session, etc)
+		if(!isset($_SESSION["CGCaching"]))
+			$_SESSION["CGCaching"] = array();
+		
+		$_SESSION["CGCaching"][$key] = $value;	
+		
+	}
+	public function getCached($key)
+	{
+		$value = false;
+		if(isset($_SESSION["CGCaching"][$key]))
+			$value = $_SESSION["CGCaching"][$key];
+		
+		return $value;
+	}
+	public function emptyCache()
+	{
+		unset( $_SESSION["CGCaching"] );
 	}
 
 	/**
@@ -362,9 +399,31 @@ class CheddarGetter_Client {
 	 */
 	public function getCustomer($code, $id = null) {
 		$this->_requireIdentifier($code, $id);
-		return new CheddarGetter_Response(
-			$this->request('/customers/get/' . (($id) ? 'id/'.$id : 'code/'.urlencode($code)) )
-		);
+		
+		$response  = null;
+		$useCache = $this->_caching; //do we want to used a cached version?
+		$key = false;
+		
+		if($useCache)
+		{
+			$key = "customer_get_".$id."_".$code;
+			$response = $this->getCached($key);
+			if(!$response)
+				$useCache = false;
+		}	
+		
+		if(!$useCache)
+		{
+			$response = new CheddarGetter_Response(
+				$this->request('/customers/get/' . (($id) ? 'id/'.$id : 'code/'.urlencode($code)) )
+			);
+			
+			//if key is not false, we've tried to use cached version, but it didn't exist yet
+			if($key)
+				$this->cache($key, $response);
+		}
+		
+		return $response;
 	}
 
 	/**
@@ -705,6 +764,8 @@ class CheddarGetter_Client {
 	 * @throws CheddarGetter_Client_Exception
 	 */
 	protected function request($path, array $args = null) {
+		
+echo "made request\n";
 		$url = $this->_url . '/xml' . $path;
 		if ($this->getProductId()) {
 			$url .= '/productId/' . urlencode($this->getProductId());
