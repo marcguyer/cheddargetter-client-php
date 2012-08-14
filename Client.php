@@ -113,9 +113,17 @@ class CheddarGetter_Client {
 		
 		$_SESSION["CGCaching"][$key] = $value;	
 		
+	}	
+	public function decache($key)
+	{
+		//TODO detect type of caching (memcache, session, etc)
+		if(!isset($_SESSION["CGCaching"][$key]))
+			unset($_SESSION["CGCaching"][$key]);
+		
 	}
 	public function getCached($key)
 	{
+		echo "\nget cached\n";
 		$value = false;
 		if(isset($_SESSION["CGCaching"][$key]))
 			$value = $_SESSION["CGCaching"][$key];
@@ -397,35 +405,43 @@ class CheddarGetter_Client {
 	 * @return CheddarGetter_Response
 	 * @throws CheddarGetter_Response_Exception
 	 */
-	public function getCustomer($code, $id = null) {
+	public function getCustomer($code, $id = null, $recache = false) {
 		$this->_requireIdentifier($code, $id);
 		
 		$response  = null;
 		$useCache = $this->_caching; //do we want to used a cached version?
-		$key = false;
+		$key = "customer_get_".$code;//."_".$id;
 		
-		if($useCache)
+		//if caching is turned on and we're not refreshing
+		if($useCache && !$recache)
 		{
-			$key = "customer_get_".$id."_".$code;
+			//get the cached response
 			$response = $this->getCached($key);
+			//if there isn't a cached response, we're not going to use it
 			if(!$response)
 				$useCache = false;
+			//	echo $key;
 		}	
-		
-		if(!$useCache)
+		//print_r($key);
+		//if we're not using the cached version, or if we're recaching
+		if(!$useCache || $recache)
 		{
+			//echo $key;
+			//get a new response
 			$response = new CheddarGetter_Response(
 				$this->request('/customers/get/' . (($id) ? 'id/'.$id : 'code/'.urlencode($code)) )
 			);
 			
-			//if key is not false, we've tried to use cached version, but it didn't exist yet
-			if($key)
+			//if caching is turned on
+			if($this->_caching)
+			{
+				//cache the response
 				$this->cache($key, $response);
+			}
 		}
-		
 		return $response;
 	}
-
+	
 	/**
 	 * Get all customers
 	 *
@@ -494,12 +510,24 @@ class CheddarGetter_Client {
 	 */
 	public function editCustomer($code, $id = null, array $data) {
 		$this->_requireIdentifier($code, $id);
-		return new CheddarGetter_Response(
+		
+		$response =  new CheddarGetter_Response(
 			$this->request(
 				'/customers/edit/' . (($id) ? 'id/'.$id : 'code/'.urlencode($code)),
 				$data
 			)
 		);
+		
+		
+		//if caching is turned on
+		if($this->_caching)
+		{
+			//recache the customer that we just edited
+			$this->cache("customer_get_".$code, $response);
+			//$this->getCustomer($code, $id, true);
+		}
+		
+		return $response;	
 	}
 
 	/**
@@ -514,12 +542,20 @@ class CheddarGetter_Client {
 	 */
 	public function editCustomerOnly($code, $id = null, array $data) {
 		$this->_requireIdentifier($code, $id);
-		return new CheddarGetter_Response(
+		$response = new CheddarGetter_Response(
 			$this->request(
 				'/customers/edit-customer/' . (($id) ? 'id/'.$id : 'code/'.urlencode($code)),
 				$data
 			)
 		);
+		
+		//if we use caching, we'll have to re-get the customer after every edit
+		if($this->_caching)
+		{
+			$this->getCustomer($code, $id, true);
+		}
+		
+		return $response;	
 	}
 
 	/**
@@ -533,11 +569,20 @@ class CheddarGetter_Client {
 	 */
 	public function deleteCustomer($code, $id = null) {
 		$this->_requireIdentifier($code, $id);
-		return new CheddarGetter_Response(
+		$response = new CheddarGetter_Response(
 			$this->request(
 				'/customers/delete/' . (($id) ? 'id/'.$id : 'code/'.urlencode($code))
 			)
-		);
+		);	
+		
+		//if we use caching, we'll have to uncache this customer after every edit
+		if($this->_caching)
+		{
+			$this->decache("customer_get_".$code."_".$id);
+		}
+		
+		return $response;
+		
 	}
 
 	/**
@@ -573,12 +618,20 @@ class CheddarGetter_Client {
 	 */
 	public function editSubscription($code, $id = null, array $data) {
 		$this->_requireIdentifier($code, $id);
-		return new CheddarGetter_Response(
+		$response = new CheddarGetter_Response(
 			$this->request(
 				'/customers/edit-subscription/' . (($id) ? 'id/'.$id : 'code/'.urlencode($code)),
 				$data
 			)
 		);
+		
+		//if we use caching, we'll have to re-get the customer after every edit
+		if($this->_caching)
+		{
+			$this->getCustomer($code, $id, true);
+		}
+		
+		return $response;	
 	}
 
 	/**
@@ -597,6 +650,14 @@ class CheddarGetter_Client {
 				'/customers/cancel/' . (($id) ? 'id/'.$id : 'code/'.urlencode($code))
 			)
 		);
+		
+		//if we use caching, we'll have to re-get the customer after every edit
+		if($this->_caching)
+		{
+			$this->getCustomer($code, $id, true);
+		}
+		
+		return $response;	
 	}
 
 	/**
@@ -617,6 +678,14 @@ class CheddarGetter_Client {
 				$data
 			)
 		);
+		
+		//if we use caching, we'll have to re-get the customer after every edit
+		if($this->_caching)
+		{
+			$this->getCustomer($code, $id, true);
+		}
+		
+		return $response;	
 	}
 
 	/**
@@ -637,6 +706,14 @@ class CheddarGetter_Client {
 				$data
 			)
 		);
+		
+		//if we use caching, we'll have to re-get the customer after every edit
+		if($this->_caching)
+		{
+			$this->getCustomer($code, $id, true);
+		}
+		
+		return $response;	
 	}
 
 	/**
@@ -657,6 +734,14 @@ class CheddarGetter_Client {
 				$data
 			)
 		);
+		
+		//if we use caching, we'll have to re-get the customer after every edit
+		if($this->_caching)
+		{
+			$this->getCustomer($code, $id, true);
+		}
+		
+		return $response;	
 	}
 
 	/**
@@ -679,6 +764,14 @@ class CheddarGetter_Client {
 				$data
 			)
 		);
+		
+		//if we use caching, we'll have to re-get the customer after every edit
+		if($this->_caching)
+		{
+			$this->getCustomer($code, $id, true);
+		}
+		
+		return $response;	
 	}
 
 	/**
@@ -701,6 +794,14 @@ class CheddarGetter_Client {
 				$data
 			)
 		);
+		
+		//if we use caching, we'll have to re-get the customer after every edit
+		if($this->_caching)
+		{
+			$this->getCustomer($code, $id, true);
+		}
+		
+		return $response;	
 	}
 
 	/**
@@ -723,6 +824,14 @@ class CheddarGetter_Client {
 				$data
 			)
 		);
+		
+		//if we use caching, we'll have to re-get the customer after every edit
+		if($this->_caching)
+		{
+			$this->getCustomer($code, $id, true);
+		}
+		
+		return $response;	
 	}
 
 	/**
@@ -765,7 +874,7 @@ class CheddarGetter_Client {
 	 */
 	protected function request($path, array $args = null) {
 		
-echo "made request\n";
+			echo "made request\n";
 		$url = $this->_url . '/xml' . $path;
 		if ($this->getProductId()) {
 			$url .= '/productId/' . urlencode($this->getProductId());
