@@ -67,6 +67,11 @@ class CheddarGetter_Client {
 	 */
 	private $_caching = false;
 	
+	/**
+	 * What kind of caching should we use?
+	 */
+	private $_cacheType = false;
+	
 	
 	/**
 	 * Constructor
@@ -99,11 +104,20 @@ class CheddarGetter_Client {
 	//TODO document
 	public function turnOnCaching()
 	{
+		$this->detectCacheType();
+		if($this->_cacheType == false)
+		{
+			throw new CheddarGetter_Client_Exception("Memcache, APC, and Sessions are unavailable on this system and caching cannot be turned on.", CheddarGetter_Client_Exception::UNKNOWN);
+			$this->_caching = false;
+			return $this->_caching;
+		}
 		$this->_caching = true;
+		return $this->_caching;
 	}
 	public function turnOffCaching()
 	{
 		$this->_caching = false;
+		return $this->_caching;
 	}
 	public function cache($key, $value)
 	{
@@ -121,9 +135,21 @@ class CheddarGetter_Client {
 			unset($_SESSION["CGCaching"][$key]);
 		
 	}
+	public function detectCacheType()
+	{
+		if(isset($_SESSION))
+		{
+			$this->_cacheType = "session";
+		}
+		else
+		{
+			$this->_cacheType = false;
+		}
+		return $this->_cacheType;
+	}
 	public function getCached($key)
 	{
-		echo "\nget cached\n";
+		//echo "\nget cached\n";
 		$value = false;
 		if(isset($_SESSION["CGCaching"][$key]))
 			$value = $_SESSION["CGCaching"][$key];
@@ -874,7 +900,7 @@ class CheddarGetter_Client {
 	 */
 	protected function request($path, array $args = null) {
 		
-			echo "made request\n";
+		//	echo "made request\n";
 		$url = $this->_url . '/xml' . $path;
 		if ($this->getProductId()) {
 			$url .= '/productId/' . urlencode($this->getProductId());
