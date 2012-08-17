@@ -72,6 +72,11 @@ class CheddarGetter_Client {
 	 */
 	private $_cacheType = false;
 	
+	/**
+	 * If $_cacheType is memcache, then the link to the server will be here.
+	 */
+	public $_mcs = false;
+	
 	
 	/**
 	 * Constructor
@@ -135,6 +140,8 @@ class CheddarGetter_Client {
 			
 			break;
 			case "memcache" :
+				$key = "CGCaching_".$key;
+				$this->_mcs->set($key, $value);
 			break;
 			default:
 				return false;
@@ -156,12 +163,23 @@ class CheddarGetter_Client {
 				$key = "CGCaching_".$key;
 				apc_delete($key);
 			break;
+			case "memcache" :
+				$key = "CGCaching_".$key;
+				$this->_mcs->delete($key);
+			break;
+			default: return false;
 				
 		}
 	}
 	public function detectCacheType()
 	{
-		if(function_exists("apc_fetch"))
+		if(extension_loaded("memcache"))
+		{
+			$this->_cacheType = "memcache";
+			$this->_mcs = new Memcache;
+			$this->_mcs->connect("localhost");
+		}
+		else if(function_exists("apc_fetch"))
 		{
 			$this->_cacheType = "APC";
 		} 
@@ -191,6 +209,12 @@ class CheddarGetter_Client {
 				if(apc_fetch($key))
 					$value = apc_fetch($key);
 			break;
+			case "memcache" :
+				$key = "CGCaching_".$key;
+				if($this->_mcs->get($key))
+					$value = $this->_mcs->get($key);
+			break;
+			default: return false;
 				
 		}
 		echo "\nGot Cached\n";
@@ -198,7 +222,23 @@ class CheddarGetter_Client {
 	}
 	public function emptyCache()
 	{
-		unset( $_SESSION["CGCaching"] );
+		switch($this->_cacheType)
+		{
+			case "session" : 
+				unset( $_SESSION["CGCaching"] );
+			break;
+			case "APC" :
+				$cache = apc_cache_info("user");
+				$cachelist = $cache["cache_list"];
+				foreach($cachelist as $key => $val)
+				{
+					if(substr($val["info"], 0, 9) == "CGCaching")
+					{
+						apc_delete($val["info"]);
+					}
+				}
+			break;
+		}
 	}
 
 	/**
