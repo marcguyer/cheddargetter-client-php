@@ -122,22 +122,50 @@ class CheddarGetter_Client {
 	public function cache($key, $value)
 	{
 		//TODO detect type of caching (memcache, session, etc)
-		if(!isset($_SESSION["CGCaching"]))
-			$_SESSION["CGCaching"] = array();
+		switch($this->_cacheType)
+		{
+			case "session" :
+				if(!isset($_SESSION["CGCaching"]))
+					$_SESSION["CGCaching"] = array();
+				$_SESSION["CGCaching"][$key] = $value;	
+			break;
+			case "APC" :
+				$key = "CGCaching_".$key;
+				apc_store($key, $value);
+			
+			break;
+			case "memcache" :
+			break;
+			default:
+				return false;
+			break;
+		}
 		
-		$_SESSION["CGCaching"][$key] = $value;	
 		
 	}	
 	public function decache($key)
 	{
-		//TODO detect type of caching (memcache, session, etc)
-		if(!isset($_SESSION["CGCaching"][$key]))
-			unset($_SESSION["CGCaching"][$key]);
-		
+		switch($this->_cacheType)
+		{
+			case "session" :
+			//TODO detect type of caching (memcache, session, etc)
+				if(!isset($_SESSION["CGCaching"][$key]))
+					unset($_SESSION["CGCaching"][$key]);
+			break;
+			case "APC" :
+				$key = "CGCaching_".$key;
+				apc_delete($key);
+			break;
+				
+		}
 	}
 	public function detectCacheType()
 	{
-		if(isset($_SESSION))
+		if(function_exists("apc_fetch"))
+		{
+			$this->_cacheType = "APC";
+		} 
+		else if(isset($_SESSION))
 		{
 			$this->_cacheType = "session";
 		}
@@ -145,15 +173,27 @@ class CheddarGetter_Client {
 		{
 			$this->_cacheType = false;
 		}
+		echo "\nUsing ".$this->_cacheType."\n";
 		return $this->_cacheType;
 	}
 	public function getCached($key)
 	{
 		//echo "\nget cached\n";
 		$value = false;
-		if(isset($_SESSION["CGCaching"][$key]))
-			$value = $_SESSION["CGCaching"][$key];
-		
+		switch($this->_cacheType)
+		{
+			case "session" :
+				if(isset($_SESSION["CGCaching"][$key]))
+				$value = $_SESSION["CGCaching"][$key];
+			break;
+			case "APC" :
+				$key = "CGCaching_".$key;
+				if(apc_fetch($key))
+					$value = apc_fetch($key);
+			break;
+				
+		}
+		echo "\nGot Cached\n";
 		return $value;
 	}
 	public function emptyCache()
@@ -900,7 +940,7 @@ class CheddarGetter_Client {
 	 */
 	protected function request($path, array $args = null) {
 		
-		//	echo "made request\n";
+			echo "\nmade request\n";
 		$url = $this->_url . '/xml' . $path;
 		if ($this->getProductId()) {
 			$url .= '/productId/' . urlencode($this->getProductId());
