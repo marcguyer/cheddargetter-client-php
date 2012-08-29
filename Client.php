@@ -98,26 +98,7 @@ class CheddarGetter_Client {
 		}
 		$this->_httpClient = $adapter;
 		
-		/*	if(extension_loaded("memcache"))
-		{
-			$this->_cacheType = "memcache";
-			$this->_mcs = new Memcache;
-			$this->_mcs->connect("localhost");
-		}
-		else if(function_exists("apc_fetch"))
-		{
-			$this->_cacheType = "APC";
-		} 
-else */
-		if(isset($_SESSION))
-		{
-			$this->_cache = new CheddarGetter_Cache_SessionAdapter();
-		}
-		else
-		{
-			$this->_cache = false;
-			//issue warning
-		}	
+		$this->detectCacheType();
 		
 		
 		if($caching)
@@ -130,7 +111,7 @@ else */
 	public function turnOnCaching()
 	{
 		$this->detectCacheType();
-		if($this->_cacheType == false)
+		if($this->_cache == false)
 		{
 			throw new CheddarGetter_Client_Exception("Memcache, APC, and Sessions are unavailable on this system and caching cannot be turned on.", CheddarGetter_Client_Exception::UNKNOWN);
 			$this->_caching = false;
@@ -195,24 +176,25 @@ else */
 	{
 		if(extension_loaded("memcache"))
 		{
-			$this->_cacheType = "memcache";
-			$this->_mcs = new Memcache;
-			$this->_mcs->connect("localhost");
+			//$this->_cacheType = "memcache";
+			//$this->_mcs = new Memcache;
+			//$this->_mcs->connect("localhost");
+			$this->_cache = new CheddarGetter_Cache_MemcacheAdapter();
 		}
 		else if(function_exists("apc_fetch"))
 		{
-			$this->_cacheType = "APC";
+			$$this->_cache = new CheddarGetter_Cache_ApcAdapter();
 		} 
 		else if(isset($_SESSION))
 		{
-			$this->_cacheType = "session";
+			$this->_cache = new CheddarGetter_Cache_SessionAdapter();
 		}
 		else
 		{
-			$this->_cacheType = false;
-		}
-		//echo "\nUsing ".$this->_cacheType."\n";
-		return $this->_cacheType;
+			$this->_cache = false;
+			//issue warning
+		}	
+		return $this->_cache;
 	}
 	/*
 	public function getCached($key)
@@ -432,17 +414,14 @@ else */
 		if($useCache && !$recache)
 		{
 			//get the cached response
-			$response = $this->getCached($key);
+			$response = $this->_cache->load($key);
 			//if there isn't a cached response, we're not going to use it
 			if(!$response)
 				$useCache = false;
-			//	echo $key;
 		}	
-		//print_r($key);
 		//if we're not using the cached version, or if we're recaching
 		if(!$useCache || $recache)
 		{
-			//echo $key;
 			//get a new response
 			$response = new CheddarGetter_Response( $this->request('/plans/get', $filters) );
 			
@@ -450,7 +429,7 @@ else */
 			if($this->_caching)
 			{
 				//cache the response
-				$this->cache($key, $response);
+				$this->_cache->save($key, $response);
 			}
 		}
 		return $response;
@@ -584,17 +563,14 @@ else */
 		if($useCache && !$recache)
 		{
 			//get the cached response
-			$response = $this->getCached($key);
+			$response = $this->_cache->load($key);
 			//if there isn't a cached response, we're not going to use it
 			if(!$response)
 				$useCache = false;
-			//echo $key;
 		}	
-		//print_r($key);
 		//if we're not using the cached version, or if we're recaching
 		if(!$useCache || $recache)
 		{
-			//echo $key;
 			//get a new response
 			$response = new CheddarGetter_Response(
 				$this->request('/customers/get/' . (($id) ? 'id/'.$id : 'code/'.urlencode($code)) )
@@ -604,7 +580,7 @@ else */
 			if($this->_caching)
 			{
 				//cache the response
-				$this->cache($key, $response);
+				$this->_cache->save($key, $response);
 			}
 		}
 		return $response;
@@ -691,7 +667,7 @@ else */
 		if($this->_caching)
 		{
 			//recache the customer that we just edited
-			$this->cache("customer_get_".$code, $response);
+			$this->_cache->save("customer_get_".$code, $response);
 			//$this->getCustomer($code, $id, true);
 		}
 		
@@ -746,7 +722,7 @@ else */
 		//if we use caching, we'll have to uncache this customer after every edit
 		if($this->_caching)
 		{
-			$this->decache("customer_get_".$code."_".$id);
+			$this->_cache->remove("customer_get_".$code."_".$id);
 		}
 		
 		return $response;
