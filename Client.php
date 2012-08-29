@@ -67,15 +67,8 @@ class CheddarGetter_Client {
 	 */
 	private $_caching = false;
 	
-	/**
-	 * What kind of caching should we use?
-	 */
-	private $_cacheType = false;
-	
-	/**
-	 * If $_cacheType is memcache, then the link to the server will be here.
-	 */
-	public $_mcs = false;
+	/** @var What kind of caching do we use? */
+	private $_cache;
 	
 	
 	/**
@@ -105,6 +98,28 @@ class CheddarGetter_Client {
 		}
 		$this->_httpClient = $adapter;
 		
+		/*	if(extension_loaded("memcache"))
+		{
+			$this->_cacheType = "memcache";
+			$this->_mcs = new Memcache;
+			$this->_mcs->connect("localhost");
+		}
+		else if(function_exists("apc_fetch"))
+		{
+			$this->_cacheType = "APC";
+		} 
+else */
+		if(isset($_SESSION))
+		{
+			$this->_cache = new CheddarGetter_Cache_SessionAdapter();
+		}
+		else
+		{
+			$this->_cache = false;
+			//issue warning
+		}	
+		
+		
 		if($caching)
 		{
 			$this->turnOnCaching();
@@ -129,7 +144,7 @@ class CheddarGetter_Client {
 		$this->_caching = false;
 		return $this->_caching;
 	}
-	public function cache($key, $value)
+	/*public function cache($key, $value)
 	{
 		//TODO detect type of caching (memcache, session, etc)
 		switch($this->_cacheType)
@@ -175,7 +190,7 @@ class CheddarGetter_Client {
 			default: return false;
 				
 		}
-	}
+}*/
 	public function detectCacheType()
 	{
 		if(extension_loaded("memcache"))
@@ -199,6 +214,7 @@ class CheddarGetter_Client {
 		//echo "\nUsing ".$this->_cacheType."\n";
 		return $this->_cacheType;
 	}
+	/*
 	public function getCached($key)
 	{
 		//echo "\nget cached\n";
@@ -244,7 +260,7 @@ class CheddarGetter_Client {
 				}
 			break;
 		}
-	}
+}*/
 
 	/**
 	 * Set URL neccessary for for accessing the CheddarGetter API
