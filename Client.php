@@ -113,7 +113,6 @@ class CheddarGetter_Client {
 		$this->detectCacheType();
 		if($this->_cache == false)
 		{
-			throw new CheddarGetter_Client_Exception("Memcache, APC, and Sessions are unavailable on this system and caching cannot be turned on.", CheddarGetter_Client_Exception::UNKNOWN);
 			$this->_caching = false;
 			return $this->_caching;
 		}
@@ -125,65 +124,21 @@ class CheddarGetter_Client {
 		$this->_caching = false;
 		return $this->_caching;
 	}
-	/*public function cache($key, $value)
-	{
-		//TODO detect type of caching (memcache, session, etc)
-		switch($this->_cacheType)
-		{
-			case "session" :
-				if(!isset($_SESSION["CGCaching"]))
-					$_SESSION["CGCaching"] = array();
-				$_SESSION["CGCaching"][$key] = $value;	
-			break;
-			case "APC" :
-				$key = "CGCaching_".$key;
-				apc_store($key, $value);
-			
-			break;
-			case "memcache" :
-				$key = "CGCaching_".$key;
-				$this->_mcs->set($key, $value);
-			break;
-			default:
-				return false;
-			break;
-		}
-		
-		
-	}	
-	public function decache($key)
-	{
-		switch($this->_cacheType)
-		{
-			case "session" :
-			//TODO detect type of caching (memcache, session, etc)
-				if(!isset($_SESSION["CGCaching"][$key]))
-					unset($_SESSION["CGCaching"][$key]);
-			break;
-			case "APC" :
-				$key = "CGCaching_".$key;
-				apc_delete($key);
-			break;
-			case "memcache" :
-				$key = "CGCaching_".$key;
-				$this->_mcs->delete($key);
-			break;
-			default: return false;
-				
-		}
-}*/
+	
 	public function detectCacheType()
 	{
+		if($this->_cache)
+		{
+			return $this->_cache;
+		}
+		
 		if(extension_loaded("memcache"))
 		{
-			//$this->_cacheType = "memcache";
-			//$this->_mcs = new Memcache;
-			//$this->_mcs->connect("localhost");
 			$this->_cache = new CheddarGetter_Cache_MemcacheAdapter();
 		}
 		else if(function_exists("apc_fetch"))
 		{
-			$$this->_cache = new CheddarGetter_Cache_ApcAdapter();
+			$this->_cache = new CheddarGetter_Cache_ApcAdapter();
 		} 
 		else if(isset($_SESSION))
 		{
@@ -192,58 +147,11 @@ class CheddarGetter_Client {
 		else
 		{
 			$this->_cache = false;
-			//issue warning
+			throw new CheddarGetter_Client_Exception("Memcache, APC, and Sessions are unavailable on this system and caching cannot be turned on.", CheddarGetter_Client_Exception::UNKNOWN);
 		}	
 		return $this->_cache;
 	}
-	/*
-	public function getCached($key)
-	{
-		//echo "\nget cached\n";
-		$value = false;
-		switch($this->_cacheType)
-		{
-			case "session" :
-				if(isset($_SESSION["CGCaching"][$key]))
-				$value = $_SESSION["CGCaching"][$key];
-			break;
-			case "APC" :
-				$key = "CGCaching_".$key;
-				if(apc_fetch($key))
-					$value = apc_fetch($key);
-			break;
-			case "memcache" :
-				$key = "CGCaching_".$key;
-				if($this->_mcs->get($key))
-					$value = $this->_mcs->get($key);
-			break;
-			default: return false;
-				
-		}
-		//echo "\nGot Cached\n";
-		return $value;
-	}
-	public function emptyCache()
-	{
-		switch($this->_cacheType)
-		{
-			case "session" : 
-				unset( $_SESSION["CGCaching"] );
-			break;
-			case "APC" :
-				$cache = apc_cache_info("user");
-				$cachelist = $cache["cache_list"];
-				foreach($cachelist as $key => $val)
-				{
-					if(substr($val["info"], 0, 9) == "CGCaching")
-					{
-						apc_delete($val["info"]);
-					}
-				}
-			break;
-		}
-}*/
-
+	
 	/**
 	 * Set URL neccessary for for accessing the CheddarGetter API
 	 *
