@@ -359,7 +359,9 @@ class CheddarGetter_Response extends DOMDocument {
 	}
 
 	/**
-	 * Get an array representation of a single customer's current invoice
+	 * Get an array representation of a single customer's last billed invoice
+	 *
+	 * Returns the most recent subscription invoice that is billable before now.  This could be a successfully billed invoice, one that has been transacted *unsuccessfully*, or one that has not yet been transacted at all.  Includes all invoice types ('one-time' and 'subscription')
 	 *
 	 * @param $code string your code for the customer - required if more than one customer is in the response
 	 * @throws CheddarGetter_Response_Exception if the response type is incompatible or if a $code is not provided and the response contains more than one customer
@@ -367,7 +369,15 @@ class CheddarGetter_Response extends DOMDocument {
 	 */
 	public function getCustomerLastBilledInvoice($code = null) {
 		$invoices = $this->getCustomerInvoices($code);
-		return current(array_slice($invoices, 1, 1));
+		foreach ($invoices as $key => $i) {
+			if (
+				!empty($i['billingDatetime']) // it has a billing datetime (not an "unscheduled" invoice)
+				&& strtotime($i['billingDatetime']) <= time() // it's billing datetime is before this moment
+			) {
+				return $i;
+			}
+		}
+		return array();
 	}
 
 	/**
