@@ -381,7 +381,7 @@ class CheddarGetter_Response extends DOMDocument {
 	}
 
 	/**
-	 * Get an array representation of a single customer's outstanding invoices
+	 * Get an array representation of a single customer's invoices
 	 *
 	 * @param $code string your code for the customer - required if more than one customer is in the response
 	 * @throws CheddarGetter_Response_Exception if the response type is incompatible or if a $code is not provided and the response contains more than one customer

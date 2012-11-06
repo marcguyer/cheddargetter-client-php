@@ -667,6 +667,31 @@ class CheddarGetter_Client {
 	}
 
 	/**
+	 * Run an outstanding invoice
+	 *
+	 * An outstanding invoice might be one that hasn't been transacted yet or one that has been attempted unsucessfully.
+	 *
+	 * @link https://cheddargetter.com/developers#run-invoice
+	 * @param string $code Your code for the customer
+	 * @param string|null $id CG id for the customer
+	 * @param array $data [ccCardCode] (optional) {@link https://cheddargetter.com/developers#run-invoice}
+	 * @return CheddarGetter_Response
+	 * @throws CheddarGetter_Response_Exception
+	 */
+	public function runOutstandingInvoice($code, $id = null, array $data = null) {
+		$this->_requireIdentifier($code, $id);
+		if (!$data) {
+			$data['bogus'] = 'make this a post';
+		}
+		return new CheddarGetter_Response(
+			$this->request(
+				'/customers/run-outstanding/' . (($id) ? 'id/'.$id : 'code/'.urlencode($code)),
+				$data
+			)
+		);
+	}
+
+	/**
 	 * Get promotions
 	 *
 	 * Get all promotions in the product.
