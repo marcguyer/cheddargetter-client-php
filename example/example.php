@@ -1,4 +1,23 @@
 <?php
+/**
+ * CheddarGetter
+ * @category CheddarGetter
+ * @package CheddarGetter
+ * @author Marc Guyer <marc@cheddargetter.com>
+ */
+/**
+ * Basic example script
+ *
+ * Run this at the command line for a basic example.
+ * Requires that at least two plans are configured in your account:
+ *    - plan code = FREE
+ *    - plan code = PREMIUM
+ * @category CheddarGetter
+ * @package CheddarGetter
+ * @author Marc Guyer <marc@cheddargetter.com>
+ * @example example/example.php
+ */
+
 	require('../../CheddarGetter/Client.php');
 	require('../../CheddarGetter/Client/Exception.php');
 	require('../../CheddarGetter/Client/AdapterInterface.php');

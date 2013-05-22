@@ -1,6 +1,7 @@
 <?php
 
 /**
+ * CheddarGetter
  * @category CheddarGetter
  * @package CheddarGetter
  * @author Marc Guyer <marc@cheddargetter.com>
@@ -55,21 +56,25 @@ interface CheddarGetter_Http_AdapterInterface {
 	function getRequestValue($key);
 
 	/**
+	 * Checks whether the referrer exists
 	 * @return boolean
 	 */
 	function hasReferrer();
 
 	/**
+	 * Gets the referrer
 	 * @return string
 	 */
 	function getReferrer();
 
 	/**
+	 * Checks if the IP is set
 	 * @return boolean
 	 */
 	function hasIp();
 
 	/**
+	 * Gets the IP
 	 * @return string
 	 */
 	function getIp();

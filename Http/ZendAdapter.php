@@ -1,6 +1,7 @@
 <?php
 
 /**
+ * CheddarGetter
  * @category CheddarGetter
  * @package CheddarGetter
  * @author Marc Guyer <marc@cheddargetter.com>
@@ -16,14 +17,27 @@
 
 class CheddarGetter_Http_ZendAdapter extends CheddarGetter_Http_NativeAdapter {
 
+	/**
+	 * The request object
+	 *
+	 * @var Zend_Controller_Request_Abstract|null
+	 */
 	private $_request;
 
+	/**
+	 * Constructor
+	 * @throws CheddarGetter_Client_Exception Throws an exception if Zend_Controller_Front is not available.
+	 */
 	public function __construct() {
 		if (!class_exists('Zend_Controller_Front')) {
 			throw new CheddarGetter_Client_Exception('The Zend front controller is not available.', CheddarGetter_Client_Exception::USAGE_INVALID);
 		}
 	}
 
+	/**
+	 * Get the reqeust object
+	 * @return Zend_Controller_Request_Abstract
+	 */
 	private function _request() {
 		if ($this->_request) {
 			return $this->_request;
@@ -33,6 +47,7 @@ class CheddarGetter_Http_ZendAdapter extends CheddarGetter_Http_NativeAdapter {
 	}
 
 	/**
+	 * Get a request param
 	 * @param string $key
 	 * @return mixed
 	 */
@@ -61,6 +76,7 @@ class CheddarGetter_Http_ZendAdapter extends CheddarGetter_Http_NativeAdapter {
 	}
 
 	/**
+	 * Check if the http referrer is set
 	 * @return boolean
 	 */
 	function hasReferrer() {
@@ -68,6 +84,7 @@ class CheddarGetter_Http_ZendAdapter extends CheddarGetter_Http_NativeAdapter {
 	}
 
 	/**
+	 * Get the http referrer
 	 * @return string
 	 */
 	function getReferrer() {
@@ -75,6 +92,7 @@ class CheddarGetter_Http_ZendAdapter extends CheddarGetter_Http_NativeAdapter {
 	}
 
 	/**
+	 * Check if the remote ip is known
 	 * @return boolean
 	 */
 	public function hasIp() {
@@ -82,6 +100,7 @@ class CheddarGetter_Http_ZendAdapter extends CheddarGetter_Http_NativeAdapter {
 	}
 
 	/**
+	 * Get the remote ip
 	 * @return string
 	 */
 	public function getIp() {

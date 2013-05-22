@@ -1,6 +1,7 @@
 <?php
 
 /**
+ * CheddarGetter
  * @category CheddarGetter
  * @package CheddarGetter
  * @author Marc Guyer <marc@cheddargetter.com>
@@ -14,7 +15,16 @@
 
 class CheddarGetter_Response extends DOMDocument {
 
+	/**
+	 * The type of response (customers or plans or promotions or error)
+	 * @var string
+	 */
 	private $_responseType;
+
+	/**
+	 * An array representation of the response obj
+	 * @var array
+	 */
 	private $_array;
 
 	/**
@@ -36,11 +46,22 @@ class CheddarGetter_Response extends DOMDocument {
 		$this->handleError();
 	}
 
+	/**
+	 * Sleep
+	 *
+	 * This is run when the object is serialized, for example. See PHP magic __sleep method docs.
+	 * @return array
+	 */
 	public function __sleep() {
 		$this->_xml = $this->saveXML();
 		return array('_xml', '_responseType');
 	}
 
+	/**
+	 * Wakeup
+	 *
+	 * This is run when the object is unserialized, for example. See PHP magic __wakeup method docs.
+	 */
 	public function __wakeup() {
 		$this->loadXML( $this->_xml );
 	}
@@ -114,7 +135,7 @@ class CheddarGetter_Response extends DOMDocument {
 	/**
 	 * Recursive method to traverse the dom and produce an array
 	 *
-	 * @param $nodes DOMNodeList
+	 * @param DOMNodeList $nodes
 	 * @return array
 	 */
 	protected function _toArray(DOMNodeList $nodes) {
@@ -533,6 +554,12 @@ class CheddarGetter_Response extends DOMDocument {
 		return 0;
 	}
 
+	/**
+	 * Handle an error if there is one
+	 *
+	 * @throws CheddarGetter_Response_Exception Throws CheddarGetter_Response_Exception if an error is found in the response
+	 * @return bool
+	 */
 	public function handleError() {
 		if ($this->_responseType == 'error') {
 			throw new CheddarGetter_Response_Exception($this->documentElement->firstChild->nodeValue, $this->documentElement->getAttribute('code'), $this->documentElement->getAttribute('id'), $this->documentElement->getAttribute('auxCode'));
@@ -562,6 +589,10 @@ class CheddarGetter_Response extends DOMDocument {
 		return false;
 	}
 
+	/**
+	 * Implementation of the magic __toString method
+	 * @return string The XML string
+	 */
 	public function __toString() {
 		return $this->saveXML();
 	}

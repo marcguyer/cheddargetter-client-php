@@ -1,6 +1,7 @@
 <?php
 
 /**
+ * CheddarGetter
  * @category CheddarGetter
  * @package CheddarGetter
  * @author Marc Guyer <marc@cheddargetter.com>
@@ -16,9 +17,14 @@
 
 class CheddarGetter_Client_ZendAdapter implements CheddarGetter_Client_AdapterInterface {
 
+	/**
+	 * Http client object
+	 * @var Zend_Http_Client|null
+	 */
 	protected $_client;
 
 	/**
+	 * Constructor
 	 * @param Zend_Http_Client $client
 	 * @throws CheddarGetter_Client_Exception Throws an exception if Zend_Http_Client is not available.
 	 */
@@ -73,6 +79,7 @@ class CheddarGetter_Client_ZendAdapter implements CheddarGetter_Client_AdapterIn
 	}
 
 	/**
+	 * Get the http client object
 	 * @return null|Zend_Http_Client
 	 */
 	public function getClient() {

@@ -1,6 +1,7 @@
 <?php
 
 /**
+ * CheddarGetter
  * @category CheddarGetter
  * @package CheddarGetter
  * @author Marc Guyer <marc@cheddargetter.com>
@@ -54,6 +55,7 @@ class CheddarGetter_Http_NativeAdapter implements CheddarGetter_Http_AdapterInte
 	}
 
 	/**
+	 * Get a value from the request (get/post/cookie)
 	 * @param string $key
 	 * @return mixed
 	 */
@@ -62,6 +64,7 @@ class CheddarGetter_Http_NativeAdapter implements CheddarGetter_Http_AdapterInte
 	}
 
 	/**
+	 * Check if the http referrer is set
 	 * @return boolean
 	 */
 	public function hasReferrer() {
@@ -69,6 +72,7 @@ class CheddarGetter_Http_NativeAdapter implements CheddarGetter_Http_AdapterInte
 	}
 
 	/**
+	 * Get the http referrer
 	 * @return string
 	 */
 	public function getReferrer() {
@@ -76,6 +80,7 @@ class CheddarGetter_Http_NativeAdapter implements CheddarGetter_Http_AdapterInte
 	}
 
 	/**
+	 * Check if the remote IP is known
 	 * @return boolean
 	 */
 	public function hasIp() {
@@ -83,6 +88,7 @@ class CheddarGetter_Http_NativeAdapter implements CheddarGetter_Http_AdapterInte
 	}
 
 	/**
+	 * Get the remote ip
 	 * @return string
 	 */
 	public function getIp() {

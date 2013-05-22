@@ -1,6 +1,7 @@
 <?php
 
 /**
+ * CheddarGetter
  * @category CheddarGetter
  * @package CheddarGetter
  * @author Marc Guyer <marc@cheddargetter.com>
@@ -489,8 +490,6 @@ class CheddarGetter_Client {
 	 * if a gateway is configured.
 	 *
 	 * @link https://cheddargetter.com/developers#delete-all-customers
-	 * @param string $code Your code for the customer
-	 * @param string|null $id CG id for the customer
 	 * @return CheddarGetter_Response
 	 * @throws CheddarGetter_Response_Exception
 	 */

@@ -1,6 +1,6 @@
 <?php
-
 /**
+ * CheddarGetter
  * @category CheddarGetter
  * @package CheddarGetter
  * @author Marc Guyer <marc@cheddargetter.com>
@@ -16,9 +16,15 @@
 
 class CheddarGetter_Client_CurlAdapter implements CheddarGetter_Client_AdapterInterface {
 
+	/**
+	 * The curl resource
+	 *
+	 * @var resource|null
+	 */
 	protected $_resource;
 
 	/**
+	 * Constructor
 	 * @param resource $resource
 	 * @throws CheddarGetter_Client_Exception Throws an exception if php-curl is not available.
 	 */
@@ -85,6 +91,7 @@ class CheddarGetter_Client_CurlAdapter implements CheddarGetter_Client_AdapterIn
 	}
 
 	/**
+	 * Get the curl resource if set
 	 * @return null|resource
 	 */
 	public function getCurlResource() {
