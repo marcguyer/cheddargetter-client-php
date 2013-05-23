@@ -3,7 +3,7 @@
   <file path="Client/AdapterInterface.php" hash="87ca62e947e298dd55ebfe2b91d47672" package="CheddarGetter">
     <docblock line="2">
       <description>CheddarGetter</description>
-      <long-description></long-description>
+      <long-description/>
       <tag line="2" name="category" description="CheddarGetter"/>
       <tag line="2" name="package" description="CheddarGetter"/>
       <tag line="2" name="author" description="Marc Guyer &lt;marc@cheddargetter.com&gt;"/>
@@ -13,7 +13,7 @@
       <full_name>\CheddarGetter_Client_AdapterInterface</full_name>
       <docblock line="8">
         <description>Adapter interface for requesting the CheddarGetter service</description>
-        <long-description></long-description>
+        <long-description/>
         <tag line="8" name="category" description="CheddarGetter"/>
         <tag line="8" name="package" description="CheddarGetter"/>
         <tag line="8" name="author" description="Christophe Coevoet &lt;stof@notk.org&gt;"/>
@@ -24,7 +24,7 @@
         <full_name>request</full_name>
         <docblock line="18">
           <description>Execute CheddarGetter API request</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="18" name="param" description="Url to the API action" type="string" variable="$url">
             <type by_reference="false">string</type>
           </tag>
@@ -47,17 +47,17 @@
         </docblock>
         <argument line="28">
           <name>$url</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="28">
           <name>$username</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="28">
           <name>$password</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="28">
@@ -71,7 +71,7 @@
   <file path="Client/CurlAdapter.php" hash="ff553aeb2fa320ce1a0dcda3c120522c" package="CheddarGetter">
     <docblock line="2">
       <description>CheddarGetter</description>
-      <long-description></long-description>
+      <long-description/>
       <tag line="2" name="category" description="CheddarGetter"/>
       <tag line="2" name="package" description="CheddarGetter"/>
       <tag line="2" name="author" description="Marc Guyer &lt;marc@cheddargetter.com&gt;"/>
@@ -83,7 +83,7 @@
       <full_name>\CheddarGetter_Client_CurlAdapter</full_name>
       <docblock line="8">
         <description>Adapter implementation based on php-curl for requesting the CheddarGetter service</description>
-        <long-description></long-description>
+        <long-description/>
         <tag line="8" name="category" description="CheddarGetter"/>
         <tag line="8" name="package" description="CheddarGetter"/>
         <tag line="8" name="author" description="Marc Guyer &lt;marc@cheddargetter.com&gt;"/>
@@ -92,10 +92,10 @@
       </docblock>
       <property final="false" static="false" visibility="protected" line="24" namespace="global" package="Default">
         <name>$_resource</name>
-        <default></default>
+        <default/>
         <docblock line="19">
           <description>The curl resource</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="19" name="var" description="" type="resource|null">
             <type by_reference="false">resource</type>
             <type by_reference="false">null</type>
@@ -107,7 +107,7 @@
         <full_name>__construct</full_name>
         <docblock line="26">
           <description>Constructor</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="26" name="param" description="" type="resource" variable="$resource">
             <type by_reference="false">resource</type>
           </tag>
@@ -126,7 +126,7 @@
         <full_name>request</full_name>
         <docblock line="43">
           <description>Execute CheddarGetter API request</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="43" name="param" description="Url to the API action" type="string" variable="$url">
             <type by_reference="false">string</type>
           </tag>
@@ -149,17 +149,17 @@
         </docblock>
         <argument line="53">
           <name>$url</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="53">
           <name>$username</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="53">
           <name>$password</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="53">
@@ -173,7 +173,7 @@
         <full_name>getCurlResource</full_name>
         <docblock line="93">
           <description>Get the curl resource if set</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="93" name="return" description="" type="null|resource">
             <type by_reference="false">null</type>
             <type by_reference="false">resource</type>
@@ -185,7 +185,7 @@
   <file path="Client/Exception.php" hash="4e7d0f467618f335bb3cc4a9791a2599" package="CheddarGetter">
     <docblock line="2">
       <description>CheddarGetter</description>
-      <long-description></long-description>
+      <long-description/>
       <tag line="2" name="category" description="CheddarGetter"/>
       <tag line="2" name="package" description="CheddarGetter"/>
       <tag line="2" name="author" description="Marc Guyer &lt;marc@cheddargetter.com&gt;"/>
@@ -196,7 +196,7 @@
       <full_name>\CheddarGetter_Client_Exception</full_name>
       <docblock line="8">
         <description>Client exception object</description>
-        <long-description></long-description>
+        <long-description/>
         <tag line="8" name="category" description="CheddarGetter"/>
         <tag line="8" name="package" description="CheddarGetter"/>
         <tag line="8" name="author" description="Marc Guyer &lt;marc@cheddargetter.com&gt;"/>
@@ -236,7 +236,7 @@
   <file path="Client/ZendAdapter.php" hash="c6f3b5b4b122f65a528cb22dab5cae37" package="CheddarGetter">
     <docblock line="3">
       <description>CheddarGetter</description>
-      <long-description></long-description>
+      <long-description/>
       <tag line="3" name="category" description="CheddarGetter"/>
       <tag line="3" name="package" description="CheddarGetter"/>
       <tag line="3" name="author" description="Marc Guyer &lt;marc@cheddargetter.com&gt;"/>
@@ -248,7 +248,7 @@
       <full_name>\CheddarGetter_Client_ZendAdapter</full_name>
       <docblock line="9">
         <description>Adapter implementation based on Zend_Http_Client for requesting the CheddarGetter service</description>
-        <long-description></long-description>
+        <long-description/>
         <tag line="9" name="category" description="CheddarGetter"/>
         <tag line="9" name="package" description="CheddarGetter"/>
         <tag line="9" name="author" description="Marc Guyer &lt;marc@cheddargetter.com&gt;"/>
@@ -257,10 +257,10 @@
       </docblock>
       <property final="false" static="false" visibility="protected" line="24" namespace="global" package="Default">
         <name>$_client</name>
-        <default></default>
+        <default/>
         <docblock line="20">
           <description>Http client object</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="20" name="var" description="" type="\Zend_Http_Client|null">
             <type by_reference="false">\Zend_Http_Client</type>
             <type by_reference="false">null</type>
@@ -272,7 +272,7 @@
         <full_name>__construct</full_name>
         <docblock line="26">
           <description>Constructor</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="26" name="param" description="" type="\Zend_Http_Client" variable="$client">
             <type by_reference="false">\Zend_Http_Client</type>
           </tag>
@@ -291,7 +291,7 @@
         <full_name>request</full_name>
         <docblock line="39">
           <description>Execute CheddarGetter API request</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="39" name="param" description="Url to the API action" type="string" variable="$url">
             <type by_reference="false">string</type>
           </tag>
@@ -314,17 +314,17 @@
         </docblock>
         <argument line="49">
           <name>$url</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="49">
           <name>$username</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="49">
           <name>$password</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="49">
@@ -338,7 +338,7 @@
         <full_name>getClient</full_name>
         <docblock line="81">
           <description>Get the http client object</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="81" name="return" description="" type="null|\Zend_Http_Client">
             <type by_reference="false">null</type>
             <type by_reference="false">\Zend_Http_Client</type>
@@ -350,7 +350,7 @@
   <file path="Client.php" hash="4d3b74410b5d998a73c70f562e82369a" package="CheddarGetter">
     <docblock line="3">
       <description>CheddarGetter</description>
-      <long-description></long-description>
+      <long-description/>
       <tag line="3" name="category" description="CheddarGetter"/>
       <tag line="3" name="package" description="CheddarGetter"/>
       <tag line="3" name="author" description="Marc Guyer &lt;marc@cheddargetter.com&gt;"/>
@@ -361,7 +361,7 @@
       <full_name>\CheddarGetter_Client</full_name>
       <docblock line="9">
         <description>Client object for interacting with the CheddarGetter service</description>
-        <long-description></long-description>
+        <long-description/>
         <tag line="9" name="category" description="CheddarGetter"/>
         <tag line="9" name="package" description="CheddarGetter"/>
         <tag line="9" name="author" description="Marc Guyer &lt;marc@cheddargetter.com&gt;"/>
@@ -369,7 +369,7 @@
       </docblock>
       <property final="false" static="true" visibility="private" line="26" namespace="global" package="Default">
         <name>$_requestAdapter</name>
-        <default></default>
+        <default/>
         <docblock line="19">
           <description>The adapter to access cookie data and such.</description>
           <long-description>&lt;p&gt;By default, it will use PHP superglobals directly but an implementation based on the
@@ -381,10 +381,10 @@ abstraction of a framework can be used.&lt;/p&gt;</long-description>
       </property>
       <property final="false" static="false" visibility="private" line="31" namespace="global" package="Default">
         <name>$_username</name>
-        <default></default>
+        <default/>
         <docblock line="28">
-          <description></description>
-          <long-description></long-description>
+          <description/>
+          <long-description/>
           <tag line="28" name="var" description="Username credential for accessing the CheddarGetter API" type="string">
             <type by_reference="false">string</type>
           </tag>
@@ -392,10 +392,10 @@ abstraction of a framework can be used.&lt;/p&gt;</long-description>
       </property>
       <property final="false" static="false" visibility="private" line="36" namespace="global" package="Default">
         <name>$_password</name>
-        <default></default>
+        <default/>
         <docblock line="33">
-          <description></description>
-          <long-description></long-description>
+          <description/>
+          <long-description/>
           <tag line="33" name="var" description="Password credential for accessing the CheddarGetter API" type="string">
             <type by_reference="false">string</type>
           </tag>
@@ -403,10 +403,10 @@ abstraction of a framework can be used.&lt;/p&gt;</long-description>
       </property>
       <property final="false" static="false" visibility="private" line="41" namespace="global" package="Default">
         <name>$_url</name>
-        <default></default>
+        <default/>
         <docblock line="38">
-          <description></description>
-          <long-description></long-description>
+          <description/>
+          <long-description/>
           <tag line="38" name="var" description="URL for accessing the CheddarGetter API" type="string">
             <type by_reference="false">string</type>
           </tag>
@@ -414,10 +414,10 @@ abstraction of a framework can be used.&lt;/p&gt;</long-description>
       </property>
       <property final="false" static="false" visibility="private" line="46" namespace="global" package="Default">
         <name>$_productCode</name>
-        <default></default>
+        <default/>
         <docblock line="43">
-          <description></description>
-          <long-description></long-description>
+          <description/>
+          <long-description/>
           <tag line="43" name="var" description="Product identifier" type="string">
             <type by_reference="false">string</type>
           </tag>
@@ -425,10 +425,10 @@ abstraction of a framework can be used.&lt;/p&gt;</long-description>
       </property>
       <property final="false" static="false" visibility="private" line="51" namespace="global" package="Default">
         <name>$_productId</name>
-        <default></default>
+        <default/>
         <docblock line="48">
-          <description></description>
-          <long-description></long-description>
+          <description/>
+          <long-description/>
           <tag line="48" name="var" description="Product identifier (not necessary if productCode is used)" type="string">
             <type by_reference="false">string</type>
           </tag>
@@ -438,8 +438,8 @@ abstraction of a framework can be used.&lt;/p&gt;</long-description>
         <name>$_marketingCookieName</name>
         <default>'CGMK'</default>
         <docblock line="53">
-          <description></description>
-          <long-description></long-description>
+          <description/>
+          <long-description/>
           <tag line="53" name="var" description="Name to use for the marketing cookie" type="string">
             <type by_reference="false">string</type>
           </tag>
@@ -448,10 +448,10 @@ abstraction of a framework can be used.&lt;/p&gt;</long-description>
       </property>
       <property final="false" static="false" visibility="private" line="64" namespace="global" package="Default">
         <name>$_httpClient</name>
-        <default></default>
+        <default/>
         <docblock line="59">
           <description>If you don't use Zend Framework, it's ok, the client will fallback to curl (so you need curl).</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="59" name="var" description="" type="\CheddarGetter_Client_AdapterInterface">
             <type by_reference="false">\CheddarGetter_Client_AdapterInterface</type>
           </tag>
@@ -462,7 +462,7 @@ abstraction of a framework can be used.&lt;/p&gt;</long-description>
         <full_name>__construct</full_name>
         <docblock line="66">
           <description>Constructor</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="66" name="param" description="string" type="\" variable="$url"/>
           <tag line="66" name="param" description="string" type="\" variable="$username"/>
           <tag line="66" name="param" description="string" type="\" variable="$password"/>
@@ -476,17 +476,17 @@ abstraction of a framework can be used.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="76">
           <name>$url</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="76">
           <name>$username</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="76">
           <name>$password</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="76">
@@ -510,7 +510,7 @@ abstraction of a framework can be used.&lt;/p&gt;</long-description>
         <full_name>setUrl</full_name>
         <docblock line="94">
           <description>Set URL neccessary for for accessing the CheddarGetter API</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="94" name="param" description="string" type="\" variable="$url"/>
           <tag line="94" name="return" description="" type="\CheddarGetter_Client">
             <type by_reference="false">\CheddarGetter_Client</type>
@@ -518,7 +518,7 @@ abstraction of a framework can be used.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="100">
           <name>$url</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -527,7 +527,7 @@ abstraction of a framework can be used.&lt;/p&gt;</long-description>
         <full_name>getUrl</full_name>
         <docblock line="105">
           <description>Get URL</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="105" name="return" description="" type="string">
             <type by_reference="false">string</type>
           </tag>
@@ -538,7 +538,7 @@ abstraction of a framework can be used.&lt;/p&gt;</long-description>
         <full_name>setUsername</full_name>
         <docblock line="114">
           <description>Set username neccessary for for accessing the CheddarGetter API</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="114" name="param" description="string" type="\" variable="$username"/>
           <tag line="114" name="return" description="" type="\CheddarGetter_Client">
             <type by_reference="false">\CheddarGetter_Client</type>
@@ -546,7 +546,7 @@ abstraction of a framework can be used.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="120">
           <name>$username</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -555,7 +555,7 @@ abstraction of a framework can be used.&lt;/p&gt;</long-description>
         <full_name>getUsername</full_name>
         <docblock line="125">
           <description>Get username</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="125" name="return" description="" type="string">
             <type by_reference="false">string</type>
           </tag>
@@ -566,7 +566,7 @@ abstraction of a framework can be used.&lt;/p&gt;</long-description>
         <full_name>setPassword</full_name>
         <docblock line="134">
           <description>Set password neccessary for accessing the CheddarGetter API</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="134" name="param" description="string" type="\" variable="$password"/>
           <tag line="134" name="return" description="" type="\CheddarGetter_Client">
             <type by_reference="false">\CheddarGetter_Client</type>
@@ -574,7 +574,7 @@ abstraction of a framework can be used.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="140">
           <name>$password</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -583,7 +583,7 @@ abstraction of a framework can be used.&lt;/p&gt;</long-description>
         <full_name>_getPassword</full_name>
         <docblock line="145">
           <description>Get current password</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="145" name="return" description="" type="string">
             <type by_reference="false">string</type>
           </tag>
@@ -594,7 +594,7 @@ abstraction of a framework can be used.&lt;/p&gt;</long-description>
         <full_name>setProductCode</full_name>
         <docblock line="154">
           <description>Set product code (required for all calls except getAllCustomers)</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="154" name="param" description="string" type="\" variable="$productCode"/>
           <tag line="154" name="return" description="" type="\CheddarGetter_Client">
             <type by_reference="false">\CheddarGetter_Client</type>
@@ -602,7 +602,7 @@ abstraction of a framework can be used.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="160">
           <name>$productCode</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -611,7 +611,7 @@ abstraction of a framework can be used.&lt;/p&gt;</long-description>
         <full_name>getProductCode</full_name>
         <docblock line="165">
           <description>Get current product code</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="165" name="return" description="" type="string">
             <type by_reference="false">string</type>
           </tag>
@@ -622,7 +622,7 @@ abstraction of a framework can be used.&lt;/p&gt;</long-description>
         <full_name>setProductId</full_name>
         <docblock line="174">
           <description>Set product id (required for all calls except getAllCustomers unless productCode is used)</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="174" name="param" description="string" type="\" variable="$productId"/>
           <tag line="174" name="return" description="" type="\CheddarGetter_Client">
             <type by_reference="false">\CheddarGetter_Client</type>
@@ -630,7 +630,7 @@ abstraction of a framework can be used.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="180">
           <name>$productId</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -639,7 +639,7 @@ abstraction of a framework can be used.&lt;/p&gt;</long-description>
         <full_name>getProductId</full_name>
         <docblock line="185">
           <description>Get current product id</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="185" name="return" description="" type="string">
             <type by_reference="false">string</type>
           </tag>
@@ -650,7 +650,7 @@ abstraction of a framework can be used.&lt;/p&gt;</long-description>
         <full_name>setMarketingCookieName</full_name>
         <docblock line="194">
           <description>Set name for marketing metrics cookie</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="194" name="see" description="\setMarketingCookie" refers="\setMarketingCookie"/>
           <tag line="194" name="param" description="string" type="\" variable="$name"/>
           <tag line="194" name="return" description="" type="\CheddarGetter_Client">
@@ -659,7 +659,7 @@ abstraction of a framework can be used.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="201">
           <name>$name</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -668,7 +668,7 @@ abstraction of a framework can be used.&lt;/p&gt;</long-description>
         <full_name>getMarketingCookieName</full_name>
         <docblock line="206">
           <description>Get marketing cookie name</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="206" name="see" description="\setMarketingCookie" refers="\setMarketingCookie"/>
           <tag line="206" name="return" description="" type="string">
             <type by_reference="false">string</type>
@@ -690,12 +690,12 @@ abstraction of a framework can be used.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="224">
           <name>$method</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="224">
           <name>$args</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -728,7 +728,7 @@ abstraction of a framework can be used.&lt;/p&gt;</long-description>
         <full_name>getPlan</full_name>
         <docblock line="258">
           <description>Get a single pricing plan</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="258" name="link" description="https://cheddargetter.com/developers#single-plan" link="https://cheddargetter.com/developers#single-plan"/>
           <tag line="258" name="param" description="Your code for the plan" type="string" variable="$code">
             <type by_reference="false">string</type>
@@ -746,7 +746,7 @@ abstraction of a framework can be used.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="267">
           <name>$code</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="267">
@@ -760,7 +760,7 @@ abstraction of a framework can be used.&lt;/p&gt;</long-description>
         <full_name>deletePlan</full_name>
         <docblock line="310">
           <description>Delete a plan</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="310" name="param" description="Your code for the plan" type="string" variable="$code">
             <type by_reference="false">string</type>
           </tag>
@@ -777,7 +777,7 @@ abstraction of a framework can be used.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="318">
           <name>$code</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="318">
@@ -839,7 +839,7 @@ abstraction of a framework can be used.&lt;/p&gt;</long-description>
         <full_name>getCustomer</full_name>
         <docblock line="355">
           <description>Get a single customer</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="355" name="link" description="https://cheddargetter.com/developers#single-customer" link="https://cheddargetter.com/developers#single-customer"/>
           <tag line="355" name="param" description="Your code for the customer" type="string" variable="$code">
             <type by_reference="false">string</type>
@@ -857,7 +857,7 @@ abstraction of a framework can be used.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="364">
           <name>$code</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="364">
@@ -897,7 +897,7 @@ abstraction of a framework can be used.&lt;/p&gt;</long-description>
         <full_name>newCustomer</full_name>
         <docblock line="392">
           <description>Create new customer</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="392" name="link" description="https://cheddargetter.com/developers#add-customer" link="https://cheddargetter.com/developers#add-customer"/>
           <tag line="392" name="see" description="\setMarketingCookie" refers="\setMarketingCookie"/>
           <tag line="392" name="param" description="{@link https://cheddargetter.com/developers#add-customer}" type="array|null" variable="$data">
@@ -913,7 +913,7 @@ abstraction of a framework can be used.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="401">
           <name>$data</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -922,7 +922,7 @@ abstraction of a framework can be used.&lt;/p&gt;</long-description>
         <full_name>editCustomer</full_name>
         <docblock line="427">
           <description>Change customer and subscription information</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="427" name="link" description="https://cheddargetter.com/developers#update-customer-subscription" link="https://cheddargetter.com/developers#update-customer-subscription"/>
           <tag line="427" name="param" description="Your code for the customer" type="string" variable="$code">
             <type by_reference="false">string</type>
@@ -944,7 +944,7 @@ abstraction of a framework can be used.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="437">
           <name>$code</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="437">
@@ -954,7 +954,7 @@ abstraction of a framework can be used.&lt;/p&gt;</long-description>
         </argument>
         <argument line="437">
           <name>$data</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -963,7 +963,7 @@ abstraction of a framework can be used.&lt;/p&gt;</long-description>
         <full_name>editCustomerOnly</full_name>
         <docblock line="447">
           <description>Change customer information only</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="447" name="link" description="https://cheddargetter.com/developers#update-customer" link="https://cheddargetter.com/developers#update-customer"/>
           <tag line="447" name="param" description="Your code for the customer" type="string" variable="$code">
             <type by_reference="false">string</type>
@@ -985,7 +985,7 @@ abstraction of a framework can be used.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="457">
           <name>$code</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="457">
@@ -995,7 +995,7 @@ abstraction of a framework can be used.&lt;/p&gt;</long-description>
         </argument>
         <argument line="457">
           <name>$data</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -1004,7 +1004,7 @@ abstraction of a framework can be used.&lt;/p&gt;</long-description>
         <full_name>deleteCustomer</full_name>
         <docblock line="467">
           <description>Delete a customer</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="467" name="link" description="https://cheddargetter.com/developers#delete-customer" link="https://cheddargetter.com/developers#delete-customer"/>
           <tag line="467" name="param" description="Your code for the customer" type="string" variable="$code">
             <type by_reference="false">string</type>
@@ -1022,7 +1022,7 @@ abstraction of a framework can be used.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="476">
           <name>$code</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="476">
@@ -1053,7 +1053,7 @@ if a gateway is configured.&lt;/p&gt;</long-description>
         <full_name>editSubscription</full_name>
         <docblock line="504">
           <description>Change subscription information</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="504" name="link" description="https://cheddargetter.com/developers#update-subscription" link="https://cheddargetter.com/developers#update-subscription"/>
           <tag line="504" name="param" description="Your code for the customer" type="string" variable="$code">
             <type by_reference="false">string</type>
@@ -1075,7 +1075,7 @@ if a gateway is configured.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="514">
           <name>$code</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="514">
@@ -1085,7 +1085,7 @@ if a gateway is configured.&lt;/p&gt;</long-description>
         </argument>
         <argument line="514">
           <name>$data</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -1094,7 +1094,7 @@ if a gateway is configured.&lt;/p&gt;</long-description>
         <full_name>cancelSubscription</full_name>
         <docblock line="524">
           <description>Cancel subscription</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="524" name="link" description="https://cheddargetter.com/developers#cancel-subscription" link="https://cheddargetter.com/developers#cancel-subscription"/>
           <tag line="524" name="param" description="Your code for the customer" type="string" variable="$code">
             <type by_reference="false">string</type>
@@ -1112,7 +1112,7 @@ if a gateway is configured.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="533">
           <name>$code</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="533">
@@ -1126,7 +1126,7 @@ if a gateway is configured.&lt;/p&gt;</long-description>
         <full_name>addItemQuantity</full_name>
         <docblock line="542">
           <description>Increment a usage item quantity</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="542" name="link" description="https://cheddargetter.com/developers#add-item-quantity" link="https://cheddargetter.com/developers#add-item-quantity"/>
           <tag line="542" name="param" description="Your code for the customer" type="string" variable="$code">
             <type by_reference="false">string</type>
@@ -1147,7 +1147,7 @@ if a gateway is configured.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="552">
           <name>$code</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="552">
@@ -1157,7 +1157,7 @@ if a gateway is configured.&lt;/p&gt;</long-description>
         </argument>
         <argument line="552">
           <name>$data</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -1166,7 +1166,7 @@ if a gateway is configured.&lt;/p&gt;</long-description>
         <full_name>removeItemQuantity</full_name>
         <docblock line="562">
           <description>Decrement a usage item quantity</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="562" name="link" description="https://cheddargetter.com/developers#remove-item-quantity" link="https://cheddargetter.com/developers#remove-item-quantity"/>
           <tag line="562" name="param" description="Your code for the customer" type="string" variable="$code">
             <type by_reference="false">string</type>
@@ -1187,7 +1187,7 @@ if a gateway is configured.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="572">
           <name>$code</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="572">
@@ -1197,7 +1197,7 @@ if a gateway is configured.&lt;/p&gt;</long-description>
         </argument>
         <argument line="572">
           <name>$data</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -1206,7 +1206,7 @@ if a gateway is configured.&lt;/p&gt;</long-description>
         <full_name>setItemQuantity</full_name>
         <docblock line="582">
           <description>Set a usage item quantity</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="582" name="link" description="https://cheddargetter.com/developers#set-item-quantity" link="https://cheddargetter.com/developers#set-item-quantity"/>
           <tag line="582" name="param" description="Your code for the customer" type="string" variable="$code">
             <type by_reference="false">string</type>
@@ -1227,7 +1227,7 @@ if a gateway is configured.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="592">
           <name>$code</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="592">
@@ -1237,7 +1237,7 @@ if a gateway is configured.&lt;/p&gt;</long-description>
         </argument>
         <argument line="592">
           <name>$data</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -1267,7 +1267,7 @@ if a gateway is configured.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="614">
           <name>$code</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="614">
@@ -1277,7 +1277,7 @@ if a gateway is configured.&lt;/p&gt;</long-description>
         </argument>
         <argument line="614">
           <name>$data</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -1307,7 +1307,7 @@ if a gateway is configured.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="636">
           <name>$code</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="636">
@@ -1317,7 +1317,7 @@ if a gateway is configured.&lt;/p&gt;</long-description>
         </argument>
         <argument line="636">
           <name>$data</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -1347,7 +1347,7 @@ if a gateway is configured.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="658">
           <name>$code</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="658">
@@ -1357,7 +1357,7 @@ if a gateway is configured.&lt;/p&gt;</long-description>
         </argument>
         <argument line="658">
           <name>$data</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -1385,7 +1385,7 @@ if a gateway is configured.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="680">
           <name>$number</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="680">
@@ -1418,7 +1418,7 @@ if a gateway is configured.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="701">
           <name>$number</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="701">
@@ -1454,7 +1454,7 @@ if a gateway is configured.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="723">
           <name>$number</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="723">
@@ -1494,7 +1494,7 @@ if a gateway is configured.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="744">
           <name>$code</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="744">
@@ -1537,7 +1537,7 @@ if a gateway is configured.&lt;/p&gt;</long-description>
         <full_name>getPromotion</full_name>
         <docblock line="771">
           <description>Get a single promotion</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="771" name="link" description="https://cheddargetter.com/developers#single-promotion" link="https://cheddargetter.com/developers#single-promotion"/>
           <tag line="771" name="param" description="Coupon code" type="string" variable="$code">
             <type by_reference="false">string</type>
@@ -1555,7 +1555,7 @@ if a gateway is configured.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="780">
           <name>$code</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="780">
@@ -1569,7 +1569,7 @@ if a gateway is configured.&lt;/p&gt;</long-description>
         <full_name>request</full_name>
         <docblock line="787">
           <description>Execute CheddarGetter API request</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="787" name="param" description="Path to the API action" type="string" variable="$path">
             <type by_reference="false">string</type>
           </tag>
@@ -1586,7 +1586,7 @@ if a gateway is configured.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="795">
           <name>$path</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="795">
@@ -1600,7 +1600,7 @@ if a gateway is configured.&lt;/p&gt;</long-description>
         <full_name>setHttpClient</full_name>
         <docblock line="817">
           <description>Set http client</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="817" name="param" description="Either a Zend_Http_Client or curl resource." type="\CheddarGetter_Client_AdapterInterface|\Zend_Http_Client|resource" variable="$client">
             <type by_reference="false">\CheddarGetter_Client_AdapterInterface</type>
             <type by_reference="false">\Zend_Http_Client</type>
@@ -1615,7 +1615,7 @@ if a gateway is configured.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="824">
           <name>$client</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -1624,7 +1624,7 @@ if a gateway is configured.&lt;/p&gt;</long-description>
         <full_name>getHttpClient</full_name>
         <docblock line="843">
           <description>Get the current http client</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="843" name="return" description="" type="\CheddarGetter_Client_AdapterInterface">
             <type by_reference="false">\CheddarGetter_Client_AdapterInterface</type>
           </tag>
@@ -1635,14 +1635,14 @@ if a gateway is configured.&lt;/p&gt;</long-description>
         <full_name>setRequestAdapter</full_name>
         <docblock line="852">
           <description>Set request adapter</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="852" name="param" description="" type="\CheddarGetter_Http_AdapterInterface" variable="$requestAdapter">
             <type by_reference="false">\CheddarGetter_Http_AdapterInterface</type>
           </tag>
         </docblock>
         <argument line="857">
           <name>$requestAdapter</name>
-          <default></default>
+          <default/>
           <type>\CheddarGetter_Http_AdapterInterface</type>
         </argument>
       </method>
@@ -1651,7 +1651,7 @@ if a gateway is configured.&lt;/p&gt;</long-description>
         <full_name>getRequestAdapter</full_name>
         <docblock line="861">
           <description>Gets the request adapter.</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="861" name="return" description="" type="\CheddarGetter_Http_AdapterInterface">
             <type by_reference="false">\CheddarGetter_Http_AdapterInterface</type>
           </tag>
@@ -1662,7 +1662,7 @@ if a gateway is configured.&lt;/p&gt;</long-description>
         <full_name>_requireIdentifier</full_name>
         <docblock line="878">
           <description>Convenience method for requiring an identifier</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="878" name="param" description="" type="string" variable="$code">
             <type by_reference="false">string</type>
           </tag>
@@ -1678,12 +1678,12 @@ if a gateway is configured.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="886">
           <name>$code</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="886">
           <name>$id</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -1756,7 +1756,7 @@ if a gateway is configured.&lt;/p&gt;</long-description>
   <file path="example/example.php" hash="3210ade604b37b7d925e87e2d336b7b1" package="CheddarGetter">
     <docblock line="2">
       <description>CheddarGetter</description>
-      <long-description></long-description>
+      <long-description/>
       <tag line="2" name="category" description="CheddarGetter"/>
       <tag line="2" name="package" description="CheddarGetter"/>
       <tag line="2" name="author" description="Marc Guyer &lt;marc@cheddargetter.com&gt;"/>
@@ -1806,7 +1806,7 @@ Requires that at least two plans are configured in your account:
   <file path="Http/AdapterInterface.php" hash="dee641e506a24897e743e8d25201a77b" package="CheddarGetter">
     <docblock line="3">
       <description>CheddarGetter</description>
-      <long-description></long-description>
+      <long-description/>
       <tag line="3" name="category" description="CheddarGetter"/>
       <tag line="3" name="package" description="CheddarGetter"/>
       <tag line="3" name="author" description="Marc Guyer &lt;marc@cheddargetter.com&gt;"/>
@@ -1816,7 +1816,7 @@ Requires that at least two plans are configured in your account:
       <full_name>\CheddarGetter_Http_AdapterInterface</full_name>
       <docblock line="9">
         <description>Adapter interface for getting and setting http related data</description>
-        <long-description></long-description>
+        <long-description/>
         <tag line="9" name="category" description="CheddarGetter"/>
         <tag line="9" name="package" description="CheddarGetter"/>
         <tag line="9" name="author" description="Christophe Coevoet &lt;stof@notk.org&gt;"/>
@@ -1827,7 +1827,7 @@ Requires that at least two plans are configured in your account:
         <full_name>hasCookie</full_name>
         <docblock line="19">
           <description>Checks whether a cookie exists.</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="19" name="param" description="Cookie name" type="string" variable="$name">
             <type by_reference="false">string</type>
           </tag>
@@ -1837,7 +1837,7 @@ Requires that at least two plans are configured in your account:
         </docblock>
         <argument line="25">
           <name>$name</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -1846,7 +1846,7 @@ Requires that at least two plans are configured in your account:
         <full_name>getCookie</full_name>
         <docblock line="27">
           <description>Gets the value of a cookie.</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="27" name="param" description="Cookie name" type="string" variable="$name">
             <type by_reference="false">string</type>
           </tag>
@@ -1856,7 +1856,7 @@ Requires that at least two plans are configured in your account:
         </docblock>
         <argument line="33">
           <name>$name</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -1865,7 +1865,7 @@ Requires that at least two plans are configured in your account:
         <full_name>setCookie</full_name>
         <docblock line="35">
           <description>Sets the value of a cookie.</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="35" name="param" description="Cookie name" type="string" variable="$name">
             <type by_reference="false">string</type>
           </tag>
@@ -1890,27 +1890,27 @@ Requires that at least two plans are configured in your account:
         </docblock>
         <argument line="46">
           <name>$name</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="46">
           <name>$data</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="46">
           <name>$expire</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="46">
           <name>$path</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="46">
           <name>$domain</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="46">
@@ -1939,7 +1939,7 @@ Requires that at least two plans are configured in your account:
         </docblock>
         <argument line="56">
           <name>$key</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -1948,7 +1948,7 @@ Requires that at least two plans are configured in your account:
         <full_name>hasReferrer</full_name>
         <docblock line="58">
           <description>Checks whether the referrer exists</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="58" name="return" description="" type="boolean">
             <type by_reference="false">boolean</type>
           </tag>
@@ -1959,7 +1959,7 @@ Requires that at least two plans are configured in your account:
         <full_name>getReferrer</full_name>
         <docblock line="64">
           <description>Gets the referrer</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="64" name="return" description="" type="string">
             <type by_reference="false">string</type>
           </tag>
@@ -1970,7 +1970,7 @@ Requires that at least two plans are configured in your account:
         <full_name>hasIp</full_name>
         <docblock line="70">
           <description>Checks if the IP is set</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="70" name="return" description="" type="boolean">
             <type by_reference="false">boolean</type>
           </tag>
@@ -1981,7 +1981,7 @@ Requires that at least two plans are configured in your account:
         <full_name>getIp</full_name>
         <docblock line="76">
           <description>Gets the IP</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="76" name="return" description="" type="string">
             <type by_reference="false">string</type>
           </tag>
@@ -1992,7 +1992,7 @@ Requires that at least two plans are configured in your account:
   <file path="Http/NativeAdapter.php" hash="56cb45e0bec636d0163f9f319f1754e2" package="CheddarGetter">
     <docblock line="3">
       <description>CheddarGetter</description>
-      <long-description></long-description>
+      <long-description/>
       <tag line="3" name="category" description="CheddarGetter"/>
       <tag line="3" name="package" description="CheddarGetter"/>
       <tag line="3" name="author" description="Marc Guyer &lt;marc@cheddargetter.com&gt;"/>
@@ -2004,7 +2004,7 @@ Requires that at least two plans are configured in your account:
       <full_name>\CheddarGetter_Http_NativeAdapter</full_name>
       <docblock line="9">
         <description>Adapter implementation using PHP superglobals for getting and setting http related data</description>
-        <long-description></long-description>
+        <long-description/>
         <tag line="9" name="category" description="CheddarGetter"/>
         <tag line="9" name="package" description="CheddarGetter"/>
         <tag line="9" name="author" description="Christophe Coevoet &lt;stof@notk.org&gt;"/>
@@ -2015,7 +2015,7 @@ Requires that at least two plans are configured in your account:
         <full_name>hasCookie</full_name>
         <docblock line="19">
           <description>Checks whether a cookie exists.</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="19" name="param" description="Cookie name" type="string" variable="$name">
             <type by_reference="false">string</type>
           </tag>
@@ -2025,7 +2025,7 @@ Requires that at least two plans are configured in your account:
         </docblock>
         <argument line="25">
           <name>$name</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -2034,7 +2034,7 @@ Requires that at least two plans are configured in your account:
         <full_name>getCookie</full_name>
         <docblock line="29">
           <description>Gets the value of a cookie.</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="29" name="param" description="Cookie name" type="string" variable="$name">
             <type by_reference="false">string</type>
           </tag>
@@ -2044,7 +2044,7 @@ Requires that at least two plans are configured in your account:
         </docblock>
         <argument line="35">
           <name>$name</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -2053,7 +2053,7 @@ Requires that at least two plans are configured in your account:
         <full_name>setCookie</full_name>
         <docblock line="39">
           <description>Sets the value of a cookie.</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="39" name="param" description="Cookie name" type="string" variable="$name">
             <type by_reference="false">string</type>
           </tag>
@@ -2078,27 +2078,27 @@ Requires that at least two plans are configured in your account:
         </docblock>
         <argument line="50">
           <name>$name</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="50">
           <name>$data</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="50">
           <name>$expire</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="50">
           <name>$path</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="50">
           <name>$domain</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="50">
@@ -2117,7 +2117,7 @@ Requires that at least two plans are configured in your account:
         <full_name>getRequestValue</full_name>
         <docblock line="57">
           <description>Get a value from the request (get/post/cookie)</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="57" name="param" description="" type="string" variable="$key">
             <type by_reference="false">string</type>
           </tag>
@@ -2127,7 +2127,7 @@ Requires that at least two plans are configured in your account:
         </docblock>
         <argument line="62">
           <name>$key</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -2136,7 +2136,7 @@ Requires that at least two plans are configured in your account:
         <full_name>hasReferrer</full_name>
         <docblock line="66">
           <description>Check if the http referrer is set</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="66" name="return" description="" type="boolean">
             <type by_reference="false">boolean</type>
           </tag>
@@ -2147,7 +2147,7 @@ Requires that at least two plans are configured in your account:
         <full_name>getReferrer</full_name>
         <docblock line="74">
           <description>Get the http referrer</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="74" name="return" description="" type="string">
             <type by_reference="false">string</type>
           </tag>
@@ -2158,7 +2158,7 @@ Requires that at least two plans are configured in your account:
         <full_name>hasIp</full_name>
         <docblock line="82">
           <description>Check if the remote IP is known</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="82" name="return" description="" type="boolean">
             <type by_reference="false">boolean</type>
           </tag>
@@ -2169,7 +2169,7 @@ Requires that at least two plans are configured in your account:
         <full_name>getIp</full_name>
         <docblock line="90">
           <description>Get the remote ip</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="90" name="return" description="" type="string">
             <type by_reference="false">string</type>
           </tag>
@@ -2180,7 +2180,7 @@ Requires that at least two plans are configured in your account:
   <file path="Http/ZendAdapter.php" hash="ca19f1bf7b0390794ab85a539ae8fcae" package="CheddarGetter">
     <docblock line="3">
       <description>CheddarGetter</description>
-      <long-description></long-description>
+      <long-description/>
       <tag line="3" name="category" description="CheddarGetter"/>
       <tag line="3" name="package" description="CheddarGetter"/>
       <tag line="3" name="author" description="Marc Guyer &lt;marc@cheddargetter.com&gt;"/>
@@ -2191,7 +2191,7 @@ Requires that at least two plans are configured in your account:
       <full_name>\CheddarGetter_Http_ZendAdapter</full_name>
       <docblock line="9">
         <description>Adapter implementation using the ZF1 abstraction for getting and setting http related data</description>
-        <long-description></long-description>
+        <long-description/>
         <tag line="9" name="category" description="CheddarGetter"/>
         <tag line="9" name="package" description="CheddarGetter"/>
         <tag line="9" name="author" description="Christophe Coevoet &lt;stof@notk.org&gt;"/>
@@ -2200,10 +2200,10 @@ Requires that at least two plans are configured in your account:
       </docblock>
       <property final="false" static="false" visibility="private" line="25" namespace="global" package="Default">
         <name>$_request</name>
-        <default></default>
+        <default/>
         <docblock line="20">
           <description>The request object</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="20" name="var" description="" type="\Zend_Controller_Request_Abstract|null">
             <type by_reference="false">\Zend_Controller_Request_Abstract</type>
             <type by_reference="false">null</type>
@@ -2215,7 +2215,7 @@ Requires that at least two plans are configured in your account:
         <full_name>__construct</full_name>
         <docblock line="27">
           <description>Constructor</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="27" name="throws" description="Throws an exception if Zend_Controller_Front is not available." type="\CheddarGetter_Client_Exception">
             <type by_reference="false">\CheddarGetter_Client_Exception</type>
           </tag>
@@ -2226,7 +2226,7 @@ Requires that at least two plans are configured in your account:
         <full_name>_request</full_name>
         <docblock line="37">
           <description>Get the reqeust object</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="37" name="return" description="" type="\Zend_Controller_Request_Abstract">
             <type by_reference="false">\Zend_Controller_Request_Abstract</type>
           </tag>
@@ -2237,7 +2237,7 @@ Requires that at least two plans are configured in your account:
         <full_name>getRequestValue</full_name>
         <docblock line="49">
           <description>Get a request param</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="49" name="param" description="" type="string" variable="$key">
             <type by_reference="false">string</type>
           </tag>
@@ -2247,7 +2247,7 @@ Requires that at least two plans are configured in your account:
         </docblock>
         <argument line="54">
           <name>$key</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -2256,7 +2256,7 @@ Requires that at least two plans are configured in your account:
         <full_name>hasCookie</full_name>
         <docblock line="58">
           <description>Checks whether a cookie exists.</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="58" name="param" description="Cookie name" type="string" variable="$name">
             <type by_reference="false">string</type>
           </tag>
@@ -2266,7 +2266,7 @@ Requires that at least two plans are configured in your account:
         </docblock>
         <argument line="64">
           <name>$name</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -2275,7 +2275,7 @@ Requires that at least two plans are configured in your account:
         <full_name>getCookie</full_name>
         <docblock line="68">
           <description>Gets the value of a cookie.</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="68" name="param" description="Cookie name" type="string" variable="$name">
             <type by_reference="false">string</type>
           </tag>
@@ -2285,7 +2285,7 @@ Requires that at least two plans are configured in your account:
         </docblock>
         <argument line="74">
           <name>$name</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -2294,7 +2294,7 @@ Requires that at least two plans are configured in your account:
         <full_name>hasReferrer</full_name>
         <docblock line="78">
           <description>Check if the http referrer is set</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="78" name="return" description="" type="boolean">
             <type by_reference="false">boolean</type>
           </tag>
@@ -2305,7 +2305,7 @@ Requires that at least two plans are configured in your account:
         <full_name>getReferrer</full_name>
         <docblock line="86">
           <description>Get the http referrer</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="86" name="return" description="" type="string">
             <type by_reference="false">string</type>
           </tag>
@@ -2316,7 +2316,7 @@ Requires that at least two plans are configured in your account:
         <full_name>hasIp</full_name>
         <docblock line="94">
           <description>Check if the remote ip is known</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="94" name="return" description="" type="boolean">
             <type by_reference="false">boolean</type>
           </tag>
@@ -2327,7 +2327,7 @@ Requires that at least two plans are configured in your account:
         <full_name>getIp</full_name>
         <docblock line="102">
           <description>Get the remote ip</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="102" name="return" description="" type="string">
             <type by_reference="false">string</type>
           </tag>
@@ -2338,7 +2338,7 @@ Requires that at least two plans are configured in your account:
   <file path="Response/Exception.php" hash="1596a938af206b14d2ba7f311ff6dc2e" package="CheddarGetter">
     <docblock line="2">
       <description>CheddarGetter</description>
-      <long-description></long-description>
+      <long-description/>
       <tag line="2" name="category" description="CheddarGetter"/>
       <tag line="2" name="package" description="CheddarGetter"/>
       <tag line="2" name="author" description="Marc Guyer &lt;marc@cheddargetter.com&gt;"/>
@@ -2349,7 +2349,7 @@ Requires that at least two plans are configured in your account:
       <full_name>\CheddarGetter_Response_Exception</full_name>
       <docblock line="8">
         <description>Response exception object</description>
-        <long-description></long-description>
+        <long-description/>
         <tag line="8" name="category" description="CheddarGetter"/>
         <tag line="8" name="package" description="CheddarGetter"/>
         <tag line="8" name="author" description="Marc Guyer &lt;marc@cheddargetter.com&gt;"/>
@@ -2392,10 +2392,10 @@ Requires that at least two plans are configured in your account:
       </constant>
       <property final="false" static="false" visibility="protected" line="30" namespace="global" package="Default">
         <name>$id</name>
-        <default></default>
+        <default/>
         <docblock line="26">
           <description>The log id of the error</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="26" name="var" description="" type="int|null">
             <type by_reference="false">int</type>
             <type by_reference="false">null</type>
@@ -2404,7 +2404,7 @@ Requires that at least two plans are configured in your account:
       </property>
       <property final="false" static="false" visibility="protected" line="40" namespace="global" package="Default">
         <name>$auxCode</name>
-        <default></default>
+        <default/>
         <docblock line="31">
           <description>The auxCode of the error</description>
           <long-description>&lt;p&gt;The auxCode is set if the error response contains one.
@@ -2422,7 +2422,7 @@ For more information, see the error handling KB article&lt;/p&gt;</long-descript
         <full_name>__construct</full_name>
         <docblock line="42">
           <description>Constructor</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="42" name="param" description="The message from the error response" type="string|null" variable="$message">
             <type by_reference="false">string</type>
             <type by_reference="false">null</type>
@@ -2465,7 +2465,7 @@ For more information, see the error handling KB article&lt;/p&gt;</long-descript
         <full_name>setId</full_name>
         <docblock line="55">
           <description>Set the error log id</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="55" name="param" description="" type="int" variable="$id">
             <type by_reference="false">int</type>
           </tag>
@@ -2475,7 +2475,7 @@ For more information, see the error handling KB article&lt;/p&gt;</long-descript
         </docblock>
         <argument line="60">
           <name>$id</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -2484,7 +2484,7 @@ For more information, see the error handling KB article&lt;/p&gt;</long-descript
         <full_name>setAuxCode</full_name>
         <docblock line="65">
           <description>Set the auxCode</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="65" name="param" description="" type="string" variable="$auxCode">
             <type by_reference="false">string</type>
           </tag>
@@ -2494,7 +2494,7 @@ For more information, see the error handling KB article&lt;/p&gt;</long-descript
         </docblock>
         <argument line="70">
           <name>$auxCode</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -2503,7 +2503,7 @@ For more information, see the error handling KB article&lt;/p&gt;</long-descript
         <full_name>getId</full_name>
         <docblock line="75">
           <description>Get the error log id</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="75" name="return" description="" type="int|null">
             <type by_reference="false">int</type>
             <type by_reference="false">null</type>
@@ -2515,7 +2515,7 @@ For more information, see the error handling KB article&lt;/p&gt;</long-descript
         <full_name>getAuxCode</full_name>
         <docblock line="83">
           <description>Get the error auxCode</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="83" name="return" description="" type="string|null">
             <type by_reference="false">string</type>
             <type by_reference="false">null</type>
@@ -2527,7 +2527,7 @@ For more information, see the error handling KB article&lt;/p&gt;</long-descript
   <file path="Response.php" hash="d0e2f46ad135893594e68a070f24e1dd" package="CheddarGetter">
     <docblock line="3">
       <description>CheddarGetter</description>
-      <long-description></long-description>
+      <long-description/>
       <tag line="3" name="category" description="CheddarGetter"/>
       <tag line="3" name="package" description="CheddarGetter"/>
       <tag line="3" name="author" description="Marc Guyer &lt;marc@cheddargetter.com&gt;"/>
@@ -2538,17 +2538,17 @@ For more information, see the error handling KB article&lt;/p&gt;</long-descript
       <full_name>\CheddarGetter_Response</full_name>
       <docblock line="9">
         <description>Response object</description>
-        <long-description></long-description>
+        <long-description/>
         <tag line="9" name="category" description="CheddarGetter"/>
         <tag line="9" name="package" description="CheddarGetter"/>
         <tag line="9" name="author" description="Marc Guyer &lt;marc@cheddargetter.com&gt;"/>
       </docblock>
       <property final="false" static="false" visibility="private" line="22" namespace="global" package="Default">
         <name>$_responseType</name>
-        <default></default>
+        <default/>
         <docblock line="18">
           <description>The type of response (customers or plans or promotions or error)</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="18" name="var" description="" type="string">
             <type by_reference="false">string</type>
           </tag>
@@ -2556,10 +2556,10 @@ For more information, see the error handling KB article&lt;/p&gt;</long-descript
       </property>
       <property final="false" static="false" visibility="private" line="28" namespace="global" package="Default">
         <name>$_array</name>
-        <default></default>
+        <default/>
         <docblock line="24">
           <description>An array representation of the response obj</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="24" name="var" description="" type="array">
             <type by_reference="false">array</type>
           </tag>
@@ -2570,7 +2570,7 @@ For more information, see the error handling KB article&lt;/p&gt;</long-descript
         <full_name>__construct</full_name>
         <docblock line="30">
           <description>Constructor</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="30" name="param" description="string well formed xml" type="\" variable="$response"/>
           <tag line="30" name="throws" description="in the event the xml is not well formed" type="\CheddarGetter_Response_Exception">
             <type by_reference="false">\CheddarGetter_Response_Exception</type>
@@ -2578,7 +2578,7 @@ For more information, see the error handling KB article&lt;/p&gt;</long-descript
         </docblock>
         <argument line="36">
           <name>$response</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -2606,7 +2606,7 @@ For more information, see the error handling KB article&lt;/p&gt;</long-descript
         <full_name>getResponseType</full_name>
         <docblock line="69">
           <description>Get the response type for this request object -- usually corresponds to the root node name</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="69" name="return" description="" type="string">
             <type by_reference="false">string</type>
           </tag>
@@ -2617,7 +2617,7 @@ For more information, see the error handling KB article&lt;/p&gt;</long-descript
         <full_name>hasEmbeddedErrors</full_name>
         <docblock line="78">
           <description>Determine whether or not the response doc contains embedded errors</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="78" name="return" description="" type="boolean">
             <type by_reference="false">boolean</type>
           </tag>
@@ -2628,7 +2628,7 @@ For more information, see the error handling KB article&lt;/p&gt;</long-descript
         <full_name>getEmbeddedErrors</full_name>
         <docblock line="88">
           <description>Get embedded errors if any</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="88" name="return" description="" type="array|false">
             <type by_reference="false">array</type>
             <type by_reference="false">false</type>
@@ -2640,7 +2640,7 @@ For more information, see the error handling KB article&lt;/p&gt;</long-descript
         <full_name>toArray</full_name>
         <docblock line="101">
           <description>Get a nested array representation of the response doc</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="101" name="return" description="" type="array">
             <type by_reference="false">array</type>
           </tag>
@@ -2651,7 +2651,7 @@ For more information, see the error handling KB article&lt;/p&gt;</long-descript
         <full_name>toJson</full_name>
         <docblock line="126">
           <description>Get a JSON encoded string representation of the response doc</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="126" name="return" description="" type="string">
             <type by_reference="false">string</type>
           </tag>
@@ -2662,7 +2662,7 @@ For more information, see the error handling KB article&lt;/p&gt;</long-descript
         <full_name>_toArray</full_name>
         <docblock line="135">
           <description>Recursive method to traverse the dom and produce an array</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="135" name="param" description="" type="\DOMNodeList" variable="$nodes">
             <type by_reference="false">\DOMNodeList</type>
           </tag>
@@ -2672,7 +2672,7 @@ For more information, see the error handling KB article&lt;/p&gt;</long-descript
         </docblock>
         <argument line="141">
           <name>$nodes</name>
-          <default></default>
+          <default/>
           <type>\DOMNodeList</type>
         </argument>
       </method>
@@ -2681,7 +2681,7 @@ For more information, see the error handling KB article&lt;/p&gt;</long-descript
         <full_name>getPlan</full_name>
         <docblock line="197">
           <description>Get an array representation of a single plan node</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="197" name="param" description="string your code for the plan - required if more than one plan is in the response" type="\" variable="$code"/>
           <tag line="197" name="throws" description="if the response type is incompatible or if a $code is not provided and the response contains more than one plan" type="\CheddarGetter_Response_Exception">
             <type by_reference="false">\CheddarGetter_Response_Exception</type>
@@ -2701,7 +2701,7 @@ For more information, see the error handling KB article&lt;/p&gt;</long-descript
         <full_name>getPlanItems</full_name>
         <docblock line="218">
           <description>Get an array representation of all of the plan items</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="218" name="param" description="string your code for the plan - required if more than one plan is in the response" type="\" variable="$code"/>
           <tag line="218" name="throws" description="if the response type is incompatible or if a $code is not provided and the response contains more than one plan" type="\CheddarGetter_Response_Exception">
             <type by_reference="false">\CheddarGetter_Response_Exception</type>
@@ -2721,7 +2721,7 @@ For more information, see the error handling KB article&lt;/p&gt;</long-descript
         <full_name>getPlanItem</full_name>
         <docblock line="230">
           <description>Get an array representation of a single plan item node</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="230" name="param" description="string your code for the plan - required if more than one plan is in the response" type="\" variable="$code"/>
           <tag line="230" name="param" description="your code for the item - required if more than one item is in the response" type="\" variable="$itemCode"/>
           <tag line="230" name="throws" description="if the response type is incompatible or if a $code is not provided and the response contains more than one plan" type="\CheddarGetter_Response_Exception">
@@ -2747,7 +2747,7 @@ For more information, see the error handling KB article&lt;/p&gt;</long-descript
         <full_name>getPromotion</full_name>
         <docblock line="249">
           <description>Get an array representation of a single promotion node</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="249" name="param" description="string your code for the coupon within the promotion - required if more than one promotion is in the response" type="\" variable="$couponCode"/>
           <tag line="249" name="throws" description="if the response type is incompatible or if a $code is not provided and the response contains more than one promotion" type="\CheddarGetter_Response_Exception">
             <type by_reference="false">\CheddarGetter_Response_Exception</type>
@@ -2767,7 +2767,7 @@ For more information, see the error handling KB article&lt;/p&gt;</long-descript
         <full_name>getCustomer</full_name>
         <docblock line="270">
           <description>Get an array representation of a single customer node</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="270" name="param" description="string your code for the customer - required if more than one customer is in the response" type="\" variable="$code"/>
           <tag line="270" name="throws" description="if the response type is incompatible or if a $code is not provided and the response contains more than one customer" type="\CheddarGetter_Response_Exception">
             <type by_reference="false">\CheddarGetter_Response_Exception</type>
@@ -2787,7 +2787,7 @@ For more information, see the error handling KB article&lt;/p&gt;</long-descript
         <full_name>getCustomerSubscription</full_name>
         <docblock line="291">
           <description>Get an array representation of a single customer's current subscription</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="291" name="param" description="string your code for the customer - required if more than one customer is in the response" type="\" variable="$code"/>
           <tag line="291" name="throws" description="if the response type is incompatible or if a $code is not provided and the response contains more than one customer" type="\CheddarGetter_Response_Exception">
             <type by_reference="false">\CheddarGetter_Response_Exception</type>
@@ -2807,7 +2807,7 @@ For more information, see the error handling KB article&lt;/p&gt;</long-descript
         <full_name>getCustomerIsActive</full_name>
         <docblock line="303">
           <description>Whether or not a customer's subscription is active and in good standing</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="303" name="param" description="string your code for the customer - required if more than one customer is in the response" type="\" variable="$code"/>
           <tag line="303" name="param" description="bool Set to true if you'd like the account to remain active until the end of the current payment period rather than inactive at the moment of cancelation" type="\" variable="$remainActiveThroughEndOfPeriod"/>
           <tag line="303" name="throws" description="if the response type is incompatible or if a $code is not provided and the response contains more than one customer" type="\CheddarGetter_Response_Exception">
@@ -2833,7 +2833,7 @@ For more information, see the error handling KB article&lt;/p&gt;</long-descript
         <full_name>getCustomerIsWaitingForPayPal</full_name>
         <docblock line="327">
           <description>Is this customer's account pending paypal preapproval confirmation?</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="327" name="param" description="string your code for the customer - required if more than one customer is in the response" type="\" variable="$code"/>
           <tag line="327" name="throws" description="if the response type is incompatible or if a $code is not provided and the response contains more than one customer" type="\CheddarGetter_Response_Exception">
             <type by_reference="false">\CheddarGetter_Response_Exception</type>
@@ -2853,7 +2853,7 @@ For more information, see the error handling KB article&lt;/p&gt;</long-descript
         <full_name>getCustomerSubscriptions</full_name>
         <docblock line="346">
           <description>Get an array representation of a single customer's subscriptions (history)</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="346" name="param" description="string your code for the customer - required if more than one customer is in the response" type="\" variable="$code"/>
           <tag line="346" name="throws" description="if the response type is incompatible or if a $code is not provided and the response contains more than one customer" type="\CheddarGetter_Response_Exception">
             <type by_reference="false">\CheddarGetter_Response_Exception</type>
@@ -2873,7 +2873,7 @@ For more information, see the error handling KB article&lt;/p&gt;</long-descript
         <full_name>getCustomerPlan</full_name>
         <docblock line="358">
           <description>Get an array representation of a single customer's currently subscribed plan</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="358" name="param" description="string your code for the customer - required if more than one customer is in the response" type="\" variable="$code"/>
           <tag line="358" name="throws" description="if the response type is incompatible or if a $code is not provided and the response contains more than one customer" type="\CheddarGetter_Response_Exception">
             <type by_reference="false">\CheddarGetter_Response_Exception</type>
@@ -2893,7 +2893,7 @@ For more information, see the error handling KB article&lt;/p&gt;</long-descript
         <full_name>getCustomerInvoice</full_name>
         <docblock line="370">
           <description>Get an array representation of a single customer's current invoice</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="370" name="param" description="string your code for the customer - required if more than one customer is in the response" type="\" variable="$code"/>
           <tag line="370" name="throws" description="if the response type is incompatible or if a $code is not provided and the response contains more than one customer" type="\CheddarGetter_Response_Exception">
             <type by_reference="false">\CheddarGetter_Response_Exception</type>
@@ -2933,7 +2933,7 @@ For more information, see the error handling KB article&lt;/p&gt;</long-descript
         <full_name>getCustomerInvoices</full_name>
         <docblock line="404">
           <description>Get an array representation of a single customer's invoices</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="404" name="param" description="string your code for the customer - required if more than one customer is in the response" type="\" variable="$code"/>
           <tag line="404" name="throws" description="if the response type is incompatible or if a $code is not provided and the response contains more than one customer" type="\CheddarGetter_Response_Exception">
             <type by_reference="false">\CheddarGetter_Response_Exception</type>
@@ -2954,7 +2954,7 @@ For more information, see the error handling KB article&lt;/p&gt;</long-descript
         <full_name>getCustomerTransactions</full_name>
         <docblock line="424">
           <description>Get an array representation of a single customer's transactions</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="424" name="param" description="string your code for the customer - required if more than one customer is in the response" type="\" variable="$code"/>
           <tag line="424" name="throws" description="if the response type is incompatible or if a $code is not provided and the response contains more than one customer" type="\CheddarGetter_Response_Exception">
             <type by_reference="false">\CheddarGetter_Response_Exception</type>
@@ -2975,7 +2975,7 @@ For more information, see the error handling KB article&lt;/p&gt;</long-descript
         <full_name>getCustomerLastTransaction</full_name>
         <docblock line="448">
           <description>Get an array representation of a single customer's last transaction (successful or otherwise)</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="448" name="param" description="string your code for the customer - required if more than one customer is in the response" type="\" variable="$code"/>
           <tag line="448" name="throws" description="if the response type is incompatible or if a $code is not provided and the response contains more than one customer" type="\CheddarGetter_Response_Exception">
             <type by_reference="false">\CheddarGetter_Response_Exception</type>
@@ -2996,7 +2996,7 @@ For more information, see the error handling KB article&lt;/p&gt;</long-descript
         <full_name>getCustomerOutstandingInvoices</full_name>
         <docblock line="463">
           <description>Get an array representation of a single customer's outstanding invoices</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="463" name="param" description="string your code for the customer - required if more than one customer is in the response" type="\" variable="$code"/>
           <tag line="463" name="throws" description="if the response type is incompatible or if a $code is not provided and the response contains more than one customer" type="\CheddarGetter_Response_Exception">
             <type by_reference="false">\CheddarGetter_Response_Exception</type>
@@ -3017,7 +3017,7 @@ For more information, see the error handling KB article&lt;/p&gt;</long-descript
         <full_name>getCustomerItemQuantity</full_name>
         <docblock line="484">
           <description>Get an array of a customer's item quantity and quantity included</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="484" name="param" description="string your code for the plan - required if more than one plan is in the response" type="\" variable="$code"/>
           <tag line="484" name="param" description="your code for the item - required if more than one item is in the response" type="\" variable="$itemCode"/>
           <tag line="484" name="throws" description="if the response type is incompatible or if a $code is not provided and the response contains more than one customer or if a $itemCode is not provided and the plan contains more than one tracked item" type="\CheddarGetter_Response_Exception">
@@ -3043,7 +3043,7 @@ For more information, see the error handling KB article&lt;/p&gt;</long-descript
         <full_name>getCustomerItemQuantityRemaining</full_name>
         <docblock line="511">
           <description>Get remaining quantity (quantity included minus current quantity)</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="511" name="param" description="string your code for the plan - required if more than one plan is in the response" type="\" variable="$code"/>
           <tag line="511" name="param" description="your code for the item - required if more than one item is in the response" type="\" variable="$itemCode"/>
           <tag line="511" name="throws" description="if the response type is incompatible or if a $code is not provided and the response contains more than one customer or if a $itemCode is not provided and the plan contains more than one tracked item" type="\CheddarGetter_Response_Exception">
@@ -3069,7 +3069,7 @@ For more information, see the error handling KB article&lt;/p&gt;</long-descript
         <full_name>getCustomerItemQuantityOverage</full_name>
         <docblock line="524">
           <description>Get quantity usage greater than included quantity</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="524" name="param" description="string your code for the plan - required if more than one plan is in the response" type="\" variable="$code"/>
           <tag line="524" name="param" description="your code for the item - required if more than one item is in the response" type="\" variable="$itemCode"/>
           <tag line="524" name="throws" description="if the response type is incompatible or if a $code is not provided and the response contains more than one customer or if a $itemCode is not provided and the plan contains more than one tracked item" type="\CheddarGetter_Response_Exception">
@@ -3095,7 +3095,7 @@ For more information, see the error handling KB article&lt;/p&gt;</long-descript
         <full_name>getCustomerItemQuantityOverageCost</full_name>
         <docblock line="540">
           <description>Get current item overage cost</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="540" name="param" description="string your code for the plan - required if more than one plan is in the response" type="\" variable="$code"/>
           <tag line="540" name="param" description="your code for the item - required if more than one item is in the response" type="\" variable="$itemCode"/>
           <tag line="540" name="throws" description="if the response type is incompatible or if a $code is not provided and the response contains more than one customer or if a $itemCode is not provided and the plan contains more than one tracked item" type="\CheddarGetter_Response_Exception">
@@ -3121,7 +3121,7 @@ For more information, see the error handling KB article&lt;/p&gt;</long-descript
         <full_name>handleError</full_name>
         <docblock line="557">
           <description>Handle an error if there is one</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="557" name="throws" description="Throws CheddarGetter_Response_Exception if an error is found in the response" type="\CheddarGetter_Response_Exception">
             <type by_reference="false">\CheddarGetter_Response_Exception</type>
           </tag>
@@ -3149,7 +3149,7 @@ For more information, see the error handling KB article&lt;/p&gt;</long-descript
         <full_name>__toString</full_name>
         <docblock line="592">
           <description>Implementation of the magic __toString method</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="592" name="return" description="The XML string" type="string">
             <type by_reference="false">string</type>
           </tag>
