@@ -330,7 +330,7 @@ class CheddarGetter_Client {
 	 * Get all customers in the product
 	 *
 	 * @link https://cheddargetter.com/developers#all-customers
-	 * @param array|null $filters {@link https://cheddargetter.com/developers#all-customers}
+	 * @param array|null $filters
 	 * @return CheddarGetter_Response
 	 * @throws CheddarGetter_Response_Exception
 	 */
@@ -344,7 +344,7 @@ class CheddarGetter_Client {
 	 * Get all customers in the product
 	 *
 	 * @link https://cheddargetter.com/developers#all-customers
-	 * @param array|null $filters {@link https://cheddargetter.com/developers#all-customers}
+	 * @param array|null $filters
 	 * @return CheddarGetter_Response
 	 * @throws CheddarGetter_Response_Exception
 	 */
@@ -394,7 +394,7 @@ class CheddarGetter_Client {
 	 *
 	 * @link https://cheddargetter.com/developers#add-customer
 	 * @see setMarketingCookie
-	 * @param array|null $data {@link https://cheddargetter.com/developers#add-customer}
+	 * @param array $data
 	 * @return CheddarGetter_Response
 	 * @throws CheddarGetter_Response_Exception
 	 */
@@ -425,12 +425,25 @@ class CheddarGetter_Client {
 	}
 
 	/**
+	 * Import customers in bulk
+	 *
+	 * @link https://cheddargetter.com/developers#import-customers
+	 * @param array $data An array of arrays
+	 * @return CheddarGetter_Response
+	 * @throws CheddarGetter_Client_Exception
+	 * @throws CheddarGetter_Response_Exception
+	 */
+	public function importCustomers(array $data) {
+		return new CheddarGetter_Response($this->request('/customers/import', $data));
+	}
+
+	/**
 	 * Change customer and subscription information
 	 *
 	 * @link https://cheddargetter.com/developers#update-customer-subscription
 	 * @param string $code Your code for the customer
 	 * @param string|null $id CG id for the customer
-	 * @param array|null $data {@link https://cheddargetter.com/developers#update-customer-subscription}
+	 * @param array $data
 	 * @return CheddarGetter_Response
 	 * @throws CheddarGetter_Response_Exception
 	 */
@@ -450,7 +463,7 @@ class CheddarGetter_Client {
 	 * @link https://cheddargetter.com/developers#update-customer
 	 * @param string $code Your code for the customer
 	 * @param string|null $id CG id for the customer
-	 * @param array|null $data {@link https://cheddargetter.com/developers#update-customer}
+	 * @param array $data
 	 * @return CheddarGetter_Response
 	 * @throws CheddarGetter_Response_Exception
 	 */
@@ -507,7 +520,7 @@ class CheddarGetter_Client {
 	 * @link https://cheddargetter.com/developers#update-subscription
 	 * @param string $code Your code for the customer
 	 * @param string|null $id CG id for the customer
-	 * @param array|null $data {@link https://cheddargetter.com/developers#update-subscription}
+	 * @param array $data
 	 * @return CheddarGetter_Response
 	 * @throws CheddarGetter_Response_Exception
 	 */
@@ -545,7 +558,7 @@ class CheddarGetter_Client {
 	 * @link https://cheddargetter.com/developers#add-item-quantity
 	 * @param string $code Your code for the customer
 	 * @param string|null $id CG id for the customer
-	 * @param array $data Your (itemCode or CG itemId) and [quantity] {@link https://cheddargetter.com/developers#add-item-quantity}
+	 * @param array $data Your (itemCode or CG itemId) and [quantity]
 	 * @return CheddarGetter_Response
 	 * @throws CheddarGetter_Response_Exception
 	 */
@@ -565,7 +578,7 @@ class CheddarGetter_Client {
 	 * @link https://cheddargetter.com/developers#remove-item-quantity
 	 * @param string $code Your code for the customer
 	 * @param string|null $id CG id for the customer
-	 * @param array $data Your (itemCode or CG itemId) and [quantity] {@link https://cheddargetter.com/developers#remove-item-quantity}
+	 * @param array $data Your (itemCode or CG itemId) and [quantity]
 	 * @return CheddarGetter_Response
 	 * @throws CheddarGetter_Response_Exception
 	 */
@@ -585,7 +598,7 @@ class CheddarGetter_Client {
 	 * @link https://cheddargetter.com/developers#set-item-quantity
 	 * @param string $code Your code for the customer
 	 * @param string|null $id CG id for the customer
-	 * @param array $data Your (itemCode or CG itemId) and quantity {@link https://cheddargetter.com/developers#set-item-quantity}
+	 * @param array $data Your (itemCode or CG itemId) and quantity
 	 * @return CheddarGetter_Response
 	 * @throws CheddarGetter_Response_Exception
 	 */
@@ -607,7 +620,7 @@ class CheddarGetter_Client {
 	 * @link https://cheddargetter.com/developers#add-charge
 	 * @param string $code Your code for the customer
 	 * @param string|null $id CG id for the customer
-	 * @param array $data chargeCode, quantity, eachAmount[, description] {@link https://cheddargetter.com/developers#add-charge}
+	 * @param array $data chargeCode, quantity, eachAmount[, description]
 	 * @return CheddarGetter_Response
 	 * @throws CheddarGetter_Response_Exception
 	 */
@@ -629,7 +642,7 @@ class CheddarGetter_Client {
 	 * @link https://cheddargetter.com/developers#delete-charge
 	 * @param string $code Your code for the customer
 	 * @param string|null $id CG id for the customer
-	 * @param array $data chargeId {@link https://cheddargetter.com/developers#delete-charge}
+	 * @param array $data chargeId
 	 * @return CheddarGetter_Response
 	 * @throws CheddarGetter_Response_Exception
 	 */
@@ -651,7 +664,7 @@ class CheddarGetter_Client {
 	 * @link https://cheddargetter.com/developers#one-time-invoice
 	 * @param string $code Your code for the customer
 	 * @param string|null $id CG id for the customer
-	 * @param array $data an array of arrays each with: chargeCode, quantity, eachAmount[, description] {@link https://cheddargetter.com/developers#one-time-invoice}
+	 * @param array $data an array of arrays each with: chargeCode, quantity, eachAmount[, description]
 	 * @return CheddarGetter_Response
 	 * @throws CheddarGetter_Response_Exception
 	 */
@@ -737,7 +750,7 @@ class CheddarGetter_Client {
 	 * @link https://cheddargetter.com/developers#run-invoice
 	 * @param string $code Your code for the customer
 	 * @param string|null $id CG id for the customer
-	 * @param array $data [ccCardCode] (optional) {@link https://cheddargetter.com/developers#run-invoice}
+	 * @param array $data [ccCardCode] (optional)
 	 * @return CheddarGetter_Response
 	 * @throws CheddarGetter_Response_Exception
 	 */

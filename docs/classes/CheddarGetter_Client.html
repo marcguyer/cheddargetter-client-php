@@ -85,6 +85,7 @@
 <li class="method public "><a href="#method_getRequestAdapter" title="getRequestAdapter :: Gets the request adapter."><span class="description">Gets the request adapter.</span><pre>getRequestAdapter()</pre></a></li>
 <li class="method public "><a href="#method_getUrl" title="getUrl :: Get URL"><span class="description">Get URL</span><pre>getUrl()</pre></a></li>
 <li class="method public "><a href="#method_getUsername" title="getUsername :: Get username"><span class="description">Get username</span><pre>getUsername()</pre></a></li>
+<li class="method public "><a href="#method_importCustomers" title="importCustomers :: Import customers in bulk"><span class="description">Import customers in bulk</span><pre>importCustomers()</pre></a></li>
 <li class="method public "><a href="#method_newCustomer" title="newCustomer :: Create new customer"><span class="description">Create new customer</span><pre>newCustomer()</pre></a></li>
 <li class="method public "><a href="#method_newOneTimeInvoice" title="newOneTimeInvoice :: Create a new one-time invoice"><span class="description">Create a new one-time invoice</span><pre>newOneTimeInvoice()</pre></a></li>
 <li class="method public "><a href="#method_refundInvoice" title="refundInvoice :: Refund invoice"><span class="description">Refund invoice</span><pre>refundInvoice()</pre></a></li>
@@ -226,7 +227,7 @@
 <code>string</code><code>null</code><p>CG id for the customer</p></div>
 <div class="subelement argument">
 <h4>$data</h4>
-<code>array</code><p>chargeCode, quantity, eachAmount[, description] {@link https://cheddargetter.com/developers#add-charge}</p>
+<code>array</code><p>chargeCode, quantity, eachAmount[, description]</p>
 </div>
 <h3>Exceptions</h3>
 <table class="table table-bordered"><tr>
@@ -256,7 +257,7 @@
 <code>string</code><code>null</code><p>CG id for the customer</p></div>
 <div class="subelement argument">
 <h4>$data</h4>
-<code>array</code><p>Your (itemCode or CG itemId) and [quantity] {@link https://cheddargetter.com/developers#add-item-quantity}</p>
+<code>array</code><p>Your (itemCode or CG itemId) and [quantity]</p>
 </div>
 <h3>Exceptions</h3>
 <table class="table table-bordered"><tr>
@@ -312,8 +313,7 @@
 <code>string</code><code>null</code><p>CG id for the customer</p></div>
 <div class="subelement argument">
 <h4>$data</h4>
-<code>array</code><p>chargeId {@link https://cheddargetter.com/developers#delete-charge}</p>
-</div>
+<code>array</code><p>chargeId</p></div>
 <h3>Exceptions</h3>
 <table class="table table-bordered"><tr>
 <th><code><a href="../classes/CheddarGetter_Response_Exception.html">\CheddarGetter_Response_Exception</a></code></th>
@@ -411,7 +411,7 @@ if a gateway is configured.</p></div>
 <code>string</code><code>null</code><p>CG id for the customer</p></div>
 <div class="subelement argument">
 <h4>$data</h4>
-<code>array</code><code>null</code><p>{@link https://cheddargetter.com/developers#update-customer-subscription}</p>
+<code>array</code>
 </div>
 <h3>Exceptions</h3>
 <table class="table table-bordered"><tr>
@@ -441,7 +441,7 @@ if a gateway is configured.</p></div>
 <code>string</code><code>null</code><p>CG id for the customer</p></div>
 <div class="subelement argument">
 <h4>$data</h4>
-<code>array</code><code>null</code><p>{@link https://cheddargetter.com/developers#update-customer}</p>
+<code>array</code>
 </div>
 <h3>Exceptions</h3>
 <table class="table table-bordered"><tr>
@@ -471,7 +471,7 @@ if a gateway is configured.</p></div>
 <code>string</code><code>null</code><p>CG id for the customer</p></div>
 <div class="subelement argument">
 <h4>$data</h4>
-<code>array</code><code>null</code><p>{@link https://cheddargetter.com/developers#update-subscription}</p>
+<code>array</code>
 </div>
 <h3>Exceptions</h3>
 <table class="table table-bordered"><tr>
@@ -547,7 +547,7 @@ if a gateway is configured.</p></div>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$filters</h4>
-<code>array</code><code>null</code><p>{@link https://cheddargetter.com/developers#all-customers}</p>
+<code>array</code><code>null</code>
 </div>
 <h3>Exceptions</h3>
 <table class="table table-bordered"><tr>
@@ -571,7 +571,7 @@ if a gateway is configured.</p></div>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$filters</h4>
-<code>array</code><code>null</code><p>{@link https://cheddargetter.com/developers#all-customers}</p>
+<code>array</code><code>null</code>
 </div>
 <h3>Exceptions</h3>
 <table class="table table-bordered"><tr>
@@ -756,6 +756,35 @@ if a gateway is configured.</p></div>
 <div class="subelement response"><code>string</code></div>
 </div></div>
 </div>
+<a id="method_importCustomers"></a><div class="element clickable method public method_importCustomers" data-toggle="collapse" data-target=".method_importCustomers .collapse">
+<h2>Import customers in bulk</h2>
+<pre>importCustomers(array $data) : <a href="../classes/CheddarGetter_Response.html">\CheddarGetter_Response</a></pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>link</th>
+<td><a href="https://cheddargetter.com/developers#import-customers">https://cheddargetter.com/developers#import-customers</a></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$data</h4>
+<code>array</code><p>An array of arrays</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code><a href="../classes/CheddarGetter_Client_Exception.html">\CheddarGetter_Client_Exception</a></code></th>
+<td></td>
+</tr>
+<tr>
+<th><code><a href="../classes/CheddarGetter_Response_Exception.html">\CheddarGetter_Response_Exception</a></code></th>
+<td></td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response"><code><a href="../classes/CheddarGetter_Response.html">\CheddarGetter_Response</a></code></div>
+</div></div>
+</div>
 <a id="method_newCustomer"></a><div class="element clickable method public method_newCustomer" data-toggle="collapse" data-target=".method_newCustomer .collapse">
 <h2>Create new customer</h2>
 <pre>newCustomer(array $data) : <a href="../classes/CheddarGetter_Response.html">\CheddarGetter_Response</a></pre>
@@ -775,7 +804,7 @@ if a gateway is configured.</p></div>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$data</h4>
-<code>array</code><code>null</code><p>{@link https://cheddargetter.com/developers#add-customer}</p>
+<code>array</code>
 </div>
 <h3>Exceptions</h3>
 <table class="table table-bordered"><tr>
@@ -805,7 +834,7 @@ if a gateway is configured.</p></div>
 <code>string</code><code>null</code><p>CG id for the customer</p></div>
 <div class="subelement argument">
 <h4>$data</h4>
-<code>array</code><p>an array of arrays each with: chargeCode, quantity, eachAmount[, description] {@link https://cheddargetter.com/developers#one-time-invoice}</p>
+<code>array</code><p>an array of arrays each with: chargeCode, quantity, eachAmount[, description]</p>
 </div>
 <h3>Exceptions</h3>
 <table class="table table-bordered"><tr>
@@ -871,7 +900,7 @@ if a gateway is configured.</p></div>
 <code>string</code><code>null</code><p>CG id for the customer</p></div>
 <div class="subelement argument">
 <h4>$data</h4>
-<code>array</code><p>Your (itemCode or CG itemId) and [quantity] {@link https://cheddargetter.com/developers#remove-item-quantity}</p>
+<code>array</code><p>Your (itemCode or CG itemId) and [quantity]</p>
 </div>
 <h3>Exceptions</h3>
 <table class="table table-bordered"><tr>
@@ -901,7 +930,7 @@ if a gateway is configured.</p></div>
 <code>string</code><code>null</code><p>CG id for the customer</p></div>
 <div class="subelement argument">
 <h4>$data</h4>
-<code>array</code><p>[ccCardCode] (optional) {@link https://cheddargetter.com/developers#run-invoice}</p>
+<code>array</code><p>[ccCardCode] (optional)</p>
 </div>
 <h3>Exceptions</h3>
 <table class="table table-bordered"><tr>
@@ -950,7 +979,7 @@ if a gateway is configured.</p></div>
 <code>string</code><code>null</code><p>CG id for the customer</p></div>
 <div class="subelement argument">
 <h4>$data</h4>
-<code>array</code><p>Your (itemCode or CG itemId) and quantity {@link https://cheddargetter.com/developers#set-item-quantity}</p>
+<code>array</code><p>Your (itemCode or CG itemId) and quantity</p>
 </div>
 <h3>Exceptions</h3>
 <table class="table table-bordered"><tr>
@@ -1290,7 +1319,7 @@ abstraction of a framework can be used.</p></div></div></div>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
-            generated on 2013-05-23T18:48:00Z.<br></footer></div>
+            generated on 2013-07-18T17:10:55Z.<br></footer></div>
 </div>
 </body>
 </html>
