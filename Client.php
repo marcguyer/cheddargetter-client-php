@@ -815,7 +815,10 @@ class CheddarGetter_Client {
 
 		if (self::getRequestAdapter()->hasIp()) {
 			if (!empty($args) && empty($args['remoteAddress'])) {
-				$args['remoteAddress'] = self::getRequestAdapter()->getIp();
+				// not a nested list (for import request)
+				if (!is_array(current($args))) {
+					$args['remoteAddress'] = self::getRequestAdapter()->getIp();
+				}
 			} else if (count($args) == 1 && !empty($args['remoteAddress'])) {
 				$url .= '/remoteAddress/' . $args['remoteAddress'];
 				unset($args['remoteAddress']);
