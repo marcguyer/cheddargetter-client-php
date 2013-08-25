@@ -734,6 +734,7 @@ class CheddarGetter_Client {
 	 * @throws CheddarGetter_Response_Exception
 	 */
 	public function refundInvoice($number, $id = null, $amount = null) {
+		$this->_requireIdentifier($number, $id);
 		return new CheddarGetter_Response(
 			$this->request(
 				'/invoices/void/' . (($id) ? 'id/'.$id : 'number/'.$number),
@@ -763,6 +764,31 @@ class CheddarGetter_Client {
 			$this->request(
 				'/customers/run-outstanding/' . (($id) ? 'id/'.$id : 'code/'.urlencode($code)),
 				$data
+			)
+		);
+	}
+
+	/**
+	 * Send an invoice receipt email
+	 *
+	 * Resend an invoice receipt email. For any transacted invoice.
+	 * Relevant email notification must be enabled in CG config.
+	 *
+	 * @link https://cheddargetter.com/developers#send-email
+	 * @link http://support.cheddargetter.com/kb/operational-how-tos/email-notification-templates-overview#payment-receipt
+	 * @param string $number The unique number of the invoice.
+	 * @param string|null $id CG id of the invoice
+	 * @return CheddarGetter_Response
+	 * @throws CheddarGetter_Response_Exception
+	 */
+	public function sendEmailReceipt($number, $id = null) {
+		$this->_requireIdentifier($number, $id);
+		return new CheddarGetter_Response(
+			$this->request(
+				'/invoices/send-email/' . (($id) ? 'id/'.$id : 'number/'.$number),
+				array(
+					'bogus' => 'make this a post'
+				)
 			)
 		);
 	}
