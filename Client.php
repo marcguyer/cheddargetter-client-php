@@ -553,6 +553,26 @@ class CheddarGetter_Client {
 	}
 
 	/**
+	 * PayPal Revert (workaround)
+	 *
+	 * This is an experimental workaround for some PayPal shortcomings.
+	 * It should be unecessary in the near future.
+	 *
+	 * @param string $code Your code for the customer
+	 * @param string|null $id CG id for the customer
+	 * @return CheddarGetter_Response
+	 * @throws CheddarGetter_Response_Exception
+	 */
+	public function paypalRevert($code, $id = null) {
+		$this->_requireIdentifier($code, $id);
+		return new CheddarGetter_Response(
+			$this->request(
+				'/customers/paypal-revert/' . (($id) ? 'id/'.$id : 'code/'.urlencode($code))
+			)
+		);
+	}
+
+	/**
 	 * Increment a usage item quantity
 	 *
 	 * @link https://cheddargetter.com/developers#add-item-quantity
