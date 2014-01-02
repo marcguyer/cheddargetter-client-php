@@ -567,7 +567,8 @@ class CheddarGetter_Client {
 		$this->_requireIdentifier($code, $id);
 		return new CheddarGetter_Response(
 			$this->request(
-				'/customers/paypal-revert/' . (($id) ? 'id/'.$id : 'code/'.urlencode($code))
+				'/customers/paypal-revert/' . (($id) ? 'id/'.$id : 'code/'.urlencode($code)),
+				array('bogus' => 'make this a post')
 			)
 		);
 	}
