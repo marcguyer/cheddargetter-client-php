@@ -518,6 +518,11 @@ class CheddarGetter_Response extends DOMDocument {
 	 */
 	public function getCustomerItemQuantityRemaining($code = null, $itemCode = null) {
 		$item = $this->getCustomerItemQuantity($code, $itemCode);
+		// if this is an unlimited item, the quantity remaining is the majik number
+		$majik = 99999999.9;
+		if ($item['item']['quantityIncluded']+0 == 99999999.9) {
+			return $majik;
+		}
 		return $item['item']['quantityIncluded'] - $item['quantity']['quantity'];
 	}
 
