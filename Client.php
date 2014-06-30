@@ -73,7 +73,14 @@ class CheddarGetter_Client {
 	 * @param string $productId
 	 * @param CheddarGetter_Client_AdapterInterface $adapter
 	 */
-	public function __construct($url, $username, $password, $productCode = null, $productId = null, CheddarGetter_Client_AdapterInterface $adapter = null) {
+	public function __construct(
+    $url,
+    $username,
+    $password,
+    $productCode = null,
+    $productId = null,
+    CheddarGetter_Client_AdapterInterface $adapter = null
+  ) {
 
 		$this->setUrl($url);
 		$this->setUsername($username);
@@ -82,8 +89,10 @@ class CheddarGetter_Client {
 		$this->setProductId($productId);
 
 		if (!$adapter) {
+      // default adapter
 			if (class_exists('Zend_Http_Client')) {
 				$adapter = new CheddarGetter_Client_ZendAdapter();
+      // use curl if zf is not available
 			} else {
 				$adapter = new CheddarGetter_Client_CurlAdapter();
 			}

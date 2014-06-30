@@ -37,6 +37,22 @@ class CheddarGetter_Client_CurlAdapter implements CheddarGetter_Client_AdapterIn
 			throw new CheddarGetter_Client_Exception('The curl resource is invalid.', CheddarGetter_Client_Exception::USAGE_INVALID);
 		}
 
+    if (!$resource) {
+      $resource = curl_init();
+      $userAgent = (isset($_SERVER['SERVER_NAME'])) ? $_SERVER['SERVER_NAME'] . ' - CheddarGetter_Client PHP' : 'CheddarGetter_Client PHP';
+      $options = array(
+        CURLOPT_RETURNTRANSFER => true, // gimme the results
+        CURLOPT_CONNECTTIMEOUT => 10,
+        CURLOPT_TIMEOUT => 60,
+        CURLOPT_USERAGENT => $userAgent,
+        CURLOPT_FOLLOWLOCATION => false,
+        CURLOPT_MAXREDIRS => 0
+      );
+      foreach ($options as $key=>$val) {
+        curl_setopt($resource, $key, $val);
+      }
+    }
+
 		$this->_resource = $resource;
 	}
 
@@ -51,29 +67,9 @@ class CheddarGetter_Client_CurlAdapter implements CheddarGetter_Client_AdapterIn
 	 * @throws CheddarGetter_Client_Exception Throws an exception if the curl session results in an error.
 	 */
 	public function request($url, $username, $password, array $args = null) {
-
-		if (!$this->_resource) {
-			$this->_resource = curl_init($url);
-			$userAgent = (isset($_SERVER['SERVER_NAME'])) ? $_SERVER['SERVER_NAME'] . ' - CheddarGetter_Client PHP' : 'CheddarGetter_Client PHP';
-			$options = array(
-				CURLOPT_RETURNTRANSFER => true,
-				CURLOPT_SSL_VERIFYPEER => false,
-				CURLOPT_SSL_VERIFYHOST => false,
-				CURLOPT_CONNECTTIMEOUT => 10,
-				CURLOPT_TIMEOUT => 60,
-				CURLOPT_USERAGENT => $userAgent,
-				CURLOPT_USERPWD => $username . ':' . $password,
-				CURLOPT_FOLLOWLOCATION => true,
-				CURLOPT_MAXREDIRS => 10
-			);
-			foreach ($options as $key=>$val) {
-				curl_setopt($this->_resource, $key, $val);
-			}
-		} else {
-			curl_setopt($this->_resource, CURLOPT_USERPWD, $username . ':' . $password);
-			curl_setopt($this->_resource, CURLOPT_HTTPGET, true);
-			curl_setopt($this->_resource, CURLOPT_URL, $url);
-		}
+		curl_setopt($this->_resource, CURLOPT_USERPWD, $username . ':' . $password);
+		curl_setopt($this->_resource, CURLOPT_HTTPGET, true);
+		curl_setopt($this->_resource, CURLOPT_URL, $url);
 
 		if ($args) {
 			curl_setopt($this->_resource, CURLOPT_POST, true);
