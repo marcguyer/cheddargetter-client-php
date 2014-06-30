@@ -11,8 +11,15 @@
             "email": "marc@cheddargetter.com"
         }
     ],
-    "recommend":    {
-        "ext-curl": "*"
+    "support": {
+      "issues": "https://github.com/marcguyer/cheddargetter-client-php/issues",
+      "forum": "http://support.cheddargetter.com/",
+      "email": "team@cheddargetter.com"
+    },
+    "suggest": {
+        "ext-curl": "*",
+        "zendframework/zendframework1": "*",
+        "zendframework/zend-http"
     },
     "autoload":     {
         "psr-0": { "CheddarGetter_": "" }

@@ -96,7 +96,7 @@ class CheddarGetter_Http_ZendAdapter extends CheddarGetter_Http_NativeAdapter {
 	 * @return boolean
 	 */
 	public function hasIp() {
-		return $this->_request() ? (bool) $this->_request()->getServer('REMOTE_ADDR') : false;
+		return $this->_request() ? (bool) $this->_request()->getClientIp() : false;
 	}
 
 	/**
@@ -104,7 +104,7 @@ class CheddarGetter_Http_ZendAdapter extends CheddarGetter_Http_NativeAdapter {
 	 * @return string
 	 */
 	public function getIp() {
-		return $this->hasIp() ? $this->_request()->getServer('REMOTE_ADDR') : '';
+		return $this->hasIp() ? $this->_request()->getClientIp() : '';
 	}
 
 }

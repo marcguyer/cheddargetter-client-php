@@ -84,14 +84,26 @@ class CheddarGetter_Http_NativeAdapter implements CheddarGetter_Http_AdapterInte
 	 * @return boolean
 	 */
 	public function hasIp() {
-		return !empty($_SERVER['REMOTE_ADDR']);
+		return (bool) $this->_getIp();
 	}
+
+  private function _getIp() {
+    $ip = null;
+    if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+      $ip = $_SERVER['HTTP_CLIENT_IP'];
+    } else if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+      $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+    } else if (!empty($_SERVER['REMOTE_ADDR'])) {
+      $ip = $_SERVER['REMOTE_ADDR'];
+    }
+    return $ip;
+  }
 
 	/**
 	 * Get the remote ip
 	 * @return string
 	 */
 	public function getIp() {
-		return $this->hasIp() ? $_SERVER['REMOTE_ADDR'] : '';
+		return $this->hasIp() ? $this->_getIp() : '';
 	}
 }
