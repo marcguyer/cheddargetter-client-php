@@ -87,7 +87,10 @@ class CheddarGetter_Http_NativeAdapter implements CheddarGetter_Http_AdapterInte
 		return (bool) $this->_getIp();
 	}
 
-  private function _getIp() {
+  /**
+   * Really get the IP
+   */
+  protected function _getIp() {
     $ip = null;
     if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
       $ip = $_SERVER['HTTP_CLIENT_IP'];
