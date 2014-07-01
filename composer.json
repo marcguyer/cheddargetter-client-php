@@ -19,9 +19,9 @@
     "suggest": {
         "ext-curl": "*",
         "zendframework/zendframework1": "*",
-        "zendframework/zend-http"
+        "zendframework/zend-http": "*"
     },
-    "autoload":     {
+    "autoload": {
         "psr-0": { "CheddarGetter_": "" }
     },
     "target-dir": "CheddarGetter"
