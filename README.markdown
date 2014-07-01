@@ -1,4 +1,4 @@
-# INSTALL
+# Install
 
 ## Via Composer
 
@@ -35,7 +35,7 @@ command.
 and unzip the files and put them in a directory called
 /path/to/includepath/CheddarGetter
 
-# BASIC USAGE
+# Basic Usage
 
 ```php
 <?php
@@ -51,7 +51,7 @@ and unzip the files and put them in a directory called
 ?>
 ```
 
-# ADVANCED USAGE
+# Advanced Usage
 
 The adapter pattern (thanks to
 [https://github.com/stof](https://github.com/stof)) is used so you can specify
@@ -96,7 +96,7 @@ request from your fork. Here's an example using a custom HTTP adapter:
 ?>
 ```
 
-# CONTRIBUTING
+# Contributing
 
 ## Asking questions
 
@@ -116,7 +116,7 @@ if your inquiry is of a technical nature.
 Pull requests are welcome! Please fork us, write and issue a pull request.
 [Learn more about contributing to open source projects via GitHub](https://guides.github.com/activities/contributing-to-open-source/)
 
-# DOCUMENTATION
+# Documentation
 
 Check 'em out in the /docs directory or as hosted on GitHub:
 [http://marcguyer.github.io/cheddargetter-client-php/](http://marcguyer.github.io/cheddargetter-client-php/)
