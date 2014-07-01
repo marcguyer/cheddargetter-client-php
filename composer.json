@@ -1,5 +1,5 @@
 {
-    "name":         "cheddargetter/client",
+    "name":         "cheddar-getter/client",
     "type":         "library",
     "description":  "The official PHP client for the CheddarGetter API",
     "keywords":     ["CheddarGetter"],
