@@ -113,11 +113,12 @@ if your inquiry is of a technical nature.
 
 ## Writing code
 
-Pull requests are welcome! Please fork us, write and issue a pull request. 
+Pull requests are welcome! Please fork us, write and issue a pull request.
 [Learn more about contributing to open source projects via GitHub](https://guides.github.com/activities/contributing-to-open-source/)
 
 # DOCUMENTATION
 
-Check 'em out in the /docs director[http://cheddargetter.com/php-client/docs](http://cheddargetter.com/php-client/docs)
+Check 'em out in the /docs directory or as hosted on GitHub:
+[http://marcguyer.github.io/cheddargetter-client-php/docs/](http://marcguyer.github.io/cheddargetter-client-php/docs/)
 
 Also, raw API docs are here: [http://cheddargetter.com/developers](http://cheddargetter.com/developers)
