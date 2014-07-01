@@ -7,7 +7,7 @@
 3. Define the requirement in your project `composer.json` file:
 ```json
 "require": {
-	"cheddar-getter/client": "*"
+	"cheddargetter/client": "*"
 }
 ```
 4. Run `composer install` from your command line.
