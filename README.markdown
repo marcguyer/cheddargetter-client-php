@@ -119,6 +119,6 @@ Pull requests are welcome! Please fork us, write and issue a pull request.
 # DOCUMENTATION
 
 Check 'em out in the /docs directory or as hosted on GitHub:
-[http://marcguyer.github.io/cheddargetter-client-php/docs/](http://marcguyer.github.io/cheddargetter-client-php/docs/)
+[http://marcguyer.github.io/cheddargetter-client-php/](http://marcguyer.github.io/cheddargetter-client-php/)
 
 Also, raw API docs are here: [http://cheddargetter.com/developers](http://cheddargetter.com/developers)
