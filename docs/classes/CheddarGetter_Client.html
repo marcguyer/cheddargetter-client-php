@@ -1,0 +1,2734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>CheddarGetter Client</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="https://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+    <![endif]-->
+    <script src="https://code.jquery.com/jquery-1.11.0.min.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">CheddarGetter Client</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">2</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">1</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-489721665"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-489721665" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/CheddarGetter_Client_AdapterInterface.html">CheddarGetter_Client_AdapterInterface</a></li>
+                                                    <li class="interface"><a href="../classes/CheddarGetter_Http_AdapterInterface.html">CheddarGetter_Http_AdapterInterface</a></li>
+                                                                                                    <li class="class"><a href="../classes/CheddarGetter_Client.html">CheddarGetter_Client</a></li>
+                                                    <li class="class"><a href="../classes/CheddarGetter_Client_CurlAdapter.html">CheddarGetter_Client_CurlAdapter</a></li>
+                                                    <li class="class"><a href="../classes/CheddarGetter_Client_Exception.html">CheddarGetter_Client_Exception</a></li>
+                                                    <li class="class"><a href="../classes/CheddarGetter_Client_ZendAdapter.html">CheddarGetter_Client_ZendAdapter</a></li>
+                                                    <li class="class"><a href="../classes/CheddarGetter_Http_NativeAdapter.html">CheddarGetter_Http_NativeAdapter</a></li>
+                                                    <li class="class"><a href="../classes/CheddarGetter_Http_ZendAdapter.html">CheddarGetter_Http_ZendAdapter</a></li>
+                                                    <li class="class"><a href="../classes/CheddarGetter_Response.html">CheddarGetter_Response</a></li>
+                                                    <li class="class"><a href="../classes/CheddarGetter_Response_Exception.html">CheddarGetter_Response_Exception</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/default.html">\</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\</small>CheddarGetter_Client</h1>
+                    <p><em>Client object for interacting with the CheddarGetter service</em></p>
+                    
+
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/CheddarGetter_Client.html#method___construct" class="">__construct()</a><br />
+                                                                    <a href="../classes/CheddarGetter_Client.html#method_setUrl" class="">setUrl()</a><br />
+                                                                    <a href="../classes/CheddarGetter_Client.html#method_getUrl" class="">getUrl()</a><br />
+                                                                    <a href="../classes/CheddarGetter_Client.html#method_setUsername" class="">setUsername()</a><br />
+                                                                    <a href="../classes/CheddarGetter_Client.html#method_getUsername" class="">getUsername()</a><br />
+                                                                    <a href="../classes/CheddarGetter_Client.html#method_setPassword" class="">setPassword()</a><br />
+                                                                    <a href="../classes/CheddarGetter_Client.html#method_setProductCode" class="">setProductCode()</a><br />
+                                                                    <a href="../classes/CheddarGetter_Client.html#method_getProductCode" class="">getProductCode()</a><br />
+                                                                    <a href="../classes/CheddarGetter_Client.html#method_setProductId" class="">setProductId()</a><br />
+                                                                    <a href="../classes/CheddarGetter_Client.html#method_getProductId" class="">getProductId()</a><br />
+                                                                    <a href="../classes/CheddarGetter_Client.html#method_setMarketingCookieName" class="">setMarketingCookieName()</a><br />
+                                                                    <a href="../classes/CheddarGetter_Client.html#method_getMarketingCookieName" class="">getMarketingCookieName()</a><br />
+                                                                    <a href="../classes/CheddarGetter_Client.html#method___call" class="">__call()</a><br />
+                                                                    <a href="../classes/CheddarGetter_Client.html#method_getPlans" class="">getPlans()</a><br />
+                                                                    <a href="../classes/CheddarGetter_Client.html#method_getPlan" class="">getPlan()</a><br />
+                                                                    <a href="../classes/CheddarGetter_Client.html#method_deletePlan" class="">deletePlan()</a><br />
+                                                                    <a href="../classes/CheddarGetter_Client.html#method_getCustomers" class="">getCustomers()</a><br />
+                                                                    <a href="../classes/CheddarGetter_Client.html#method_getCustomersList" class="">getCustomersList()</a><br />
+                                                                    <a href="../classes/CheddarGetter_Client.html#method_getCustomer" class="">getCustomer()</a><br />
+                                                                    <a href="../classes/CheddarGetter_Client.html#method_getAllCustomers" class="">getAllCustomers()</a><br />
+                                                                    <a href="../classes/CheddarGetter_Client.html#method_newCustomer" class="">newCustomer()</a><br />
+                                                                    <a href="../classes/CheddarGetter_Client.html#method_importCustomers" class="">importCustomers()</a><br />
+                                                                    <a href="../classes/CheddarGetter_Client.html#method_editCustomer" class="">editCustomer()</a><br />
+                                                                    <a href="../classes/CheddarGetter_Client.html#method_editCustomerOnly" class="">editCustomerOnly()</a><br />
+                                                                    <a href="../classes/CheddarGetter_Client.html#method_deleteCustomer" class="">deleteCustomer()</a><br />
+                                                                    <a href="../classes/CheddarGetter_Client.html#method_deleteCustomers" class="">deleteCustomers()</a><br />
+                                                                    <a href="../classes/CheddarGetter_Client.html#method_editSubscription" class="">editSubscription()</a><br />
+                                                                    <a href="../classes/CheddarGetter_Client.html#method_cancelSubscription" class="">cancelSubscription()</a><br />
+                                                                    <a href="../classes/CheddarGetter_Client.html#method_paypalRevert" class="">paypalRevert()</a><br />
+                                                                    <a href="../classes/CheddarGetter_Client.html#method_addItemQuantity" class="">addItemQuantity()</a><br />
+                                                                    <a href="../classes/CheddarGetter_Client.html#method_removeItemQuantity" class="">removeItemQuantity()</a><br />
+                                                                    <a href="../classes/CheddarGetter_Client.html#method_setItemQuantity" class="">setItemQuantity()</a><br />
+                                                                    <a href="../classes/CheddarGetter_Client.html#method_addCharge" class="">addCharge()</a><br />
+                                                                    <a href="../classes/CheddarGetter_Client.html#method_deleteCharge" class="">deleteCharge()</a><br />
+                                                                    <a href="../classes/CheddarGetter_Client.html#method_newOneTimeInvoice" class="">newOneTimeInvoice()</a><br />
+                                                                    <a href="../classes/CheddarGetter_Client.html#method_voidOrRefundInvoice" class="">voidOrRefundInvoice()</a><br />
+                                                                    <a href="../classes/CheddarGetter_Client.html#method_voidInvoice" class="">voidInvoice()</a><br />
+                                                                    <a href="../classes/CheddarGetter_Client.html#method_refundInvoice" class="">refundInvoice()</a><br />
+                                                                    <a href="../classes/CheddarGetter_Client.html#method_runOutstandingInvoice" class="">runOutstandingInvoice()</a><br />
+                                                                    <a href="../classes/CheddarGetter_Client.html#method_sendEmailReceipt" class="">sendEmailReceipt()</a><br />
+                                                                    <a href="../classes/CheddarGetter_Client.html#method_getPromotions" class="">getPromotions()</a><br />
+                                                                    <a href="../classes/CheddarGetter_Client.html#method_getPromotion" class="">getPromotion()</a><br />
+                                                                    <a href="../classes/CheddarGetter_Client.html#method_setHttpClient" class="">setHttpClient()</a><br />
+                                                                    <a href="../classes/CheddarGetter_Client.html#method_getHttpClient" class="">getHttpClient()</a><br />
+                                                                    <a href="../classes/CheddarGetter_Client.html#method_setRequestAdapter" class="">setRequestAdapter()</a><br />
+                                                                    <a href="../classes/CheddarGetter_Client.html#method_getRequestAdapter" class="">getRequestAdapter()</a><br />
+                                                                    <a href="../classes/CheddarGetter_Client.html#method_setMarketingCookie" class="">setMarketingCookie()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <a href="../classes/CheddarGetter_Client.html#method_request" class="">request()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No protected properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <a href="../classes/CheddarGetter_Client.html#method__getPassword" class="">_getPassword()</a><br />
+                                                                    <a href="../classes/CheddarGetter_Client.html#method__requireIdentifier" class="">_requireIdentifier()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/CheddarGetter_Client.html#property__requestAdapter" class="">$_requestAdapter</a><br />
+                                                                    <a href="../classes/CheddarGetter_Client.html#property__username" class="">$_username</a><br />
+                                                                    <a href="../classes/CheddarGetter_Client.html#property__password" class="">$_password</a><br />
+                                                                    <a href="../classes/CheddarGetter_Client.html#property__url" class="">$_url</a><br />
+                                                                    <a href="../classes/CheddarGetter_Client.html#property__productCode" class="">$_productCode</a><br />
+                                                                    <a href="../classes/CheddarGetter_Client.html#property__productId" class="">$_productId</a><br />
+                                                                    <a href="../classes/CheddarGetter_Client.html#property__marketingCookieName" class="">$_marketingCookieName</a><br />
+                                                                    <a href="../classes/CheddarGetter_Client.html#property__httpClient" class="">$_httpClient</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/Client.html"><div class="path-wrapper">Client.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">\CheddarGetter</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                    <div class="namespace-wrapper">\CheddarGetter_Client</div>
+                            </dd>
+
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr>
+                            <th>
+                                category
+                            </th>
+                            <td>
+                                                                    <p>CheddarGetter</p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                author
+                            </th>
+                            <td>
+                                                                    <p>Marc Guyer <a href="mailto:marc@cheddargetter.com">marc@cheddargetter.com</a></p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                example
+                            </th>
+                            <td>
+                                                                    
+                                                            </td>
+                        </tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__requestAdapter" name="property__requestAdapter" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$_requestAdapter</h3>
+                <pre class="signature">$_requestAdapter : \CheddarGetter_Http_AdapterInterface</pre>
+                <p><em>The adapter to access cookie data and such.</em></p>
+                <p>By default, it will use PHP superglobals directly but an implementation based on the
+abstraction of a framework can be used.</p>
+
+                                <h4>Type</h4>
+                <a href="../classes/CheddarGetter_Http_AdapterInterface.html">\CheddarGetter_Http_AdapterInterface</a>
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__username" name="property__username" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$_username</h3>
+                <pre class="signature">$_username : string</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                &mdash; Username credential for accessing the CheddarGetter API                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__password" name="property__password" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$_password</h3>
+                <pre class="signature">$_password : string</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                &mdash; Password credential for accessing the CheddarGetter API                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__url" name="property__url" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$_url</h3>
+                <pre class="signature">$_url : string</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                &mdash; URL for accessing the CheddarGetter API                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__productCode" name="property__productCode" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$_productCode</h3>
+                <pre class="signature">$_productCode : string</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                &mdash; Product identifier                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__productId" name="property__productId" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$_productId</h3>
+                <pre class="signature">$_productId : string</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                &mdash; Product identifier (not necessary if productCode is used)                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__marketingCookieName" name="property__marketingCookieName" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$_marketingCookieName</h3>
+                <pre class="signature">$_marketingCookieName : string</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                &mdash; Name to use for the marketing cookie                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            <dt>See also</dt>
+                                                                <dd><a href=""><span class="namespace-wrapper"></span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__httpClient" name="property__httpClient" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$_httpClient</h3>
+                <pre class="signature">$_httpClient : \CheddarGetter_Client_AdapterInterface</pre>
+                <p><em>If you don&#039;t use Zend Framework, it&#039;s ok, the client will fallback to curl (so you need curl).</em></p>
+                
+
+                                <h4>Type</h4>
+                <a href="../classes/CheddarGetter_Client_AdapterInterface.html">\CheddarGetter_Client_AdapterInterface</a>
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___construct" name="method___construct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__construct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__construct(mixed <span class="argument">$url</span>, mixed <span class="argument">$username</span>, mixed <span class="argument">$password</span>, mixed <span class="argument">$productCode</span>, string <span class="argument">$productId</span>, \CheddarGetter_Client_AdapterInterface <span class="argument">$adapter</span>)</pre>
+                <p><em>Constructor</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$url </td>
+                                <td><p>string</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$username </td>
+                                <td><p>string</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$password </td>
+                                <td><p>string</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$productCode </td>
+                                <td><p>string</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$productId </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td><a href="../classes/CheddarGetter_Client_AdapterInterface.html">\CheddarGetter_Client_AdapterInterface</a></td>
+                                <td>$adapter </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setUrl" name="method_setUrl" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setUrl()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setUrl(mixed <span class="argument">$url</span>) : \CheddarGetter_Client</pre>
+                <p><em>Set URL neccessary for for accessing the CheddarGetter API</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$url </td>
+                                <td><p>string</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/CheddarGetter_Client.html">\CheddarGetter_Client</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getUrl" name="method_getUrl" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getUrl()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getUrl() : string</pre>
+                <p><em>Get URL</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setUsername" name="method_setUsername" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setUsername()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setUsername(mixed <span class="argument">$username</span>) : \CheddarGetter_Client</pre>
+                <p><em>Set username neccessary for for accessing the CheddarGetter API</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$username </td>
+                                <td><p>string</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/CheddarGetter_Client.html">\CheddarGetter_Client</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getUsername" name="method_getUsername" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getUsername()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getUsername() : string</pre>
+                <p><em>Get username</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setPassword" name="method_setPassword" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setPassword()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setPassword(mixed <span class="argument">$password</span>) : \CheddarGetter_Client</pre>
+                <p><em>Set password neccessary for accessing the CheddarGetter API</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$password </td>
+                                <td><p>string</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/CheddarGetter_Client.html">\CheddarGetter_Client</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setProductCode" name="method_setProductCode" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setProductCode()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setProductCode(mixed <span class="argument">$productCode</span>) : \CheddarGetter_Client</pre>
+                <p><em>Set product code (required for all calls except getAllCustomers)</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$productCode </td>
+                                <td><p>string</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/CheddarGetter_Client.html">\CheddarGetter_Client</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getProductCode" name="method_getProductCode" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getProductCode()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getProductCode() : string</pre>
+                <p><em>Get current product code</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setProductId" name="method_setProductId" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setProductId()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setProductId(mixed <span class="argument">$productId</span>) : \CheddarGetter_Client</pre>
+                <p><em>Set product id (required for all calls except getAllCustomers unless productCode is used)</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$productId </td>
+                                <td><p>string</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/CheddarGetter_Client.html">\CheddarGetter_Client</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getProductId" name="method_getProductId" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getProductId()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getProductId() : string</pre>
+                <p><em>Get current product id</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setMarketingCookieName" name="method_setMarketingCookieName" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setMarketingCookieName()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setMarketingCookieName(mixed <span class="argument">$name</span>) : \CheddarGetter_Client</pre>
+                <p><em>Set name for marketing metrics cookie</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$name </td>
+                                <td><p>string</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/CheddarGetter_Client.html">\CheddarGetter_Client</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href=""><span class="namespace-wrapper"></span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getMarketingCookieName" name="method_getMarketingCookieName" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getMarketingCookieName()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getMarketingCookieName() : string</pre>
+                <p><em>Get marketing cookie name</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href=""><span class="namespace-wrapper"></span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___call" name="method___call" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__call()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__call(string <span class="argument">$method</span>, array <span class="argument">$args</span>)</pre>
+                <p><em>Magic method wrapper</em></p>
+                <p>Essentially just a sanity check making sure we have a productCode for those methods that require it</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$method </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$args </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getPlans" name="method_getPlans" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getPlans()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getPlans(array|null <span class="argument">$filters</span>) : \CheddarGetter_Response</pre>
+                <p><em>Get pricing plans</em></p>
+                <p>Get all plans in the product.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array|null</td>
+                                <td>$filters </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\CheddarGetter_Response_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/CheddarGetter_Response.html">\CheddarGetter_Response</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="https://cheddargetter.com/developers#all-plans"><span class="namespace-wrapper">https://cheddargetter.com/developers#all-plans</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getPlan" name="method_getPlan" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getPlan()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getPlan(string <span class="argument">$code</span>, string|null <span class="argument">$id</span>) : \CheddarGetter_Response</pre>
+                <p><em>Get a single pricing plan</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$code </td>
+                                <td><p>Your code for the plan</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string|null</td>
+                                <td>$id </td>
+                                <td><p>CG id for the plan</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\CheddarGetter_Response_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/CheddarGetter_Response.html">\CheddarGetter_Response</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="https://cheddargetter.com/developers#single-plan"><span class="namespace-wrapper">https://cheddargetter.com/developers#single-plan</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_deletePlan" name="method_deletePlan" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">deletePlan()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">deletePlan(string <span class="argument">$code</span>, string|null <span class="argument">$id</span>) : \CheddarGetter_Response</pre>
+                <p><em>Delete a plan</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$code </td>
+                                <td><p>Your code for the plan</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string|null</td>
+                                <td>$id </td>
+                                <td><p>CG id for the plan</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\CheddarGetter_Response_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/CheddarGetter_Response.html">\CheddarGetter_Response</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getCustomers" name="method_getCustomers" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getCustomers()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getCustomers(array|null <span class="argument">$filters</span>) : \CheddarGetter_Response</pre>
+                <p><em>Get customers (DEPRECATED: use getCustomersList to query for multiple customers)</em></p>
+                <p>Get all customers in the product</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array|null</td>
+                                <td>$filters </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\CheddarGetter_Response_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/CheddarGetter_Response.html">\CheddarGetter_Response</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="https://cheddargetter.com/developers#all-customers"><span class="namespace-wrapper">https://cheddargetter.com/developers#all-customers</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getCustomersList" name="method_getCustomersList" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getCustomersList()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getCustomersList(array|null <span class="argument">$filters</span>) : \CheddarGetter_Response</pre>
+                <p><em>Get customers</em></p>
+                <p>Get all customers in the product</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array|null</td>
+                                <td>$filters </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\CheddarGetter_Response_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/CheddarGetter_Response.html">\CheddarGetter_Response</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="https://cheddargetter.com/developers#all-customers"><span class="namespace-wrapper">https://cheddargetter.com/developers#all-customers</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getCustomer" name="method_getCustomer" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getCustomer()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getCustomer(string <span class="argument">$code</span>, string|null <span class="argument">$id</span>) : \CheddarGetter_Response</pre>
+                <p><em>Get a single customer</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$code </td>
+                                <td><p>Your code for the customer</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string|null</td>
+                                <td>$id </td>
+                                <td><p>CG id for the customer</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\CheddarGetter_Response_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/CheddarGetter_Response.html">\CheddarGetter_Response</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="https://cheddargetter.com/developers#single-customer"><span class="namespace-wrapper">https://cheddargetter.com/developers#single-customer</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getAllCustomers" name="method_getAllCustomers" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getAllCustomers()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getAllCustomers(array|null <span class="argument">$filters</span>) : \CheddarGetter_Response</pre>
+                <p><em>Get all customers</em></p>
+                <p>Get all customers subscribed to any product</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array|null</td>
+                                <td>$filters </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\CheddarGetter_Client_Exception</dt>
+                            <dd></dd>
+                                                    <dt>\CheddarGetter_Response_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/CheddarGetter_Response.html">\CheddarGetter_Response</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_newCustomer" name="method_newCustomer" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">newCustomer()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">newCustomer(array <span class="argument">$data</span>) : \CheddarGetter_Response</pre>
+                <p><em>Create new customer</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$data </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\CheddarGetter_Response_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/CheddarGetter_Response.html">\CheddarGetter_Response</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="https://cheddargetter.com/developers#add-customer"><span class="namespace-wrapper">https://cheddargetter.com/developers#add-customer</span></a></dd>
+                                                                                                    <dd><a href=""><span class="namespace-wrapper"></span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_importCustomers" name="method_importCustomers" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">importCustomers()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">importCustomers(array <span class="argument">$data</span>) : \CheddarGetter_Response</pre>
+                <p><em>Import customers in bulk</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$data </td>
+                                <td><p>An array of arrays</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\CheddarGetter_Client_Exception</dt>
+                            <dd></dd>
+                                                    <dt>\CheddarGetter_Response_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/CheddarGetter_Response.html">\CheddarGetter_Response</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="https://cheddargetter.com/developers#import-customers"><span class="namespace-wrapper">https://cheddargetter.com/developers#import-customers</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_editCustomer" name="method_editCustomer" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">editCustomer()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">editCustomer(string <span class="argument">$code</span>, string|null <span class="argument">$id</span>, array <span class="argument">$data</span>) : \CheddarGetter_Response</pre>
+                <p><em>Change customer and subscription information</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$code </td>
+                                <td><p>Your code for the customer</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string|null</td>
+                                <td>$id </td>
+                                <td><p>CG id for the customer</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$data </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\CheddarGetter_Response_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/CheddarGetter_Response.html">\CheddarGetter_Response</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="https://cheddargetter.com/developers#update-customer-subscription"><span class="namespace-wrapper">https://cheddargetter.com/developers#update-customer-subscription</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_editCustomerOnly" name="method_editCustomerOnly" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">editCustomerOnly()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">editCustomerOnly(string <span class="argument">$code</span>, string|null <span class="argument">$id</span>, array <span class="argument">$data</span>) : \CheddarGetter_Response</pre>
+                <p><em>Change customer information only</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$code </td>
+                                <td><p>Your code for the customer</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string|null</td>
+                                <td>$id </td>
+                                <td><p>CG id for the customer</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$data </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\CheddarGetter_Response_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/CheddarGetter_Response.html">\CheddarGetter_Response</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="https://cheddargetter.com/developers#update-customer"><span class="namespace-wrapper">https://cheddargetter.com/developers#update-customer</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_deleteCustomer" name="method_deleteCustomer" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">deleteCustomer()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">deleteCustomer(string <span class="argument">$code</span>, string|null <span class="argument">$id</span>) : \CheddarGetter_Response</pre>
+                <p><em>Delete a customer</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$code </td>
+                                <td><p>Your code for the customer</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string|null</td>
+                                <td>$id </td>
+                                <td><p>CG id for the customer</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\CheddarGetter_Response_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/CheddarGetter_Response.html">\CheddarGetter_Response</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="https://cheddargetter.com/developers#delete-customer"><span class="namespace-wrapper">https://cheddargetter.com/developers#delete-customer</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_deleteCustomers" name="method_deleteCustomers" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">deleteCustomers()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">deleteCustomers() : \CheddarGetter_Response</pre>
+                <p><em>Delete all customers</em></p>
+                <p>WARNING: This will delete all customers and all related data in
+CheddarGetter and will delete all customer data at the gateway
+if a gateway is configured.</p>
+
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\CheddarGetter_Response_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/CheddarGetter_Response.html">\CheddarGetter_Response</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="https://cheddargetter.com/developers#delete-all-customers"><span class="namespace-wrapper">https://cheddargetter.com/developers#delete-all-customers</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_editSubscription" name="method_editSubscription" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">editSubscription()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">editSubscription(string <span class="argument">$code</span>, string|null <span class="argument">$id</span>, array <span class="argument">$data</span>) : \CheddarGetter_Response</pre>
+                <p><em>Change subscription information</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$code </td>
+                                <td><p>Your code for the customer</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string|null</td>
+                                <td>$id </td>
+                                <td><p>CG id for the customer</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$data </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\CheddarGetter_Response_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/CheddarGetter_Response.html">\CheddarGetter_Response</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="https://cheddargetter.com/developers#update-subscription"><span class="namespace-wrapper">https://cheddargetter.com/developers#update-subscription</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_cancelSubscription" name="method_cancelSubscription" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">cancelSubscription()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">cancelSubscription(string <span class="argument">$code</span>, string|null <span class="argument">$id</span>) : \CheddarGetter_Response</pre>
+                <p><em>Cancel subscription</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$code </td>
+                                <td><p>Your code for the customer</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string|null</td>
+                                <td>$id </td>
+                                <td><p>CG id for the customer</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\CheddarGetter_Response_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/CheddarGetter_Response.html">\CheddarGetter_Response</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="https://cheddargetter.com/developers#cancel-subscription"><span class="namespace-wrapper">https://cheddargetter.com/developers#cancel-subscription</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_paypalRevert" name="method_paypalRevert" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">paypalRevert()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">paypalRevert(string <span class="argument">$code</span>, string|null <span class="argument">$id</span>) : \CheddarGetter_Response</pre>
+                <p><em>PayPal Revert (workaround)</em></p>
+                <p>This is an experimental workaround for some PayPal shortcomings.
+It should be unecessary in the near future.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$code </td>
+                                <td><p>Your code for the customer</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string|null</td>
+                                <td>$id </td>
+                                <td><p>CG id for the customer</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\CheddarGetter_Response_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/CheddarGetter_Response.html">\CheddarGetter_Response</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_addItemQuantity" name="method_addItemQuantity" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">addItemQuantity()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">addItemQuantity(string <span class="argument">$code</span>, string|null <span class="argument">$id</span>, array <span class="argument">$data</span>) : \CheddarGetter_Response</pre>
+                <p><em>Increment a usage item quantity</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$code </td>
+                                <td><p>Your code for the customer</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string|null</td>
+                                <td>$id </td>
+                                <td><p>CG id for the customer</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$data </td>
+                                <td><p>Your (itemCode or CG itemId) and [quantity]</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\CheddarGetter_Response_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/CheddarGetter_Response.html">\CheddarGetter_Response</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="https://cheddargetter.com/developers#add-item-quantity"><span class="namespace-wrapper">https://cheddargetter.com/developers#add-item-quantity</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_removeItemQuantity" name="method_removeItemQuantity" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">removeItemQuantity()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">removeItemQuantity(string <span class="argument">$code</span>, string|null <span class="argument">$id</span>, array <span class="argument">$data</span>) : \CheddarGetter_Response</pre>
+                <p><em>Decrement a usage item quantity</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$code </td>
+                                <td><p>Your code for the customer</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string|null</td>
+                                <td>$id </td>
+                                <td><p>CG id for the customer</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$data </td>
+                                <td><p>Your (itemCode or CG itemId) and [quantity]</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\CheddarGetter_Response_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/CheddarGetter_Response.html">\CheddarGetter_Response</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="https://cheddargetter.com/developers#remove-item-quantity"><span class="namespace-wrapper">https://cheddargetter.com/developers#remove-item-quantity</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setItemQuantity" name="method_setItemQuantity" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setItemQuantity()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setItemQuantity(string <span class="argument">$code</span>, string|null <span class="argument">$id</span>, array <span class="argument">$data</span>) : \CheddarGetter_Response</pre>
+                <p><em>Set a usage item quantity</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$code </td>
+                                <td><p>Your code for the customer</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string|null</td>
+                                <td>$id </td>
+                                <td><p>CG id for the customer</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$data </td>
+                                <td><p>Your (itemCode or CG itemId) and quantity</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\CheddarGetter_Response_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/CheddarGetter_Response.html">\CheddarGetter_Response</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="https://cheddargetter.com/developers#set-item-quantity"><span class="namespace-wrapper">https://cheddargetter.com/developers#set-item-quantity</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_addCharge" name="method_addCharge" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">addCharge()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">addCharge(string <span class="argument">$code</span>, string|null <span class="argument">$id</span>, array <span class="argument">$data</span>) : \CheddarGetter_Response</pre>
+                <p><em>Add a custom charge (debit) or credit to the current invoice</em></p>
+                <p>A positive 'eachAmount' will result in a debit. If negative, a credit.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$code </td>
+                                <td><p>Your code for the customer</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string|null</td>
+                                <td>$id </td>
+                                <td><p>CG id for the customer</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$data </td>
+                                <td><p>chargeCode, quantity, eachAmount[, description]</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\CheddarGetter_Response_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/CheddarGetter_Response.html">\CheddarGetter_Response</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="https://cheddargetter.com/developers#add-charge"><span class="namespace-wrapper">https://cheddargetter.com/developers#add-charge</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_deleteCharge" name="method_deleteCharge" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">deleteCharge()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">deleteCharge(string <span class="argument">$code</span>, string|null <span class="argument">$id</span>, array <span class="argument">$data</span>) : \CheddarGetter_Response</pre>
+                <p><em>Delete a custom charge (debit) or credit from the customer&#039;s current invoice</em></p>
+                <p>CG's chargeId is required (found in the customers/get response)</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$code </td>
+                                <td><p>Your code for the customer</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string|null</td>
+                                <td>$id </td>
+                                <td><p>CG id for the customer</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$data </td>
+                                <td><p>chargeId</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\CheddarGetter_Response_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/CheddarGetter_Response.html">\CheddarGetter_Response</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="https://cheddargetter.com/developers#delete-charge"><span class="namespace-wrapper">https://cheddargetter.com/developers#delete-charge</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_newOneTimeInvoice" name="method_newOneTimeInvoice" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">newOneTimeInvoice()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">newOneTimeInvoice(string <span class="argument">$code</span>, string|null <span class="argument">$id</span>, array <span class="argument">$data</span>) : \CheddarGetter_Response</pre>
+                <p><em>Create a new one-time invoice</em></p>
+                <p>One-time invoices take one or more charges in the same format as newCustomer().  One-time invoices are executed immediately using the customer's existing subscription payment method.  One-time invoices do not directly effect the subscription pending invoice or billing period.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$code </td>
+                                <td><p>Your code for the customer</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string|null</td>
+                                <td>$id </td>
+                                <td><p>CG id for the customer</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$data </td>
+                                <td><p>an array of arrays each with: chargeCode, quantity, eachAmount[, description]</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\CheddarGetter_Response_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/CheddarGetter_Response.html">\CheddarGetter_Response</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="https://cheddargetter.com/developers#one-time-invoice"><span class="namespace-wrapper">https://cheddargetter.com/developers#one-time-invoice</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_voidOrRefundInvoice" name="method_voidOrRefundInvoice" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">voidOrRefundInvoice()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">voidOrRefundInvoice(string <span class="argument">$number</span>, string|null <span class="argument">$id</span>) : \CheddarGetter_Response</pre>
+                <p><em>Void or refund invoice</em></p>
+                <p>Voiding and refunding can be a bit tricky.  Some billing solutions do not allow refunding while a transaction is "voidable". Transactions are usually voidable only for a short time (less than 24 hours). Some billing solutions do not allow voids. Check out the knowledge base article on the subject for more information: {@link <a href="http://support.cheddargetter.com/kb/operational-how-tos/credits-and-refunds-and-voids-oh-my">http://support.cheddargetter.com/kb/operational-how-tos/credits-and-refunds-and-voids-oh-my</a>}</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$number </td>
+                                <td><p>The unique number of the invoice to be voided/refunded generated by CheddarGetter.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string|null</td>
+                                <td>$id </td>
+                                <td><p>CG id of the invoice</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\CheddarGetter_Response_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/CheddarGetter_Response.html">\CheddarGetter_Response</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="https://cheddargetter.com/developers#void-or-refund"><span class="namespace-wrapper">https://cheddargetter.com/developers#void-or-refund</span></a></dd>
+                                            <dd><a href="http://support.cheddargetter.com/kb/operational-how-tos/credits-and-refunds-and-voids-oh-my"><span class="namespace-wrapper">http://support.cheddargetter.com/kb/operational-how-tos/credits-and-refunds-and-voids-oh-my</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_voidInvoice" name="method_voidInvoice" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">voidInvoice()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">voidInvoice(string <span class="argument">$number</span>, string|null <span class="argument">$id</span>) : \CheddarGetter_Response</pre>
+                <p><em>Void invoice</em></p>
+                <p>Voiding and refunding can be a bit tricky.  Some billing solutions do not allow refunding while a transaction is "voidable". Transactions are usually voidable only for a short time (less than 24 hours). Some billing solutions do not allow voids. Check out the knowledge base article on the subject for more information: {@link <a href="http://support.cheddargetter.com/kb/operational-how-tos/credits-and-refunds-and-voids-oh-my">http://support.cheddargetter.com/kb/operational-how-tos/credits-and-refunds-and-voids-oh-my</a>}</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$number </td>
+                                <td><p>The unique number of the invoice to be voided/refunded generated by CheddarGetter.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string|null</td>
+                                <td>$id </td>
+                                <td><p>CG id of the invoice</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\CheddarGetter_Response_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/CheddarGetter_Response.html">\CheddarGetter_Response</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="https://cheddargetter.com/developers#void"><span class="namespace-wrapper">https://cheddargetter.com/developers#void</span></a></dd>
+                                            <dd><a href="http://support.cheddargetter.com/kb/operational-how-tos/credits-and-refunds-and-voids-oh-my"><span class="namespace-wrapper">http://support.cheddargetter.com/kb/operational-how-tos/credits-and-refunds-and-voids-oh-my</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_refundInvoice" name="method_refundInvoice" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">refundInvoice()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">refundInvoice(string <span class="argument">$number</span>, string|null <span class="argument">$id</span>, array <span class="argument">$amount</span>) : \CheddarGetter_Response</pre>
+                <p><em>Refund invoice</em></p>
+                <p>Voiding and refunding can be a bit tricky.  Some billing solutions do not allow refunding while a transaction is "voidable". Transactions are usually voidable only for a short time (less than 24 hours). Some billing solutions do not allow voids. Check out the knowledge base article on the subject for more information: {@link <a href="http://support.cheddargetter.com/kb/operational-how-tos/credits-and-refunds-and-voids-oh-my">http://support.cheddargetter.com/kb/operational-how-tos/credits-and-refunds-and-voids-oh-my</a>}</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$number </td>
+                                <td><p>The unique number of the invoice to be voided/refunded generated by CheddarGetter.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string|null</td>
+                                <td>$id </td>
+                                <td><p>CG id of the invoice</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$amount </td>
+                                <td><p>The amount to be refunded if a partial refund. If the invoice is to be fully refunded, do not pass the amount.</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\CheddarGetter_Response_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/CheddarGetter_Response.html">\CheddarGetter_Response</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="https://cheddargetter.com/developers#void"><span class="namespace-wrapper">https://cheddargetter.com/developers#void</span></a></dd>
+                                            <dd><a href="http://support.cheddargetter.com/kb/operational-how-tos/credits-and-refunds-and-voids-oh-my"><span class="namespace-wrapper">http://support.cheddargetter.com/kb/operational-how-tos/credits-and-refunds-and-voids-oh-my</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_runOutstandingInvoice" name="method_runOutstandingInvoice" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">runOutstandingInvoice()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">runOutstandingInvoice(string <span class="argument">$code</span>, string|null <span class="argument">$id</span>, array <span class="argument">$data</span>) : \CheddarGetter_Response</pre>
+                <p><em>Run an outstanding invoice</em></p>
+                <p>An outstanding invoice might be one that hasn't been transacted yet or one that has been attempted unsucessfully.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$code </td>
+                                <td><p>Your code for the customer</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string|null</td>
+                                <td>$id </td>
+                                <td><p>CG id for the customer</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$data </td>
+                                <td><p>[ccCardCode] (optional)</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\CheddarGetter_Response_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/CheddarGetter_Response.html">\CheddarGetter_Response</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="https://cheddargetter.com/developers#run-invoice"><span class="namespace-wrapper">https://cheddargetter.com/developers#run-invoice</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_sendEmailReceipt" name="method_sendEmailReceipt" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">sendEmailReceipt()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">sendEmailReceipt(string <span class="argument">$number</span>, string|null <span class="argument">$id</span>) : \CheddarGetter_Response</pre>
+                <p><em>Send an invoice receipt email</em></p>
+                <p>Resend an invoice receipt email. For any transacted invoice.
+Relevant email notification must be enabled in CG config.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$number </td>
+                                <td><p>The unique number of the invoice.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string|null</td>
+                                <td>$id </td>
+                                <td><p>CG id of the invoice</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\CheddarGetter_Response_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/CheddarGetter_Response.html">\CheddarGetter_Response</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="https://cheddargetter.com/developers#send-email"><span class="namespace-wrapper">https://cheddargetter.com/developers#send-email</span></a></dd>
+                                            <dd><a href="http://support.cheddargetter.com/kb/operational-how-tos/email-notification-templates-overview#payment-receipt"><span class="namespace-wrapper">http://support.cheddargetter.com/kb/operational-how-tos/email-notification-templates-overview#payment-receipt</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getPromotions" name="method_getPromotions" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getPromotions()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getPromotions(array|null <span class="argument">$filters</span>) : \CheddarGetter_Response</pre>
+                <p><em>Get promotions</em></p>
+                <p>Get all promotions in the product.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array|null</td>
+                                <td>$filters </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\CheddarGetter_Response_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/CheddarGetter_Response.html">\CheddarGetter_Response</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="https://cheddargetter.com/developers#all-promotions"><span class="namespace-wrapper">https://cheddargetter.com/developers#all-promotions</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getPromotion" name="method_getPromotion" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getPromotion()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getPromotion(string <span class="argument">$code</span>, string|null <span class="argument">$id</span>) : \CheddarGetter_Response</pre>
+                <p><em>Get a single promotion</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$code </td>
+                                <td><p>Coupon code</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string|null</td>
+                                <td>$id </td>
+                                <td><p>CG id for the promotion</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\CheddarGetter_Response_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/CheddarGetter_Response.html">\CheddarGetter_Response</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="https://cheddargetter.com/developers#single-promotion"><span class="namespace-wrapper">https://cheddargetter.com/developers#single-promotion</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setHttpClient" name="method_setHttpClient" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setHttpClient()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setHttpClient(\CheddarGetter_Client_AdapterInterface|\Zend_Http_Client|resource <span class="argument">$client</span>) : \CheddarGetter_Client</pre>
+                <p><em>Set http client</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/CheddarGetter_Client_AdapterInterface.html">\CheddarGetter_Client_AdapterInterface</a>|\Zend_Http_Client|resource</td>
+                                <td>$client </td>
+                                <td><p>Either a Zend_Http_Client or curl resource.</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\CheddarGetter_Client_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/CheddarGetter_Client.html">\CheddarGetter_Client</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getHttpClient" name="method_getHttpClient" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getHttpClient()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getHttpClient() : \CheddarGetter_Client_AdapterInterface</pre>
+                <p><em>Get the current http client</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/CheddarGetter_Client_AdapterInterface.html">\CheddarGetter_Client_AdapterInterface</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setRequestAdapter" name="method_setRequestAdapter" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setRequestAdapter()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setRequestAdapter(\CheddarGetter_Http_AdapterInterface <span class="argument">$requestAdapter</span>)</pre>
+                <p><em>Set request adapter</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/CheddarGetter_Http_AdapterInterface.html">\CheddarGetter_Http_AdapterInterface</a></td>
+                                <td>$requestAdapter </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getRequestAdapter" name="method_getRequestAdapter" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getRequestAdapter()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getRequestAdapter() : \CheddarGetter_Http_AdapterInterface</pre>
+                <p><em>Gets the request adapter.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/CheddarGetter_Http_AdapterInterface.html">\CheddarGetter_Http_AdapterInterface</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setMarketingCookie" name="method_setMarketingCookie" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setMarketingCookie()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setMarketingCookie(string <span class="argument">$cookieName</span>, int <span class="argument">$expire</span>, string <span class="argument">$path</span>, string <span class="argument">$domain</span>, bool <span class="argument">$secure</span>, bool <span class="argument">$httpOnly</span>)</pre>
+                <p><em>Convenience wrapper of setcookie() for setting a persistent cookie containing marketing metrics compatible with CheddarGetter&#039;s marketing metrics tracking.</em></p>
+                <p>Running this method on every request to your marketing site sets or refines the marketing cookie data over time.  There is no performance disadvantage to running this method on every request.</p>
+<p>If a lead has this cookie set at the time of signup, CheddarGetter_Client::newCustomer() will automatically add the data to the customer record.  In other words, simply run this method on every request and there's nothing else to do to take advantage of the metrics tracking in CheddarGetter.</p>
+<p>{@link <a href="http://support.cheddargetter.com/faqs/marketing-metrics/marketing-metrics">http://support.cheddargetter.com/faqs/marketing-metrics/marketing-metrics</a> More about CheddarGetter's marketing metrics tracking }</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$cookieName </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>int</td>
+                                <td>$expire </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$path </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$domain </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>bool</td>
+                                <td>$secure </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>bool</td>
+                                <td>$httpOnly </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\CheddarGetter_Client_Exception</dt>
+                            <dd><p>if headers are already sent</p></dd>
+                                                                    </dl>
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href=""><span class="namespace-wrapper"></span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_request" name="method_request" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">request()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">request(string <span class="argument">$path</span>, array|null <span class="argument">$args</span>) : string</pre>
+                <p><em>Execute CheddarGetter API request</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$path </td>
+                                <td><p>Path to the API action</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array|null</td>
+                                <td>$args </td>
+                                <td><p>HTTP post key value pairs</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\CheddarGetter_Client_Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>Body of the response from the CheddarGetter API</p>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__getPassword" name="method__getPassword" class="anchor"></a>
+            <article class="method">
+                <h3 class="private ">_getPassword()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_getPassword() : string</pre>
+                <p><em>Get current password</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__requireIdentifier" name="method__requireIdentifier" class="anchor"></a>
+            <article class="method">
+                <h3 class="private ">_requireIdentifier()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_requireIdentifier(string <span class="argument">$code</span>, string <span class="argument">$id</span>) : bool</pre>
+                <p><em>Convenience method for requiring an identifier</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$code </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$id </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\CheddarGetter_Client_Exception</dt>
+                            <dd><p>if neither identifier exists</p></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    bool
+                                            &mdash; <p>true if $code or $id exists</p>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">Client.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/Client.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on July 1st, 2014 at 14:34.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>
