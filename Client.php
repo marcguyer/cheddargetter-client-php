@@ -963,11 +963,19 @@ class CheddarGetter_Client {
 	}
 
 	/**
-	 * Convenience wrapper of setcookie() for setting a persistent cookie containing marketing metrics compatible with CheddarGetter's marketing metrics tracking.
+	 * Convenience wrapper of setcookie() for setting a persistent cookie
+	 * containing marketing metrics compatible with CheddarGetter's marketing
+	 * metrics tracking.
 	 *
-	 * Running this method on every request to your marketing site sets or refines the marketing cookie data over time.  There is no performance disadvantage to running this method on every request.
+	 * Running this method on every request to your marketing site sets or
+	 * refines the marketing cookie data over time.  There is no performance
+	 * disadvantage to running this method on every request.
 	 *
-	 * If a lead has this cookie set at the time of signup, CheddarGetter_Client::newCustomer() will automatically add the data to the customer record.  In other words, simply run this method on every request and there's nothing else to do to take advantage of the metrics tracking in CheddarGetter.
+	 * If a lead has this cookie set at the time of signup,
+	 * CheddarGetter_Client::newCustomer() will automatically add the data to
+	 * the customer record.  In other words, simply run this method on every
+	 * request and there's nothing else to do to take advantage of the metrics
+	 * tracking in CheddarGetter.
 	 *
 	 * {@link http://support.cheddargetter.com/faqs/marketing-metrics/marketing-metrics More about CheddarGetter's marketing metrics tracking }
 	 *
@@ -980,7 +988,14 @@ class CheddarGetter_Client {
 	 * @param bool $httpOnly
 	 * @throws CheddarGetter_Client_Exception if headers are already sent
 	 */
-	public static function setMarketingCookie($cookieName = 'CGMK', $expire = null, $path = '/', $domain = null, $secure = false, $httpOnly = false) {
+	public static function setMarketingCookie(
+		$cookieName = 'CGMK',
+		$expire = null,
+		$path = '/',
+		$domain = null,
+		$secure = false,
+		$httpOnly = false
+	) {
 
 		// default to a two year cookie
 		if (!$expire) {
@@ -998,7 +1013,7 @@ class CheddarGetter_Client {
 		$requestAdapter = self::getRequestAdapter();
 		// no cookie yet -- set the first contact date and referer in the cookie
 		// (only first request)
-		if ($requestAdapter->hasCookie($cookieName)) {
+		if (!$requestAdapter->hasCookie($cookieName)) {
 
 			// when did this lead first find us? (right now!)
 			// we'll use this to determine the customer "vintage"
