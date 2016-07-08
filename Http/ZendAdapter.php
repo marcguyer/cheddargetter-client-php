@@ -96,7 +96,7 @@ class CheddarGetter_Http_ZendAdapter extends CheddarGetter_Http_NativeAdapter {
 	 * @return boolean
 	 */
 	public function hasIp() {
-		return $this->_request() ? (bool) $this->_request()->getClientIp() : false;
+		return (bool) $this->_getIp();
 	}
 
 	/**
@@ -104,7 +104,39 @@ class CheddarGetter_Http_ZendAdapter extends CheddarGetter_Http_NativeAdapter {
 	 * @return string
 	 */
 	public function getIp() {
-		return $this->hasIp() ? $this->_request()->getClientIp() : '';
+		return $this->_getIp();
+	}
+
+	/**
+	 * Get a good ipv4
+	 * @return string
+	 */
+	protected function _getIp() {
+		if (!$this->_request()) {
+			return null;
+		}
+		$ip = $this->_request()->getClientIp();
+
+		if ($this->_isValidIpv4($ip)) {
+			return $ip;
+		}
+
+		// sometimes the value is multiple IPs separated by commas
+		// (when there are multiple proxies, for example)
+		$ips = explode(',', $ip, 2);
+		$ip = trim($ips[0]);
+		if ($this->_isValidIpv4($ip)) {
+			return $ip;
+		}
+
+    return null;
+	}
+
+	/**
+	 * Validate IPv4
+	 */
+	protected function _isValidIpv4($val) {
+		return filter_var($val, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);
 	}
 
 }

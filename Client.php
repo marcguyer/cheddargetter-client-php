@@ -876,10 +876,10 @@ class CheddarGetter_Client {
 					$args['remoteAddress'] = self::getRequestAdapter()->getIp();
 				}
 			} else if (count($args) == 1 && !empty($args['remoteAddress'])) {
-				$url .= '/remoteAddress/' . $args['remoteAddress'];
+				$url .= '/remoteAddress/' . urlencode($args['remoteAddress']);
 				unset($args['remoteAddress']);
 			} else {
-				$url .= '/remoteAddress/' . self::getRequestAdapter()->getIp();
+				$url .= '/remoteAddress/' . urlencode(self::getRequestAdapter()->getIp());
 			}
 		}
 

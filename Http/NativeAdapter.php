@@ -99,8 +99,28 @@ class CheddarGetter_Http_NativeAdapter implements CheddarGetter_Http_AdapterInte
     } else if (!empty($_SERVER['REMOTE_ADDR'])) {
       $ip = $_SERVER['REMOTE_ADDR'];
     }
-    return $ip;
+
+		if ($this->_isValidIpv4($ip)) {
+			return $ip;
+		}
+
+		// sometimes the value is multiple IPs separated by commas
+		// (when there are multiple proxies, for example)
+		$ips = explode(',', $ip, 2);
+		$ip = trim($ips[0]);
+		if ($this->_isValidIpv4($ip)) {
+			return $ip;
+		}
+
+    return null;
   }
+
+	/**
+	 * Validate IPv4
+	 */
+	protected function _isValidIpv4($val) {
+		return filter_var($val, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);
+	}
 
 	/**
 	 * Get the remote ip
