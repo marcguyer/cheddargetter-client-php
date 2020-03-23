@@ -917,7 +917,7 @@ $data
                 if (!is_array(current($args))) {
                     $args['remoteAddress'] = self::getRequestAdapter()->getIp();
                 }
-            } elseif (count($args) == 1 && !empty($args['remoteAddress'])) {
+            } elseif (is_array($args) && count($args) == 1 && !empty($args['remoteAddress'])) {
                 $url .= '/remoteAddress/' . urlencode($args['remoteAddress']);
                 unset($args['remoteAddress']);
             } else {
